@@ -1,0 +1,131 @@
+{
+  "name": {
+    "tr": "Yorum Karuseli 3",
+    "en": "Testimonial Carousel 3",
+    "ar": "شريط آراء العملاء 3"
+  },
+  "description": {
+    "tr": "Müşteri yorumları karuseli: yıldız + alıntı + kişi (avatar ya da baş harf, ad, unvan/şirket, isteğe bağlı logo). Otomatik kaydırma (durdur/başlat düğmesi, hover ve odakta durur, reduced-motion'da kapalı), nokta + ok, klavye (←/→), swipe (pointer). Bağımlılık yok. Üç varyant (desing.stil): kart-karusel · buyuk-alinti (tek, ortalı) · masonry (3 sütun statik duvar). Üç dil, RTL, koyu mod token'larla.",
+    "en": "Customer testimonial carousel: stars + quote + person (avatar or initials, name, role/company, optional logo). Autoplay (pause/play button, pauses on hover and focus, off under reduced-motion), dots + arrows, keyboard (←/→), swipe (pointer events). No dependencies. Three variants (desing.stil): kart-karusel · buyuk-alinti (single, centred) · masonry (static 3-column wall). Three languages, RTL, dark mode via tokens.",
+    "ar": "شريط آراء العملاء: نجوم + اقتباس + شخص (صورة أو أحرف أولى، الاسم، المسمّى/الشركة، شعار اختياري). تشغيل تلقائي (زر إيقاف/تشغيل، يتوقف عند التمرير والتركيز، معطّل عند تقليل الحركة)، نقاط وأسهم، لوحة مفاتيح، سحب. ثلاثة أنماط، ثلاث لغات، RTL، وضع داكن."
+  },
+  "version": "1.0.0",
+  "icon": "format_quote",
+  "category": "testimonial",
+  "tags": ["yorum", "testimonial", "karusel", "referans", "review", "ar"],
+  "desing": {
+    "max": "1200px",
+    "stil": "kart-karusel",
+    "autoplay": true,
+    "interval": 5000,
+    "bgcolor": "var(--mx-site-surface, #f6f6f4)",
+    "textcolor": "var(--mx-site-text, #1b1b1b)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 70%, var(--mx-site-surface, #f6f6f4))",
+    "cardbg": "var(--mx-site-bg, #ffffff)",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 14%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "starcolor": "color-mix(in srgb, var(--mx-color-warning, #d97706) 65%, var(--mx-site-text, #1b1b1b))",
+    "radius": "18px",
+    "title": { "tr": "Müşterilerimiz Ne Diyor?", "en": "What Our Clients Say", "ar": "ماذا يقول عملاؤنا؟" },
+    "description": {
+      "tr": "Birlikte çalıştığımız kişilerin deneyimleri — kendi sözleriyle.",
+      "en": "Experiences of the people we work with — in their own words.",
+      "ar": "تجارب من عملنا معهم — بكلماتهم."
+    },
+    "regionLabel": { "tr": "Müşteri yorumları", "en": "Customer testimonials", "ar": "آراء العملاء" },
+    "prevLabel": { "tr": "Önceki yorum", "en": "Previous testimonial", "ar": "الرأي السابق" },
+    "nextLabel": { "tr": "Sonraki yorum", "en": "Next testimonial", "ar": "الرأي التالي" },
+    "pauseLabel": { "tr": "Otomatik kaydırmayı durdur", "en": "Pause autoplay", "ar": "إيقاف التشغيل التلقائي" },
+    "playLabel": { "tr": "Otomatik kaydırmayı başlat", "en": "Start autoplay", "ar": "بدء التشغيل التلقائي" },
+    "dotLabel": { "tr": "{n}. sayfa", "en": "Page {n}", "ar": "الصفحة {n}" },
+    "slideLabel": { "tr": "{i} / {n}", "en": "{i} of {n}", "ar": "{i} من {n}" },
+    "ratingLabel": { "tr": "5 üzerinden {n} yıldız", "en": "{n} out of 5 stars", "ar": "{n} من 5 نجوم" },
+    "quoteLabel": { "tr": "Alıntı", "en": "Quote", "ar": "اقتباس" }
+  },
+  "data": [
+    {
+      "name": "Elif Kaya",
+      "role": { "tr": "Pazarlama Müdürü", "en": "Marketing Manager", "ar": "مديرة التسويق" },
+      "company": "Aurora Holding",
+      "text": {
+        "tr": "Süreç boyunca her adımı şeffaf biçimde paylaştılar. Teslim tarihine sadık kalındı ve sonuç beklentimizin üzerindeydi.",
+        "en": "They shared every step transparently throughout the process. The deadline was met and the result exceeded our expectations.",
+        "ar": "شاركونا كل خطوة بشفافية طوال العملية. تم الالتزام بالموعد وكانت النتيجة فوق توقعاتنا."
+      },
+      "rating": 5,
+      "img": "",
+      "logo": ""
+    },
+    {
+      "name": "Mehmet Demir",
+      "role": { "tr": "Kurucu Ortak", "en": "Co-founder", "ar": "شريك مؤسس" },
+      "company": "Nova Enerji",
+      "text": {
+        "tr": "İlk görüşmeden itibaren ihtiyacımızı doğru anladılar. Destek ekibi hâlâ aynı hızla yanıt veriyor.",
+        "en": "They understood our needs from the very first meeting. The support team still responds just as quickly.",
+        "ar": "فهموا احتياجاتنا منذ الاجتماع الأول. ما زال فريق الدعم يستجيب بالسرعة نفسها."
+      },
+      "rating": 5,
+      "img": "",
+      "logo": ""
+    },
+    {
+      "name": "Zeynep Arslan",
+      "role": { "tr": "Operasyon Direktörü", "en": "Operations Director", "ar": "مديرة العمليات" },
+      "company": "Mavi Lojistik",
+      "text": {
+        "tr": "Karmaşık bir yapıyı sade ve kullanışlı hale getirdiler. Ekibimiz eğitim almadan kullanmaya başladı.",
+        "en": "They turned a complex structure into something simple and usable. Our team started using it without any training.",
+        "ar": "حوّلوا بنية معقدة إلى شيء بسيط وعملي. بدأ فريقنا باستخدامه دون أي تدريب."
+      },
+      "rating": 4,
+      "img": "",
+      "logo": ""
+    },
+    {
+      "name": "Can Yıldız",
+      "role": { "tr": "Genel Müdür", "en": "General Manager", "ar": "المدير العام" },
+      "company": "Kalem Yapı",
+      "text": {
+        "tr": "Bütçeyi aşmadan, planlanan kapsamı eksiksiz teslim ettiler. Yeni projede yine birlikte çalışacağız.",
+        "en": "They delivered the full scope without exceeding the budget. We will work together again on the next project.",
+        "ar": "سلّموا النطاق كاملًا دون تجاوز الميزانية. سنعمل معًا مجددًا في المشروع القادم."
+      },
+      "rating": 5,
+      "img": "",
+      "logo": ""
+    },
+    {
+      "name": "Selin Koç",
+      "role": { "tr": "Marka Yöneticisi", "en": "Brand Manager", "ar": "مديرة العلامة التجارية" },
+      "company": "Orion Tekstil",
+      "text": {
+        "tr": "Tasarım dili markamızla birebir örtüştü. Geri bildirimlerimiz aynı gün içinde uygulandı.",
+        "en": "The design language matched our brand perfectly. Our feedback was implemented the same day.",
+        "ar": "لغة التصميم تطابقت تمامًا مع علامتنا. تم تنفيذ ملاحظاتنا في اليوم نفسه."
+      },
+      "rating": 5,
+      "img": "",
+      "logo": ""
+    },
+    {
+      "name": "Burak Şahin",
+      "role": { "tr": "Satın Alma Uzmanı", "en": "Procurement Specialist", "ar": "أخصائي مشتريات" },
+      "company": "Delta Gıda",
+      "text": {
+        "tr": "Fiyat-performans dengesi çok iyiydi; raporlama tarafı özellikle işimizi kolaylaştırdı.",
+        "en": "The price-performance balance was excellent; the reporting side made our work especially easier.",
+        "ar": "كان توازن السعر والأداء ممتازًا؛ وسهّل جانب التقارير عملنا بشكل خاص."
+      },
+      "rating": 4,
+      "img": "",
+      "logo": ""
+    }
+  ],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

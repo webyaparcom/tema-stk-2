@@ -1,0 +1,21 @@
+{
+  "name": "Sayfa Listesi Column",
+  "desing": {
+    "page": "page",
+    "bgcolor": "#1e3046",
+    "color": "#fff",
+    "height": "200px",
+    "font-size": "18px",
+    "opacity": "0.5",
+    "chilebgcolor": "#000",
+    "chilecolor": "#fff",
+    "chilesize": "16px"
+  },
+  "category": "page-list",
+  "description": "İçerikleri sütun düzeninde gösteren responsive modül. Kategori ve hizmet sunumlarında etkili görünüm sağlar.",
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

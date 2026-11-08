@@ -1,0 +1,42 @@
+{
+  "name": {
+    "tr": "Menü 10 — Şeffaf overlay",
+    "en": "Menu 10 — Transparent overlay",
+    "ar": "القائمة 10 — شفافة فوق الهيرو"
+  },
+  "description": {
+    "tr": "Hero'nun üstüne binen şeffaf menü (position:absolute): başlangıçta şeffaf zemin + açık yazı (menutextOverlay) ve altında ince koyu gradient scrim; kaydırınca 300 ms'de katı zemine (menubg/menutext) geçer ve sabitlenir. Sayfada hero yoksa (#content ilk çocuğu data-mx-hero / *-hero değilse) baştan katı ve akışta. Mobil: tam ekran panel. desing.stil: sade | cta-butonlu (sağda vurgulu düğme). Dil seçici {{langbar}}. Üç dil + RTL.",
+    "en": "Transparent menu overlaid on the hero (position:absolute): transparent background + light text (menutextOverlay) with a thin dark gradient scrim underneath; on scroll it switches to a solid background (menubg/menutext) in 300 ms and sticks. Without a hero on the page (#content first child lacks data-mx-hero / *-hero) it starts solid and in flow. Mobile: full-screen panel. desing.stil: sade | cta-butonlu (accent button on the end side). Language switcher {{langbar}}. Three languages + RTL.",
+    "ar": "قائمة شفافة فوق الهيرو (position:absolute): خلفية شفافة ونص فاتح (menutextOverlay) مع تدرّج داكن رفيع أسفلها؛ عند التمرير تتحوّل خلال 300 ms إلى خلفية صلبة (menubg/menutext) وتثبت. إن لم توجد وحدة هيرو في الصفحة (أول عنصر في #content بلا data-mx-hero / *-hero) تبدأ صلبة وضمن التدفق. الجوال: لوحة بملء الشاشة. desing.stil: sade | cta-butonlu (زر بارز في جهة النهاية). محدد اللغة {{langbar}}. ثلاث لغات + RTL."
+  },
+  "version": "1.0.0",
+  "icon": "layers",
+  "category": "menu",
+  "tags": ["menu", "overlay", "seffaf", "transparent", "hero", "sticky", "ar"],
+  "desing": {
+    "stil": "sade",
+    "logo": "{{logo}}",
+    "logo_acik": "",
+    "logo_h": "48px",
+    "max": "1200px",
+    "showlang": true,
+    "menubg": "var(--mx-site-bg, #ffffff)",
+    "menutext": "var(--mx-site-text, #1b1b1b)",
+    "menutextOverlay": "#ffffff",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "border": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 14%, transparent)",
+    "cta": {
+      "tr": "Teklif al",
+      "en": "Get a quote",
+      "ar": "اطلب عرضًا"
+    },
+    "cta_url": "iletisim"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

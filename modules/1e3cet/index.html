@@ -1,0 +1,138 @@
+<section class="modulex-zz{{zzclass}}" id="zz-{{id}}">
+  <div class="modulex-zz-wrap">
+    {{zzhead}}
+    <div class="modulex-zz-rows">{{zzrows}}</div>
+  </div>
+</section>
+
+<style>
+  /* Zigzag Özellik (31 Eki 2026, G8-B). Renkler yalnız desing anahtarı → var(--mx-site-*); koyu mod paletten. */
+  .modulex-zz {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: clamp(40px, 7vw, 88px);
+    padding-inline: clamp(16px, 4vw, 32px);
+    background: --bgcolor--;
+    color: --textcolor--;
+    overflow-x: clip;
+  }
+  .modulex-zz *, .modulex-zz *::before, .modulex-zz *::after { box-sizing: border-box; }
+  /* ham css.css `* { font-size:14px; font-weight:400 }` kalıtımı kırar → satır içi öğeler ebeveynden alır */
+  .modulex-zz :where(span:not(.material-symbols-outlined), bdi, b, strong, em) { font: inherit; }
+  .modulex-zz-wrap { max-width: --max--; margin-inline: auto; }
+
+  .modulex-zz-head { max-width: 68ch; margin-block-end: 48px; text-align: start; }
+  .modulex-zz-eyebrow {
+    display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: --accentText--; background: --accent--; /* dolgulu çip: vurgu/vurgu-kontrast çifti ≥ 4,5 palet güvencesi */
+  }
+  .modulex-zz-title { margin: 0 0 10px; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem); line-height: 1.15; color: --textcolor--; text-wrap: balance; }
+  .modulex-zz-desc { margin: 0; font-size: 1.05rem; line-height: 1.7; color: --mutedcolor--; }
+
+  .modulex-zz-rows { display: grid; gap: clamp(40px, 6vw, 80px); }
+  .modulex-zz-row {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center;
+  }
+  /* Çift satırlarda görsel ikinci sütuna: grid satır içi yönü dir'den gelir → RTL'de aynalama kendiliğinden */
+  .modulex-zz-row:nth-child(even) .modulex-zz-media { order: 2; }
+
+  .modulex-zz-media { position: relative; min-width: 0; }
+  .modulex-zz-img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: --radius--; background: --surface2--; }
+  .modulex-zz-ph {
+    position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3;
+    border-radius: --radius--; color: --accent--;
+    background: linear-gradient(135deg, color-mix(in srgb, --accent-- 20%, --surface--), color-mix(in srgb, --accent-- 5%, --surface2--));
+  }
+  .modulex-zz-ph .material-symbols-outlined { font-size: 80px; opacity: 0.65; }
+
+  .modulex-zz-metin { min-width: 0; }
+  .modulex-zz-no {
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-block-end: 16px;
+    border-radius: 50%; background: --accent--; color: --accentText--; font-weight: 800; font-size: 0.95rem; font-variant-numeric: tabular-nums;
+  }
+  .modulex-zz-h { margin: 0 0 12px; font-size: clamp(1.35rem, 1rem + 1.2vw, 1.9rem); line-height: 1.2; color: --textcolor--; }
+  .modulex-zz-p { margin: 0 0 20px; font-size: 1.02rem; line-height: 1.75; color: --mutedcolor--; }
+  .modulex-zz a.modulex-zz-link, .modulex-zz a.modulex-zz-link:link, .modulex-zz a.modulex-zz-link:visited {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding-inline: 2px;
+    color: --accent--; font-weight: 700; text-decoration: none; cursor: pointer; border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, gap 0.2s ease;
+  }
+  .modulex-zz a.modulex-zz-link:hover, .modulex-zz a.modulex-zz-link:focus-visible { border-bottom-color: --accent--; gap: 10px; color: --accent--; }
+  .modulex-zz a.modulex-zz-link:focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  [dir="rtl"] .modulex-zz-link .material-symbols-outlined { transform: scaleX(-1); }
+
+  /* Kaydırmada belirme (yalnız JS + IO + hareket izni varsa sınıf eklenir) */
+  .modulex-zz-gizli { opacity: 0; transform: translateY(18px); }
+  .modulex-zz-gorun { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+
+  /* ── Varyant: cerceve (varsayılan) — görselin arkasında kaydırılmış vurgu çerçevesi + köşe bloğu */
+  .modulex-zz-cerceve .modulex-zz-media::before {
+    content: ""; position: absolute; inset-block: 14px -14px; inset-inline: 14px -14px; border: 2px solid --accent--; border-radius: --radius--; opacity: 0.6;
+  }
+  .modulex-zz-cerceve .modulex-zz-media::after {
+    content: ""; position: absolute; z-index: 2; inset-inline-end: -10px; inset-block-start: -10px; width: 72px; height: 72px;
+    border-radius: calc(--radius-- / 2); background: color-mix(in srgb, --accent-- 22%, transparent); pointer-events: none;
+  }
+  .modulex-zz-cerceve .modulex-zz-row:nth-child(even) .modulex-zz-media::before { inset-inline: -14px 14px; }
+  .modulex-zz-cerceve .modulex-zz-row:nth-child(even) .modulex-zz-media::after { inset-inline-end: auto; inset-inline-start: -10px; }
+
+  /* ── Varyant: yuzen — satır bir kart; görsel kartın dışına taşar (negatif blok kenar boşluğu + büyük gölge) */
+  .modulex-zz-yuzen .modulex-zz-rows { gap: clamp(56px, 7vw, 96px); }
+  .modulex-zz-yuzen .modulex-zz-row { padding: clamp(20px, 3vw, 40px); border-radius: --radius--; background: --surface--; border: 1px solid --bordercolor--; }
+  .modulex-zz-yuzen .modulex-zz-media { margin-block: calc(-1 * clamp(28px, 4vw, 56px)); }
+  .modulex-zz-yuzen .modulex-zz-img, .modulex-zz-yuzen .modulex-zz-ph { box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22); }
+  .modulex-zz-yuzen .modulex-zz-no { border-radius: 12px; }
+
+  /* ── Varyant: sade — çerçeve/gölge yok, küçük köşe, satırlar arası ince ayraç */
+  .modulex-zz-sade .modulex-zz-rows { gap: 0; }
+  .modulex-zz-sade .modulex-zz-row { padding-block: clamp(32px, 5vw, 56px); border-top: 1px solid --bordercolor--; }
+  .modulex-zz-sade .modulex-zz-row:last-child { border-bottom: 1px solid --bordercolor--; }
+  .modulex-zz-sade .modulex-zz-img, .modulex-zz-sade .modulex-zz-ph { border-radius: 8px; }
+  .modulex-zz-sade .modulex-zz-no { width: auto; height: auto; padding: 0; border-radius: 0; background: transparent; color: --accent--; font-size: 2rem; }
+
+  @media (max-width: 768px) {
+    .modulex-zz { padding-block: 36px; }
+    .modulex-zz-head { margin-block-end: 28px; }
+    .modulex-zz-rows { gap: 36px; }
+    .modulex-zz-row { grid-template-columns: 1fr; gap: 20px; }
+    .modulex-zz-row:nth-child(even) .modulex-zz-media { order: 0; }
+    .modulex-zz-cerceve .modulex-zz-media::before { inset-block: 10px -8px; inset-inline: 8px -8px; }
+    .modulex-zz-cerceve .modulex-zz-row:nth-child(even) .modulex-zz-media::before { inset-inline: 8px -8px; }
+    .modulex-zz-cerceve .modulex-zz-media::after { width: 48px; height: 48px; inset-inline-end: -6px; inset-block-start: -6px; }
+    .modulex-zz-cerceve .modulex-zz-row:nth-child(even) .modulex-zz-media::after { inset-inline-start: auto; inset-inline-end: -6px; }
+    .modulex-zz-yuzen .modulex-zz-rows { gap: 56px; }
+    .modulex-zz-yuzen .modulex-zz-media { margin-block: -40px 0; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-zz *, .modulex-zz *::before, .modulex-zz *::after { animation: none !important; transition: none !important; }
+    .modulex-zz-gizli { opacity: 1; transform: none; }
+  }
+</style>
+
+<script>
+  /* Satırlar kaydırmada sırayla belirir. Hareket azaltma ya da IO yoksa sınıf hiç eklenmez → her şey görünür. */
+  (function () {
+    var kok = document.getElementById("zz-{{id}}");
+    if (!kok || kok.getAttribute("data-zz-hazir") === "1") { return; }
+    kok.setAttribute("data-zz-hazir", "1");
+    var azalt = false;
+    try { azalt = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { azalt = false; }
+    if (azalt || !("IntersectionObserver" in window)) { return; }
+    var satirlar = kok.querySelectorAll(".modulex-zz-row");
+    var i;
+    for (i = 0; i < satirlar.length; i++) { satirlar[i].className += " modulex-zz-gizli"; }
+    var io = new IntersectionObserver(function (girdiler) {
+      var j;
+      for (j = 0; j < girdiler.length; j++) {
+        if (girdiler[j].isIntersecting) {
+          girdiler[j].target.className += " modulex-zz-gorun";
+          io.unobserve(girdiler[j].target);
+        }
+      }
+    }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
+    for (i = 0; i < satirlar.length; i++) { io.observe(satirlar[i]); }
+  })();
+</script>

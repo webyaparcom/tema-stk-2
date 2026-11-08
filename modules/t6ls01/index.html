@@ -1,0 +1,292 @@
+<div class="modulex">
+  <div class="modulexbody">{{html}}</div>
+</div>
+<style>
+  .modulex {
+    overflow-x: hidden;
+    overflow-x: clip;
+    width: 100%
+  }
+
+  .modulexbody {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .modulexbodyitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 5px;
+    margin: 5px;
+    width: calc((var(--max) / 2) - 10px);
+    position: relative;
+    flex: 1;
+  }
+
+  .modulexbodyitemlink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .modulexbodyitemimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: --height--;
+    margin-top: -100px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background-color: --bgcolor--;
+    overflow: hidden;
+  }
+
+  .modulexbodyitemimg:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+  }
+
+  .modulexbodyitemimg img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .modulexbodyitemtitle {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: --font-size--;
+    color: --color--;
+    width: 100%;
+    margin-top: 10px;
+    margin: 10px 0 0 0;
+    font-weight: bold;
+  }
+
+  .modulexbodybg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 10px;
+    opacity: --opacity--;
+  }
+
+  .modulexbodyitems {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: --bgcolor--;
+    gap: 15px;
+    opacity: 0;
+    margin-top: 100px;
+    position: relative;
+    transition:
+      opacity 0.3s ease,
+      transform 0.5s ease;
+  }
+
+  .modulexbodyitems.left {
+    align-self: stretch;
+    border-radius: 0px 10px 10px 0px;
+    transform: translateX(-100px);
+  }
+
+  .modulexbodyitems.right {
+    align-self: stretch;
+    border-radius: 10px 0px 0px 10px;
+    transform: translateX(100px);
+  }
+
+  .modulexbodyitems.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .modulexbodyitem.lefts {
+    align-self: flex-end;
+  }
+
+  .modulexbodyitem.rights {
+    align-self: flex-start;
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .modulexbodyitechile {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+    text-align: center;
+    color: --color--;
+    height: 50px;
+  }
+
+  .modulexbodyitechilesubpagecontainer {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .modulexbodyitechilesubpage {
+    font-size: --chilesize--;
+    color: --chilecolor-- !important;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: --chilebgcolor--;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: fit-content;
+  }
+
+  
+  .modulexbodyitechilesubpage:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .modulexbodyitechilesubpage:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .modulexbodyitems {
+      width: calc(100% - 10px) !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .modulexbodyitem.lefts {
+      align-self: center;
+    }
+
+    .modulexbodyitem.rights {
+      align-self: center;
+    }
+
+    .modulexbody {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .modulexbodyitechilesubpagecontainer {
+      gap: 6px;
+      padding: 8px 5px;
+    }
+
+    .modulexbodyitechilesubpage {
+      padding: 6px 12px;
+      font-size: calc(--chilesize-- * 0.9);
+    }
+  }
+
+  /* W2: mobil tasma kontrolu */
+  @media (max-width: 768px) {
+    [class*="modulex"] {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  /* W2: erisilebilirlik — animasyon kapatma */
+  @media (prefers-reduced-motion: reduce) {
+    [class*="modulex"],
+    [class*="modulex"] * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+<script>
+  setTimeout(function() {
+    if (typeof IntersectionObserver !== 'undefined') {
+      var observer = new IntersectionObserver(
+        function(entries) {
+          entries.forEach(function(entry, index) {
+            if (entry.isIntersecting) {
+              //
+              if (window.innerWidth <= 1024) {
+                entry.target.classList.add("visible");
+              } else {
+                //
+                setTimeout(function() {
+                  entry.target.classList.add("visible");
+                }, index * 300); // Her element 300ms gecikmeli gelecek
+              }
+              observer.unobserve(entry.target); // reveal yalniz ilk gorunuste
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -10px 0px",
+        },
+      );
+
+      //
+      var items = Array.from(document.querySelectorAll(".modulexbodyitems"));
+      items
+        .sort(function(a, b) {
+          return a.offsetTop - b.offsetTop;
+        })
+        .forEach(function(item) {
+          observer.observe(item);
+        });
+    }
+  }, 100);
+</script>

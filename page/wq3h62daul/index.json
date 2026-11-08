@@ -1,0 +1,41 @@
+{
+  "id": "wq3h62daul",
+  "name": {
+    "tr": "Faaliyetler",
+    "en": "Activities",
+    "ar": "الأنشطة"
+  },
+  "description": {
+    "tr": "Gönüllülerle yürüttüğümüz başlıca çalışmalar.",
+    "en": "The main work we carry out with volunteers.",
+    "ar": "أبرز الأعمال التي ننفذها مع المتطوعين."
+  },
+  "keyword": {
+    "tr": "dernek, bağış, gönüllü, çevre",
+    "en": "association, donation, volunteer, environment",
+    "ar": "جمعية، تبرع، متطوع، بيئة"
+  },
+  "path": "faaliyetler",
+  "icon": "volunteer_activism",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "9kfwju",
+      "8475p5",
+      "q9axyj"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Faaliyetler",
+    "en": "Activities",
+    "ar": "الأنشطة"
+  },
+  "date": "2026-10-31T15:04:13.086Z",
+  "update": "2026-11-05T19:39:13.707Z"
+}

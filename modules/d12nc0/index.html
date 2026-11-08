@@ -1,0 +1,230 @@
+<section class="modulex-hs{{hsclass}}" id="hs-{{id}}">
+  <div class="modulex-hs-wrap">
+    {{hshead}}
+    <div class="modulex-hs-body">
+      <div class="modulex-hs-tabs" role="tablist" aria-label="{{tabsLabel}}" aria-orientation="{{hsorient}}">{{hstabs}}</div>
+      <div class="modulex-hs-panels">{{hspanels}}</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Sekmeli Hizmetler (31 Eki 2026, G8-B). Renkler yalnız desing anahtarı → var(--mx-site-*) zinciri; koyu mod paletten gelir. */
+  .modulex-hs {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: clamp(40px, 7vw, 88px);
+    padding-inline: clamp(16px, 4vw, 32px);
+    background: --bgcolor--;
+    color: --textcolor--;
+  }
+  .modulex-hs *, .modulex-hs *::before, .modulex-hs *::after { box-sizing: border-box; }
+  /* ham css.css `* { font-size:14px; font-weight:400 }` kalıtımı kırar → satır içi öğeler ebeveynden alır (:where = sıfır özgüllük, sınıf kuralları ezer) */
+  .modulex-hs :where(span:not(.material-symbols-outlined), bdi, b, strong, em) { font: inherit; }
+  .modulex-hs-wrap { max-width: --max--; margin-inline: auto; }
+
+  .modulex-hs-head { max-width: 68ch; margin-block-end: 36px; text-align: start; }
+  .modulex-hs-eyebrow {
+    display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: --accentText--; background: --accent--; /* dolgulu çip: vurgu/vurgu-kontrast çifti ≥ 4,5 palet güvencesi (açık tonlu zeminde vurgu yazı 4,4'e düşüyordu) */
+  }
+  .modulex-hs-title { margin: 0 0 10px; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem); line-height: 1.15; color: --textcolor--; text-wrap: balance; }
+  .modulex-hs-desc { margin: 0; font-size: 1.05rem; line-height: 1.7; color: --mutedcolor--; }
+
+  /* Sekme düğmeleri */
+  .modulex-hs-tab {
+    display: flex; align-items: center; gap: 14px; width: 100%; min-height: 56px;
+    padding: 12px 16px; margin: 0; border: 1px solid transparent; border-radius: calc(--radius-- - 4px);
+    background: transparent; color: --textcolor--; font: inherit; font-weight: 600; text-align: start; cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .modulex-hs-tab:hover { background: --surface--; }
+  .modulex-hs-tab:focus-visible { outline: 3px solid --accent--; outline-offset: 2px; }
+  .modulex-hs-tab[aria-selected="true"] { background: --accent--; color: --accentText--; border-color: --accent--; }
+  .modulex-hs-ikon {
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    width: 40px; height: 40px; border-radius: 12px;
+    background: color-mix(in srgb, --accent-- 14%, transparent); color: --accent--;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .modulex-hs-tab[aria-selected="true"] .modulex-hs-ikon { background: color-mix(in srgb, --accentText-- 18%, transparent); color: --accentText--; }
+  .modulex-hs-ikon .material-symbols-outlined { font-size: 24px; }
+  .modulex-hs-ikon svg, .modulex-hs-ikon img { width: 24px; height: 24px; display: block; }
+  .modulex-hs-tab-ad { flex: 1 1 auto; min-width: 0; font-size: 1rem; line-height: 1.3; }
+  .modulex-hs-ok { flex: 0 0 auto; opacity: 0; transform: translateX(-6px); transition: opacity 0.2s ease, transform 0.2s ease; }
+  .modulex-hs-tab[aria-selected="true"] .modulex-hs-ok { opacity: 1; transform: none; }
+  [dir="rtl"] .modulex-hs-ok .material-symbols-outlined { transform: scaleX(-1); }
+
+  /* Paneller */
+  .modulex-hs-panel { margin: 0; }
+  .modulex-hs-js .modulex-hs-panel:not(.modulex-hs-on) { display: none; }
+  .modulex-hs-panel-in { display: grid; gap: 24px; }
+  .modulex-hs-js .modulex-hs-on .modulex-hs-panel-in { animation: modulexHsIn 0.25s ease both; }
+  @keyframes modulexHsIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .modulex-hs-media { position: relative; overflow: hidden; border-radius: --radius--; background: --surface2--; aspect-ratio: 16 / 9; }
+  .modulex-hs-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .modulex-hs-ph {
+    display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: --accent--;
+    background: linear-gradient(135deg, color-mix(in srgb, --accent-- 18%, --surface--), color-mix(in srgb, --accent-- 6%, --surface2--));
+  }
+  .modulex-hs-ph .material-symbols-outlined { font-size: 72px; opacity: 0.7; }
+  .modulex-hs-panel-ad { margin: 0 0 10px; font-size: clamp(1.3rem, 1rem + 1vw, 1.75rem); line-height: 1.2; color: --textcolor--; }
+  .modulex-hs-panel-ozet { margin: 0 0 18px; font-size: 1.02rem; line-height: 1.7; color: --mutedcolor--; }
+  .modulex-hs-maddeler-baslik { margin: 0 0 10px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: --mutedcolor--; }
+  .modulex-hs-maddeler { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 10px; }
+  .modulex-hs-maddeler li { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; color: --textcolor--; }
+  .modulex-hs-maddeler .material-symbols-outlined { flex: 0 0 auto; font-size: 20px; color: --accent--; margin-block-start: 2px; }
+
+  .modulex-hs a.modulex-hs-btn, .modulex-hs a.modulex-hs-btn:link, .modulex-hs a.modulex-hs-btn:visited {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 24px;
+    border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .modulex-hs a.modulex-hs-btn:hover, .modulex-hs a.modulex-hs-btn:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16); color: --accentText--; }
+  .modulex-hs a.modulex-hs-btn:focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  [dir="rtl"] .modulex-hs-btn .material-symbols-outlined { transform: scaleX(-1); }
+
+  /* Mobil akordeon başlığı (yalnız ≤768) */
+  .modulex-hs-acc { display: none; }
+
+  /* ── Varyant: dikey (varsayılan) — sol dikey sekme sütunu, sağ panel */
+  .modulex-hs-dikey .modulex-hs-body { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 32px; align-items: start; }
+  .modulex-hs-dikey .modulex-hs-tabs { display: grid; gap: 6px; padding: 8px; border-radius: --radius--; background: --surface--; border: 1px solid --bordercolor--; }
+  .modulex-hs-dikey .modulex-hs-panel-in { padding: 28px; border-radius: --radius--; border: 1px solid --bordercolor--; background: --surface--; }
+
+  /* ── Varyant: yatay-ust — üstte yatay sekmeler (alt çizgi göstergesi), altta görsel sol / metin sağ */
+  .modulex-hs-yatay-ust .modulex-hs-tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: thin; border-bottom: 2px solid --bordercolor--; margin-block-end: 28px; }
+  .modulex-hs-yatay-ust .modulex-hs-tab { width: auto; flex: 0 0 auto; border-radius: 0; border: 0; border-bottom: 3px solid transparent; margin-block-end: -2px; padding-inline: 18px; }
+  .modulex-hs-yatay-ust .modulex-hs-tab[aria-selected="true"] { background: transparent; color: --accent--; border-bottom-color: --accent--; }
+  .modulex-hs-yatay-ust .modulex-hs-tab[aria-selected="true"] .modulex-hs-ikon { background: --accent--; color: --accentText--; }
+  .modulex-hs-yatay-ust .modulex-hs-ok { display: none; }
+  .modulex-hs-yatay-ust .modulex-hs-panel-in { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: 40px; }
+  .modulex-hs-yatay-ust .modulex-hs-media { aspect-ratio: 4 / 3; }
+
+  /* ── Varyant: kart-gecis — sekmeler ikon kartı, panel büyük kart, görsel sağda tam yükseklik */
+  .modulex-hs-kart-gecis .modulex-hs-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-block-end: 20px; }
+  /* Kart sekmesi: kenarlık zeminden ≥ 3:1 ayrışsın (buton sınırı kuralı) → metin renginin %50'si */
+  .modulex-hs-kart-gecis .modulex-hs-tab { flex-direction: column; align-items: flex-start; gap: 12px; min-height: 120px; padding: 18px; border-radius: --radius--; border: 1px solid color-mix(in srgb, --textcolor-- 50%, transparent); background: --surface--; }
+  .modulex-hs-kart-gecis .modulex-hs-tab:hover { transform: translateY(-3px); border-color: --accent--; }
+  /* Seçili kart: zemin yüzey kalır (kart-gecis'te dolgu yok), yazı metin rengi, ikon dairesi vurgu dolgulu — aksi halde accentText yüzeyde kaybolur */
+  .modulex-hs-kart-gecis .modulex-hs-tab[aria-selected="true"] { background: --surface--; color: --textcolor--; border-color: --accent--; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14); }
+  .modulex-hs-kart-gecis .modulex-hs-tab[aria-selected="true"] .modulex-hs-ikon { background: --accent--; color: --accentText--; }
+  .modulex-hs-kart-gecis .modulex-hs-ikon { width: 48px; height: 48px; border-radius: 50%; }
+  .modulex-hs-kart-gecis .modulex-hs-ok { display: none; }
+  .modulex-hs-kart-gecis .modulex-hs-panel-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; overflow: hidden; border-radius: --radius--; border: 1px solid --bordercolor--; background: --surface--; }
+  /* Görsel sütunu metin yüksekliğine uyar: img mutlak konumlu, min 320 px */
+  .modulex-hs-kart-gecis .modulex-hs-media { order: 2; border-radius: 0; aspect-ratio: auto; min-height: 320px; }
+  .modulex-hs-kart-gecis .modulex-hs-media img, .modulex-hs-kart-gecis .modulex-hs-media .modulex-hs-ph { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .modulex-hs-kart-gecis .modulex-hs-metin { padding: 36px; }
+
+  @media (max-width: 1024px) {
+    .modulex-hs-dikey .modulex-hs-body { grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); gap: 20px; }
+    .modulex-hs-yatay-ust .modulex-hs-panel-in { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* Mobil: sekmeler gizli → her panel akordeon öğesi */
+  @media (max-width: 768px) {
+    .modulex-hs { padding-block: 36px; }
+    .modulex-hs-head { margin-block-end: 20px; }
+    .modulex-hs-js .modulex-hs-tabs { display: none; }
+    .modulex-hs-js .modulex-hs-panels { display: grid; gap: 10px; }
+    .modulex-hs-js .modulex-hs-panel { display: block; border: 1px solid --bordercolor--; border-radius: --radius--; overflow: hidden; background: --surface--; }
+    .modulex-hs-js .modulex-hs-panel:not(.modulex-hs-on) { display: block; }
+    .modulex-hs-js .modulex-hs-panel:not(.modulex-hs-on) .modulex-hs-panel-in { display: none; }
+    .modulex-hs-js .modulex-hs-acc {
+      display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 12px 16px; margin: 0;
+      border: 0; background: transparent; color: --textcolor--; font: inherit; font-weight: 700; text-align: start; cursor: pointer;
+    }
+    .modulex-hs-js .modulex-hs-acc:focus-visible { outline: 3px solid --accent--; outline-offset: -3px; }
+    .modulex-hs-js .modulex-hs-on .modulex-hs-acc { color: --accent--; }
+    .modulex-hs-acc .modulex-hs-tab-ad { flex: 1 1 auto; }
+    .modulex-hs-acc-ok .material-symbols-outlined { transition: transform 0.2s ease; }
+    .modulex-hs-on .modulex-hs-acc-ok .material-symbols-outlined { transform: rotate(180deg); }
+    .modulex-hs .modulex-hs-panel-in { grid-template-columns: 1fr; gap: 16px; padding: 0 16px 18px; border: 0; border-radius: 0; background: transparent; }
+    .modulex-hs-kart-gecis .modulex-hs-media { order: 0; min-height: 0; aspect-ratio: 16 / 9; border-radius: calc(--radius-- - 6px); }
+    .modulex-hs-kart-gecis .modulex-hs-metin { padding: 0; }
+    .modulex-hs a.modulex-hs-btn { width: 100%; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-hs *, .modulex-hs *::before, .modulex-hs *::after { animation: none !important; transition: none !important; }
+    .modulex-hs a.modulex-hs-btn:hover, .modulex-hs-kart-gecis .modulex-hs-tab:hover { transform: none; }
+  }
+</style>
+
+<script>
+  /* Sekmeli hizmetler: ARIA tabs (otomatik etkinleşme, roving tabindex, ok/Home/End; RTL'de sol-sağ ters) + mobil akordeon.
+     JS yoksa tüm paneller açık kalır (modulex-hs-js sınıfı eklenmez). */
+  (function () {
+    var kok = document.getElementById("hs-{{id}}");
+    if (!kok || kok.getAttribute("data-hs-hazir") === "1") { return; }
+    kok.setAttribute("data-hs-hazir", "1");
+    kok.className += " modulex-hs-js";
+    var sekmeler = kok.querySelectorAll(".modulex-hs-tab");
+    var paneller = kok.querySelectorAll(".modulex-hs-panel");
+    var accler = kok.querySelectorAll(".modulex-hs-acc");
+    var yatay = kok.querySelector(".modulex-hs-tabs").getAttribute("aria-orientation") !== "vertical";
+    var n = sekmeler.length;
+    if (!n) { return; }
+
+    function rtlMi() {
+      var el = kok;
+      while (el && el !== document.documentElement) {
+        if (el.getAttribute("dir")) { return el.getAttribute("dir") === "rtl"; }
+        el = el.parentNode;
+      }
+      return (document.documentElement.getAttribute("dir") || "") === "rtl";
+    }
+
+    function sec(i, odakla) {
+      var j;
+      for (j = 0; j < n; j++) {
+        var acik = j === i;
+        sekmeler[j].setAttribute("aria-selected", acik ? "true" : "false");
+        sekmeler[j].setAttribute("tabindex", acik ? "0" : "-1");
+        if (paneller[j]) {
+          if (acik) { paneller[j].className += " modulex-hs-on"; }
+          else { paneller[j].className = paneller[j].className.replace(/\s*modulex-hs-on\b/g, ""); }
+        }
+        if (accler[j]) { accler[j].setAttribute("aria-expanded", acik ? "true" : "false"); }
+      }
+      if (odakla) { sekmeler[i].focus(); }
+    }
+
+    function tusla(ev) {
+      var i = parseInt(ev.currentTarget.getAttribute("data-hs-i"), 10);
+      var k = ev.key;
+      var ileri = yatay ? (rtlMi() ? "ArrowLeft" : "ArrowRight") : "ArrowDown";
+      var geri = yatay ? (rtlMi() ? "ArrowRight" : "ArrowLeft") : "ArrowUp";
+      var hedef = -1;
+      if (k === ileri) { hedef = (i + 1) % n; }
+      else if (k === geri) { hedef = (i - 1 + n) % n; }
+      else if (k === "Home") { hedef = 0; }
+      else if (k === "End") { hedef = n - 1; }
+      if (hedef !== -1) { ev.preventDefault(); sec(hedef, true); }
+    }
+
+    var i;
+    for (i = 0; i < n; i++) {
+      sekmeler[i].setAttribute("data-hs-i", String(i));
+      sekmeler[i].addEventListener("click", function (ev) { sec(parseInt(ev.currentTarget.getAttribute("data-hs-i"), 10), false); });
+      sekmeler[i].addEventListener("keydown", tusla);
+      if (accler[i]) {
+        accler[i].setAttribute("data-hs-i", String(i));
+        accler[i].addEventListener("click", function (ev) {
+          var idx = parseInt(ev.currentTarget.getAttribute("data-hs-i"), 10);
+          var acikMi = ev.currentTarget.getAttribute("aria-expanded") === "true";
+          if (acikMi) {
+            /* Akordeonda açık öğeye tekrar dokunma → kapat (sekme durumu korunur) */
+            paneller[idx].className = paneller[idx].className.replace(/\s*modulex-hs-on\b/g, "");
+            ev.currentTarget.setAttribute("aria-expanded", "false");
+          } else { sec(idx, false); }
+        });
+      }
+    }
+    sec(0, false);
+  })();
+</script>

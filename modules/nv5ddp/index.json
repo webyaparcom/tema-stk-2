@@ -1,0 +1,83 @@
+{
+  "name": "Bant CTA (zengin) — CTA 3",
+  "description": "Tam genişlik iki sütunlu çağrı bandı: sol h2 + metin + 2 buton; sağ görsel/illüstrasyon ya da telefon-WhatsApp kartı (numara, saat). Arka plan: token zemin + hafif gradient katmanı + dekoratif daireler (CSS). desing.stil: gradient | gorselli (sağ sütun tam yükseklik görsel) | cerceveli-kart (içerik sayfa zemini üstünde yüzen kart). desing.sag: whatsapp | gorsel | yok. Zemin + yazı ÇİFT token (bgcolor = birincil, textcolor = birincil kontrast); WhatsApp kartı opak yüzey (cardbg/cardtext). Üç dil + RTL; koyu mod paletten.",
+  "version": "1.0.0",
+  "icon": "campaign",
+  "category": "cta",
+  "tags": ["cta", "çağrı", "whatsapp", "bant", "banner", "ar"],
+  "desing": {
+    "stil": "gradient",
+    "sag": "whatsapp",
+    "max": "1200px",
+    "bgcolor": "var(--mx-site-primary, #2563eb)",
+    "textcolor": "var(--mx-site-primary-contrast, #ffffff)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 90%, var(--mx-site-primary, #2563eb))",
+    "pagebg": "var(--mx-site-bg, #ffffff)",
+    "cardbg": "var(--mx-site-surface, #ffffff)",
+    "cardtext": "var(--mx-site-text, #1b1b1b)",
+    "cardmuted": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 72%, var(--mx-site-surface, #ffffff))",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 14%, transparent)",
+    "radius": "24px",
+    "title": {
+      "tr": "Projenizi konuşalım",
+      "en": "Let's talk about your project",
+      "ar": "لنتحدث عن مشروعك"
+    },
+    "text": {
+      "tr": "Kısa bir görüşmeyle ihtiyacınızı netleştirelim; 24 saat içinde yazılı teklifinizi gönderelim.",
+      "en": "A short call to clarify your needs, and a written quote in your inbox within 24 hours.",
+      "ar": "مكالمة قصيرة لتوضيح احتياجاتك، ثم عرض سعر مكتوب خلال 24 ساعة."
+    },
+    "btn1Label": {
+      "tr": "Teklif isteyin",
+      "en": "Request a quote",
+      "ar": "اطلب عرض سعر"
+    },
+    "btn1Url": "iletisim",
+    "btn2Label": {
+      "tr": "Hizmetleri inceleyin",
+      "en": "Explore services",
+      "ar": "استعرض الخدمات"
+    },
+    "btn2Url": "hizmetler",
+    "number": "",
+    "numberText": "",
+    "waLabel": {
+      "tr": "WhatsApp'tan yazın",
+      "en": "Message us on WhatsApp",
+      "ar": "راسلنا عبر واتساب"
+    },
+    "waTitle": {
+      "tr": "Hemen ulaşın",
+      "en": "Reach us now",
+      "ar": "تواصل معنا الآن"
+    },
+    "hours": {
+      "tr": "Hafta içi 09:00–18:00 · Cumartesi 10:00–14:00",
+      "en": "Weekdays 09:00–18:00 · Saturday 10:00–14:00",
+      "ar": "أيام الأسبوع 09:00–18:00 · السبت 10:00–14:00"
+    },
+    "hoursLabel": {
+      "tr": "Çalışma saatleri",
+      "en": "Opening hours",
+      "ar": "ساعات العمل"
+    },
+    "waMessage": {
+      "tr": "Merhaba, web siteniz üzerinden ulaşıyorum.",
+      "en": "Hello, I'm reaching out via your website.",
+      "ar": "مرحبًا، أتواصل معكم عبر موقعكم الإلكتروني."
+    },
+    "img": "",
+    "alt": {
+      "tr": "Ekibimizle görüşme",
+      "en": "Meeting with our team",
+      "ar": "اجتماع مع فريقنا"
+    }
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

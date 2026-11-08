@@ -1,0 +1,126 @@
+{
+  "name": "Sekmeli Hizmetler",
+  "description": "Hizmet anlatımı sekmelerle: sol/üst sekme listesi (ikon + ad), seçili hizmetin görseli + açıklama + madde listesi + CTA. Mobilde akordeon. ARIA tabs kalıbı (ok tuşları, Home/End, RTL'de yön ters). desing.stil: dikey | yatay-ust | kart-gecis. Veri: data[] = [{ikon, ad{tr,en,ar}, ozet{}, maddeler[{}], img, alt{}, url}]. Renkler yalnız token (var(--mx-site-*)); koyu mod otomatik. Üç dil + RTL.",
+  "version": "1.0.0",
+  "icon": "view_sidebar",
+  "category": "hizmet",
+  "tags": ["hizmet", "sekme", "tabs", "akordeon", "services", "ar"],
+  "desing": {
+    "stil": "dikey",
+    "max": "1200px",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "textcolor": "var(--mx-site-text, #1b1b1b)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 72%, var(--mx-site-bg, #ffffff))",
+    "surface": "var(--mx-site-surface, #f6f6f4)",
+    "surface2": "var(--mx-site-surface-2, #ececea)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 16%, transparent)",
+    "radius": "16px",
+    "eyebrow": {
+      "tr": "Hizmetlerimiz",
+      "en": "Our services",
+      "ar": "خدماتنا"
+    },
+    "title": {
+      "tr": "Size nasıl yardımcı olabiliriz?",
+      "en": "How can we help you?",
+      "ar": "كيف يمكننا مساعدتك؟"
+    },
+    "description": {
+      "tr": "Her hizmetin kapsamını, sürecini ve kazanımlarını tek bakışta görün; detay için sekmeye dokunun.",
+      "en": "See the scope, process and outcomes of each service at a glance; tap a tab for details.",
+      "ar": "اطّلع على نطاق كل خدمة وخطواتها ونتائجها بنظرة واحدة، وانقر على التبويب للتفاصيل."
+    },
+    "ctaLabel": {
+      "tr": "Detaylı bilgi",
+      "en": "Learn more",
+      "ar": "مزيد من التفاصيل"
+    },
+    "tabsLabel": {
+      "tr": "Hizmet sekmeleri",
+      "en": "Service tabs",
+      "ar": "تبويبات الخدمات"
+    },
+    "featuresLabel": {
+      "tr": "Neler dahil?",
+      "en": "What's included?",
+      "ar": "ماذا يشمل؟"
+    }
+  },
+  "data": [
+    {
+      "ikon": "design_services",
+      "ad": { "tr": "Danışmanlık", "en": "Consulting", "ar": "الاستشارات" },
+      "ozet": {
+        "tr": "İhtiyacınızı birlikte analiz eder, size özel bir yol haritası çıkarırız.",
+        "en": "We analyse your needs together and draw up a roadmap tailored to you.",
+        "ar": "نحلّل احتياجاتك معك ونضع خارطة طريق مصممة خصيصًا لك."
+      },
+      "maddeler": [
+        { "tr": "Ücretsiz ön görüşme", "en": "Free initial consultation", "ar": "استشارة أولية مجانية" },
+        { "tr": "Keşif ve ihtiyaç analizi", "en": "Discovery and needs analysis", "ar": "استكشاف وتحليل الاحتياجات" },
+        { "tr": "Yazılı teklif ve zaman planı", "en": "Written proposal and timeline", "ar": "عرض مكتوب وجدول زمني" }
+      ],
+      "img": "",
+      "alt": { "tr": "Danışmanlık görüşmesi", "en": "Consulting meeting", "ar": "اجتماع استشاري" },
+      "url": ""
+    },
+    {
+      "ikon": "engineering",
+      "ad": { "tr": "Uygulama", "en": "Implementation", "ar": "التنفيذ" },
+      "ozet": {
+        "tr": "Planı sahada uzman ekibimizle, takvime ve bütçeye sadık kalarak hayata geçiririz.",
+        "en": "We bring the plan to life on site with our expert team, on schedule and on budget.",
+        "ar": "ننفّذ الخطة ميدانيًا بفريقنا المتخصص مع الالتزام بالجدول والميزانية."
+      },
+      "maddeler": [
+        { "tr": "Sertifikalı uygulama ekibi", "en": "Certified installation team", "ar": "فريق تنفيذ معتمد" },
+        { "tr": "Haftalık ilerleme raporu", "en": "Weekly progress report", "ar": "تقرير تقدّم أسبوعي" },
+        { "tr": "Kalite kontrol ve teslim tutanağı", "en": "Quality control and handover report", "ar": "مراقبة الجودة ومحضر التسليم" }
+      ],
+      "img": "",
+      "alt": { "tr": "Sahada uygulama", "en": "On-site implementation", "ar": "التنفيذ في الموقع" },
+      "url": ""
+    },
+    {
+      "ikon": "support_agent",
+      "ad": { "tr": "Bakım ve Destek", "en": "Maintenance & Support", "ar": "الصيانة والدعم" },
+      "ozet": {
+        "tr": "Teslimden sonra da yanınızdayız: periyodik bakım, hızlı müdahale ve yedek parça güvencesi.",
+        "en": "We stay with you after delivery: periodic maintenance, rapid response and spare-part assurance.",
+        "ar": "نبقى معك بعد التسليم: صيانة دورية واستجابة سريعة وضمان قطع الغيار."
+      },
+      "maddeler": [
+        { "tr": "7/24 destek hattı", "en": "24/7 support line", "ar": "خط دعم على مدار الساعة" },
+        { "tr": "Yıllık bakım sözleşmesi", "en": "Annual maintenance contract", "ar": "عقد صيانة سنوي" },
+        { "tr": "48 saat içinde yerinde müdahale", "en": "On-site response within 48 hours", "ar": "تدخّل ميداني خلال 48 ساعة" }
+      ],
+      "img": "",
+      "alt": { "tr": "Destek ekibi", "en": "Support team", "ar": "فريق الدعم" },
+      "url": ""
+    },
+    {
+      "ikon": "school",
+      "ad": { "tr": "Eğitim", "en": "Training", "ar": "التدريب" },
+      "ozet": {
+        "tr": "Ekibinizin sistemi tam verimle kullanması için yerinde ve çevrim içi eğitimler düzenleriz.",
+        "en": "We run on-site and online training so your team uses the system at full efficiency.",
+        "ar": "ننظّم تدريبات ميدانية وعبر الإنترنت ليستخدم فريقك النظام بكامل كفاءته."
+      },
+      "maddeler": [
+        { "tr": "Rol bazlı eğitim programı", "en": "Role-based training programme", "ar": "برنامج تدريب حسب الدور" },
+        { "tr": "Türkçe kullanım kılavuzu", "en": "User guide in your language", "ar": "دليل استخدام بلغتك" },
+        { "tr": "Katılım sertifikası", "en": "Certificate of attendance", "ar": "شهادة حضور" }
+      ],
+      "img": "",
+      "alt": { "tr": "Eğitim oturumu", "en": "Training session", "ar": "جلسة تدريبية" },
+      "url": ""
+    }
+  ],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

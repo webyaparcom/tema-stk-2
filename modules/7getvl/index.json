@@ -1,0 +1,66 @@
+{
+  "name": {
+    "tr": "Hızlı İletişim Kartları",
+    "en": "Quick Contact Cards",
+    "ar": "بطاقات الاتصال السريع"
+  },
+  "description": {
+    "tr": "3–4 hızlı eylem kartı: Ara (tel:), WhatsApp (wa.me hazır mesaj), E-posta (mailto:), Yol tarifi (harita bağlantısı). Her kart ikon + başlık + değer + eylem düğmesi; hover'da yükselir. Veri boş olan kart basılmaz; phone/email boşsa setting'den. Üç varyant (desing.stil): kartli · ikon-serit · dikey-liste. Üç dil, RTL, koyu mod token'larla.",
+    "en": "3–4 quick action cards: Call (tel:), WhatsApp (wa.me prefilled), E-mail (mailto:), Directions (map link). Each card has icon + title + value + action button; lifts on hover. Cards without data are omitted; phone/email fall back to setting. Three variants (desing.stil): kartli · ikon-serit · dikey-liste. Three languages, RTL, dark mode via tokens.",
+    "ar": "3–4 بطاقات إجراء سريع: اتصال (tel:)، واتساب (رسالة جاهزة)، بريد إلكتروني (mailto:)، الاتجاهات (رابط خريطة). كل بطاقة: أيقونة + عنوان + قيمة + زر. البطاقات بلا بيانات لا تُعرض. ثلاثة أنماط، ثلاث لغات، RTL، وضع داكن."
+  },
+  "version": "1.0.0",
+  "icon": "contact_phone",
+  "category": "contact",
+  "tags": ["iletisim", "contact", "whatsapp", "telefon", "harita", "ar"],
+  "desing": {
+    "max": "1200px",
+    "stil": "kartli",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "textcolor": "var(--mx-site-text, #1b1b1b)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 72%, var(--mx-site-bg, #ffffff))",
+    "surface": "var(--mx-site-surface, #f6f6f4)",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 16%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "radius": "18px",
+    "title": { "tr": "Hemen Ulaşın", "en": "Reach Us Instantly", "ar": "تواصل معنا فورًا" },
+    "description": {
+      "tr": "Size en uygun kanalı seçin; mesai saatleri içinde dakikalar içinde yanıtlıyoruz.",
+      "en": "Pick the channel that suits you; we reply within minutes during working hours.",
+      "ar": "اختر القناة الأنسب لك؛ نرد خلال دقائق أثناء ساعات العمل."
+    },
+    "phone": "+90 342 000 00 00",
+    "whatsapp": "",
+    "email": "info@ornek.com",
+    "address": {
+      "tr": "Örnek Mah. Atatürk Cad. No: 12, Gaziantep",
+      "en": "Ornek District, Ataturk Ave. No: 12, Gaziantep",
+      "ar": "حي أورنك، شارع أتاتورك رقم 12، غازي عنتاب"
+    },
+    "mapsUrl": "",
+    "waMessage": {
+      "tr": "Merhaba, web sitenizden ulaşıyorum. Bilgi almak istiyorum.",
+      "en": "Hello, I am reaching you from your website. I would like some information.",
+      "ar": "مرحبًا، أتواصل معكم من موقعكم الإلكتروني وأرغب في الحصول على معلومات."
+    },
+    "callTitle": { "tr": "Bizi Arayın", "en": "Call Us", "ar": "اتصل بنا" },
+    "callText": { "tr": "Hafta içi 09:00 – 18:00", "en": "Weekdays 09:00 – 18:00", "ar": "أيام الأسبوع 09:00 – 18:00" },
+    "callBtn": { "tr": "Ara", "en": "Call", "ar": "اتصال" },
+    "waTitle": { "tr": "WhatsApp", "en": "WhatsApp", "ar": "واتساب" },
+    "waText": { "tr": "Hızlı yanıt için yazın", "en": "Message us for a quick reply", "ar": "راسلنا للحصول على رد سريع" },
+    "waBtn": { "tr": "Mesaj gönder", "en": "Send message", "ar": "إرسال رسالة" },
+    "mailTitle": { "tr": "E-posta", "en": "E-mail", "ar": "البريد الإلكتروني" },
+    "mailText": { "tr": "Teklif ve detaylı sorular için", "en": "For quotes and detailed questions", "ar": "لعروض الأسعار والأسئلة التفصيلية" },
+    "mailBtn": { "tr": "E-posta gönder", "en": "Send e-mail", "ar": "إرسال بريد" },
+    "mapTitle": { "tr": "Yol Tarifi", "en": "Directions", "ar": "الاتجاهات" },
+    "mapBtn": { "tr": "Haritada aç", "en": "Open in maps", "ar": "فتح في الخرائط" },
+    "groupLabel": { "tr": "Hızlı iletişim kanalları", "en": "Quick contact channels", "ar": "قنوات الاتصال السريع" }
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

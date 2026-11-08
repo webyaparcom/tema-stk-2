@@ -1,0 +1,258 @@
+<section class="modulex-t3 modulex-t3--{{t3stil}}" id="t3-{{id}}">
+  <div class="modulex-t3__wrap">
+    {{t3head}}
+    <div class="modulex-t3__kar" role="region" aria-roledescription="carousel" aria-label="{{regionLabel}}">
+      <div class="modulex-t3__viewport">
+        <ul class="modulex-t3__track">{{t3slides}}</ul>
+      </div>
+      <div class="modulex-t3__ctrl{{t3ctrlclass}}" hidden>
+        <button type="button" class="modulex-t3__ok modulex-t3__ok--prev" aria-label="{{prevLabel}}"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span></button>
+        <div class="modulex-t3__dots"></div>
+        <button type="button" class="modulex-t3__ok modulex-t3__ok--next" aria-label="{{nextLabel}}"><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></button>
+        <button type="button" class="modulex-t3__play" aria-pressed="false" aria-label="{{pauseLabel}}"><span class="material-symbols-outlined" aria-hidden="true">pause</span></button>
+      </div>
+      <p class="modulex-t3__live mx-visually-hidden" aria-live="polite" aria-atomic="true"></p>
+    </div>
+  </div>
+  <script type="application/json" id="t3-{{id}}-veri">{{t3veri}}</script>
+</section>
+
+<style>
+  /* testimonial-3 — Yorum karuseli (31 Eki 2026, G8-C). Renkler yalnız desing anahtarı (token varsayılanlı). */
+  .modulex-t3 {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: clamp(40px, 7vw, 84px);
+    padding-inline: clamp(16px, 4vw, 32px);
+    background: --bgcolor--;
+    color: --textcolor--;
+    --t3-n: 3;
+  }
+  .modulex-t3 *, .modulex-t3 *::before, .modulex-t3 *::after { box-sizing: border-box; }
+  .modulex-t3__wrap { max-width: --max--; margin-inline: auto; }
+  .modulex-t3 .mx-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  .modulex-t3__head { margin-block-end: 28px; text-align: center; }
+  .modulex-t3__title { margin: 0 0 8px; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem); line-height: 1.2; color: --textcolor--; }
+  .modulex-t3__desc { margin: 0 auto; max-width: 60ch; color: --mutedcolor--; line-height: 1.7; }
+
+  .modulex-t3__kar { position: relative; }
+  .modulex-t3__viewport { overflow: hidden; touch-action: pan-y; }
+  .modulex-t3__track { list-style: none; margin: 0; padding: 0; display: flex; transition: transform 0.3s ease; will-change: transform; }
+  .modulex-t3__slide { flex: 0 0 calc(100% / var(--t3-n)); min-width: 0; padding: 8px 10px 16px; display: flex; }
+  .modulex-t3__slide[aria-hidden="true"] { visibility: hidden; }
+  .modulex-t3__kar.is-static .modulex-t3__slide[aria-hidden="true"] { visibility: visible; }
+
+  .modulex-t3__card {
+    position: relative; display: flex; flex-direction: column; gap: 14px; width: 100%;
+    padding: 28px 26px 24px;
+    background: --cardbg--; color: --textcolor--;
+    border: 1px solid --bordercolor--; border-radius: --radius--;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .modulex-t3__card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -26px rgba(0, 0, 0, 0.45); }
+  .modulex-t3__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 32px; }
+  .modulex-t3__q { font-size: 40px; line-height: 1; margin-block-start: -6px; color: --accent--; opacity: 0.3; transform: scaleX(-1); }
+  [dir="rtl"] .modulex-t3__q { transform: none; }
+  .modulex-t3__stars { display: inline-flex; gap: 2px; color: --starcolor--; }
+  .modulex-t3__star { font-size: 20px; font-variation-settings: "FILL" 0; opacity: 0.4; }
+  .modulex-t3__star--on { font-variation-settings: "FILL" 1; opacity: 1; }
+  .modulex-t3__text { margin: 0; flex: 1 1 auto; }
+  .modulex-t3__text p { margin: 0; font-size: 1.05rem; line-height: 1.7; color: --textcolor--; text-align: start; }
+  .modulex-t3__person { display: flex; align-items: center; gap: 12px; padding-block-start: 14px; border-block-start: 1px solid --bordercolor--; }
+  .modulex-t3__avatar { flex: 0 0 auto; width: 52px; height: 52px; border-radius: 999px; object-fit: cover; }
+  /* baş harf avatarı: accent/accentText çifti (yarı saydam zemin tonlu kartta 4,5'in altına düşüyordu) */
+  .modulex-t3__avatar--bas { display: inline-flex; align-items: center; justify-content: center; background: --accent--; color: --accentText--; font-weight: 700; font-size: 1rem; letter-spacing: 0.02em; }
+  .modulex-t3__who { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+  .modulex-t3__name { font-style: normal; font-weight: 600; color: --textcolor--; }
+  .modulex-t3__role { font-size: 0.88rem; color: --mutedcolor--; }
+  .modulex-t3__logo { height: 28px; width: auto; max-width: 110px; object-fit: contain; filter: grayscale(1); opacity: 0.7; }
+
+  /* kontroller */
+  .modulex-t3__ctrl { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-block-start: 8px; }
+  .modulex-t3__ctrl[hidden], .modulex-t3__ctrl--yok { display: none; }
+  /* ok/durdur: kenar metin renginin %50'si — kart zemini bölüm zeminine çok yakın, sınır kenarlıkla ≥ 3:1 */
+  .modulex-t3__ok, .modulex-t3__play {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 999px; border: 1px solid color-mix(in srgb, --textcolor-- 50%, transparent);
+    background: --cardbg--; color: --textcolor--; cursor: pointer; font: inherit;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .modulex-t3__ok:hover, .modulex-t3__play:hover { background: --accent--; color: --accentText--; border-color: --accent--; }
+  .modulex-t3__ok:focus-visible, .modulex-t3__play:focus-visible, .modulex-t3__dot:focus-visible { outline: 3px solid --accent--; outline-offset: 2px; }
+  [dir="rtl"] .modulex-t3__ok .material-symbols-outlined { transform: scaleX(-1); }
+  .modulex-t3__dots { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px; }
+  .modulex-t3__dot { width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .modulex-t3__dot::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: --textcolor--; opacity: 0.3; transition: width 0.25s ease, opacity 0.25s ease, background-color 0.25s ease; }
+  .modulex-t3__dot[aria-current="true"]::before { width: 26px; background: --accent--; opacity: 1; }
+  .modulex-t3__play { margin-inline-start: 8px; }
+
+  /* === buyuk-alinti: tek büyük yorum, ortalı, kart yok === */
+  .modulex-t3--buyuk-alinti { --t3-n: 1; }
+  .modulex-t3--buyuk-alinti .modulex-t3__slide { padding: 8px 4px 16px; justify-content: center; }
+  .modulex-t3--buyuk-alinti .modulex-t3__card { max-width: 820px; align-items: center; text-align: center; gap: 18px; padding: 24px 20px; background: transparent; border: 0; box-shadow: none; }
+  .modulex-t3--buyuk-alinti .modulex-t3__card:hover { transform: none; box-shadow: none; }
+  .modulex-t3--buyuk-alinti .modulex-t3__top { flex-direction: column-reverse; align-items: center; gap: 14px; }
+  .modulex-t3--buyuk-alinti .modulex-t3__q { font-size: 64px; opacity: 0.35; margin: 0; }
+  .modulex-t3--buyuk-alinti .modulex-t3__text p { font-size: clamp(1.2rem, 1rem + 1vw, 1.7rem); line-height: 1.6; font-weight: 500; text-align: center; }
+  .modulex-t3--buyuk-alinti .modulex-t3__person { flex-direction: column; gap: 8px; border: 0; padding: 0; }
+  .modulex-t3--buyuk-alinti .modulex-t3__avatar { width: 72px; height: 72px; border: 3px solid --cardbg--; box-shadow: 0 0 0 2px --accent--; }
+  .modulex-t3--buyuk-alinti .modulex-t3__who { align-items: center; }
+  .modulex-t3--buyuk-alinti .modulex-t3__star { font-size: 24px; }
+
+  /* === masonry: 3 sütunlu statik duvar, kontrol yok === */
+  .modulex-t3--masonry .modulex-t3__viewport { overflow: visible; }
+  .modulex-t3--masonry .modulex-t3__track { display: block; column-count: 3; column-gap: 20px; transition: none; }
+  .modulex-t3--masonry .modulex-t3__slide { display: block; break-inside: avoid; padding: 0 0 20px; visibility: visible; }
+  .modulex-t3--masonry .modulex-t3__slide:nth-child(3n + 2) .modulex-t3__card { background: color-mix(in srgb, --accent-- 10%, --cardbg--); }
+
+  /* giriş animasyonu (JS işaretleyince) */
+  .modulex-t3[data-t3-anim] .modulex-t3__card { opacity: 0; transform: translateY(14px); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .modulex-t3.is-in .modulex-t3__card { opacity: 1; transform: none; }
+
+  @media (max-width: 1024px) {
+    .modulex-t3 { --t3-n: 2; }
+    .modulex-t3--buyuk-alinti { --t3-n: 1; }
+    .modulex-t3--masonry .modulex-t3__track { column-count: 2; }
+  }
+  @media (max-width: 768px) {
+    .modulex-t3 { --t3-n: 1; }
+    .modulex-t3--masonry .modulex-t3__track { column-count: 1; }
+    .modulex-t3__slide { padding-inline: 2px; }
+    /* 390 px: 6 nokta + 3 düğme tek satıra sığmıyordu (395 > 390) → noktalar üst satır, tam genişlik */
+    .modulex-t3__dots { order: -1; flex-basis: 100%; }
+    .modulex-t3__play { margin-inline-start: 0; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-t3 *, .modulex-t3 *::before, .modulex-t3 *::after { animation: none !important; transition: none !important; }
+    .modulex-t3[data-t3-anim] .modulex-t3__card { opacity: 1; transform: none; }
+    .modulex-t3__card:hover { transform: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var kok = document.getElementById("t3-{{id}}");
+    if (!kok || kok.getAttribute("data-t3-hazir") === "1") { return; }
+    kok.setAttribute("data-t3-hazir", "1");
+    var veri = {};
+    try { veri = JSON.parse(document.getElementById("t3-{{id}}-veri").textContent); } catch (e) { veri = {}; }
+    var azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (window.IntersectionObserver && !azHareket) {
+      kok.setAttribute("data-t3-anim", "1");
+      var io = new IntersectionObserver(function (g) {
+        for (var i = 0; i < g.length; i++) { if (g[i].isIntersecting) { kok.classList.add("is-in"); io.disconnect(); } }
+      }, { threshold: 0.1 });
+      io.observe(kok);
+    }
+    if (veri.stil === "masonry") { return; }
+
+    var kar = kok.querySelector(".modulex-t3__kar");
+    var viewport = kok.querySelector(".modulex-t3__viewport");
+    var track = kok.querySelector(".modulex-t3__track");
+    var slides = kok.querySelectorAll(".modulex-t3__slide");
+    var ctrl = kok.querySelector(".modulex-t3__ctrl");
+    var dotsKap = kok.querySelector(".modulex-t3__dots");
+    var btnPrev = kok.querySelector(".modulex-t3__ok--prev");
+    var btnNext = kok.querySelector(".modulex-t3__ok--next");
+    var btnPlay = kok.querySelector(".modulex-t3__play");
+    var live = kok.querySelector(".modulex-t3__live");
+    var n = slides.length;
+    if (!track || n < 2) { if (kar) { kar.classList.add("is-static"); } return; }
+    var rtl = (document.documentElement.getAttribute("dir") || "").toLowerCase() === "rtl";
+
+    var sayfa = 0, sayfaSayisi = 1, gorunen = 1, zamanlayici = null, elleDurdu = false, askida = false;
+
+    function gorunenSayisi() {
+      var v = parseInt(getComputedStyle(kok).getPropertyValue("--t3-n"), 10);
+      return isFinite(v) && v > 0 ? v : 1;
+    }
+    function noktalariKur() {
+      if (!dotsKap) { return; }
+      dotsKap.innerHTML = "";
+      for (var i = 0; i < sayfaSayisi; i++) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "modulex-t3__dot";
+        b.setAttribute("aria-label", String(veri.dot || "{n}").replace(/\{n\}/g, String(i + 1)));
+        b.setAttribute("data-t3-sayfa", String(i));
+        b.addEventListener("click", function (ev) { git(parseInt(ev.currentTarget.getAttribute("data-t3-sayfa"), 10), true); });
+        dotsKap.appendChild(b);
+      }
+    }
+    function git(hedef, kullanici) {
+      sayfa = ((hedef % sayfaSayisi) + sayfaSayisi) % sayfaSayisi;
+      var ofset = Math.min(sayfa * gorunen, Math.max(0, n - gorunen));
+      var gen = viewport.clientWidth / gorunen;
+      track.style.transform = "translateX(" + ((rtl ? 1 : -1) * ofset * gen) + "px)";
+      for (var i = 0; i < n; i++) {
+        var gizli = i < ofset || i >= ofset + gorunen;
+        if (gizli) { slides[i].setAttribute("aria-hidden", "true"); } else { slides[i].removeAttribute("aria-hidden"); }
+        var odaklar = slides[i].querySelectorAll("a, button");
+        for (var j = 0; j < odaklar.length; j++) { if (gizli) { odaklar[j].setAttribute("tabindex", "-1"); } else { odaklar[j].removeAttribute("tabindex"); } }
+      }
+      var dots = dotsKap ? dotsKap.children : [];
+      for (var d = 0; d < dots.length; d++) { if (d === sayfa) { dots[d].setAttribute("aria-current", "true"); } else { dots[d].removeAttribute("aria-current"); } }
+      if (kullanici && live) { live.textContent = String(veri.dot || "{n}").replace(/\{n\}/g, String(sayfa + 1)); }
+    }
+    function yerlestir() {
+      gorunen = gorunenSayisi();
+      sayfaSayisi = Math.max(1, Math.ceil(n / gorunen));
+      noktalariKur();
+      git(Math.min(sayfa, sayfaSayisi - 1), false);
+    }
+    function dur() { if (zamanlayici) { clearInterval(zamanlayici); zamanlayici = null; } }
+    function basla() {
+      dur();
+      if (!veri.autoplay || azHareket || elleDurdu || askida) { return; }
+      zamanlayici = setInterval(function () { git(sayfa + 1, false); }, veri.interval || 5000);
+    }
+    function playGuncelle() {
+      if (!btnPlay) { return; }
+      var ikon = btnPlay.querySelector(".material-symbols-outlined");
+      btnPlay.setAttribute("aria-pressed", elleDurdu ? "true" : "false");
+      btnPlay.setAttribute("aria-label", elleDurdu ? (veri.play || "") : (veri.pause || ""));
+      if (ikon) { ikon.textContent = elleDurdu ? "play_arrow" : "pause"; }
+    }
+
+    if (btnPrev) { btnPrev.addEventListener("click", function () { git(sayfa - 1, true); basla(); }); }
+    if (btnNext) { btnNext.addEventListener("click", function () { git(sayfa + 1, true); basla(); }); }
+    if (btnPlay) {
+      if (!veri.autoplay || azHareket) { btnPlay.hidden = true; }
+      btnPlay.addEventListener("click", function () { elleDurdu = !elleDurdu; playGuncelle(); basla(); });
+    }
+    /* hover / odak → askıya al */
+    kar.addEventListener("mouseenter", function () { askida = true; dur(); });
+    kar.addEventListener("mouseleave", function () { askida = false; basla(); });
+    kar.addEventListener("focusin", function () { askida = true; dur(); });
+    kar.addEventListener("focusout", function (ev) { if (!kar.contains(ev.relatedTarget)) { askida = false; basla(); } });
+    /* klavye: bölge odaklıyken ←/→ (RTL'de ters) */
+    kar.setAttribute("tabindex", "0");
+    kar.addEventListener("keydown", function (ev) {
+      if (ev.key === "ArrowRight") { ev.preventDefault(); git(sayfa + (rtl ? -1 : 1), true); }
+      else if (ev.key === "ArrowLeft") { ev.preventDefault(); git(sayfa + (rtl ? 1 : -1), true); }
+    });
+    /* swipe: pointer events */
+    var basX = null, basY = null;
+    viewport.addEventListener("pointerdown", function (ev) { basX = ev.clientX; basY = ev.clientY; });
+    viewport.addEventListener("pointerup", function (ev) {
+      if (basX === null) { return; }
+      var dx = ev.clientX - basX, dy = ev.clientY - basY;
+      basX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { git(sayfa + ((dx < 0) !== rtl ? 1 : -1), true); basla(); }
+    });
+    viewport.addEventListener("pointercancel", function () { basX = null; });
+
+    var rz = null;
+    window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(yerlestir, 120); });
+    /* sekme görünmezken zamanlayıcı dursun */
+    document.addEventListener("visibilitychange", function () { if (document.hidden) { dur(); } else { basla(); } });
+
+    if (ctrl) { ctrl.hidden = false; }
+    playGuncelle();
+    yerlestir();
+    basla();
+  })();
+</script>

@@ -1,0 +1,39 @@
+{
+  "id": "boi7jnne9j",
+  "name": {
+    "tr": "Gönüllü Ol",
+    "en": "Volunteer",
+    "ar": "تطوّع"
+  },
+  "description": {
+    "tr": "İlgi alanınızı ve uygun günü seçin; talebiniz bu demo sitede yalnızca tarayıcınızda oluşturulur. Kişisel veri kaydedilmez.",
+    "en": "Choose an interest and a convenient day; on this demo site your request is created only in your browser. No personal data is stored.",
+    "ar": "اختر اهتمامك واليوم المناسب؛ يُنشأ طلبك في متصفحك فقط. لا تُحفظ بيانات شخصية."
+  },
+  "keyword": {
+    "tr": "dernek, bağış, gönüllü, çevre",
+    "en": "association, donation, volunteer, environment",
+    "ar": "جمعية، تبرع، متطوع، بيئة"
+  },
+  "path": "gonullu-ol",
+  "icon": "volunteer_activism",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "176996"
+    ],
+    "footer": []
+  },
+  "index": 1,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Gönüllü Ol",
+    "en": "Volunteer",
+    "ar": "تطوّع"
+  },
+  "date": "2026-10-31T15:04:13.094Z",
+  "update": "2026-11-05T19:39:13.716Z"
+}

@@ -1,0 +1,204 @@
+<footer class="modulex-f10 modulex-f10--{{f10stil}}" role="contentinfo" id="f10-{{id}}">
+  {{f10band}}
+  <div class="modulex-f10__main modulex-f10__main--c{{f10cols}}">
+    <div class="modulex-f10__col modulex-f10__brand">
+      <a href="/{{lang}}/" class="modulex-f10__logo" aria-label="@home@ - {{web-name}}">
+        <img src="/img/{{logo}}" alt="{{web-name}} Logo" loading="lazy" />
+      </a>
+      <p class="modulex-f10__about">{{about}}</p>
+      {{f10social}}
+    </div>
+    <nav class="modulex-f10__col modulex-f10__pages" aria-label="@navigation@">
+      <h3 class="modulex-f10__title">{{title_pages}}</h3>
+      <ul class="modulex-f10__list">{{f10pages}}</ul>
+    </nav>
+    {{f10services}}
+    {{f10contact}}
+    {{f10hours}}
+  </div>
+  <div class="modulex-f10__bottom">
+    <p class="modulex-f10__rights">&copy; {{year}} {{web-name}}. {{rightsText}}</p>
+    {{f10legal}}
+    <div class="modulex-f10__bottomend">
+      {{langbar}}
+      <button type="button" class="modulex-f10__top" aria-label="{{topLabel}}" title="{{topLabel}}"><span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span></button>
+    </div>
+  </div>
+  <script type="application/json" id="f10-{{id}}-veri">{{f10veri}}</script>
+</footer>
+
+<style>
+  /* footer-10 — Mega footer, CTA bantlı (31 Eki 2026, G8-C). Renkler yalnız desing anahtarı. koyu varyant: koyubg/koyutext çifti
+     (zemin marka rengiyle tonlanmış, her zaman koyu); acik + gradient-ust: acikbg/aciktext (site paleti, koyu mod token'dan). */
+  .modulex-f10 { width: 100%; box-sizing: border-box; padding-inline: 20px; padding-block: 0 20px; color: --aciktext--; background: --acikbg--; }
+  .modulex-f10--koyu { color: --koyutext--; background: --koyubg--; }
+  .modulex-f10 *, .modulex-f10 *::before, .modulex-f10 *::after { box-sizing: border-box; }
+  /* soluk/kenar tonu doğrudan metin anahtarından (currentColor iç içe öğede iki kez solup 3,6:1'e düşüyordu) */
+  .modulex-f10 { --f10-muted: color-mix(in srgb, --aciktext-- 74%, transparent); --f10-border: color-mix(in srgb, --aciktext-- 18%, transparent); }
+  .modulex-f10--koyu { --f10-muted: color-mix(in srgb, --koyutext-- 74%, transparent); --f10-border: color-mix(in srgb, --koyutext-- 18%, transparent); }
+
+  /* === bülten / CTA bandı === */
+  .modulex-f10__band { max-width: 1200px; margin-inline: auto; padding-block: 36px 0; }
+  .modulex-f10__bandin {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px 48px; align-items: center;
+    padding: clamp(24px, 3.5vw, 40px); border-radius: --radius--;
+    background: --accent--; color: --accentText--;
+  }
+  .modulex-f10__bandtitle { margin: 0 0 6px; font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem); line-height: 1.25; color: inherit; }
+  .modulex-f10__bandp { margin: 0; color: inherit; opacity: 0.9; line-height: 1.6; }
+  .modulex-f10__nlform { display: flex; flex-direction: column; gap: 8px; }
+  .modulex-f10__nllabel { font-size: 0.9rem; font-weight: 600; color: inherit; }
+  .modulex-f10__nlrow { display: flex; gap: 8px; }
+  .modulex-f10__nlinput {
+    flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 12px 14px;
+    border: 1px solid color-mix(in srgb, --accentText-- 40%, transparent); border-radius: calc(--radius-- * 0.6);
+    background: --acikbg--; color: --aciktext--; font: inherit; font-size: 1rem;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .modulex-f10__nlinput:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, --accentText-- 55%, transparent); }
+  .modulex-f10__nlinput[aria-invalid="true"] { border-color: --errcolor--; box-shadow: 0 0 0 3px color-mix(in srgb, --errcolor-- 40%, transparent); }
+  .modulex-f10__nlbtn {
+    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding-inline: 20px;
+    border: 2px solid --accentText--; border-radius: calc(--radius-- * 0.6);
+    background: --accentText--; color: --accent--; font: inherit; font-weight: 600; cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .modulex-f10__nlbtn:hover { background: transparent; color: --accentText--; }
+  .modulex-f10__nlbtn:focus-visible { outline: 3px solid --accentText--; outline-offset: 3px; }
+  [dir="rtl"] .modulex-f10__nlbtn .material-symbols-outlined { transform: scaleX(-1); }
+  .modulex-f10__nlerr { display: none; margin: 0; font-size: 0.88rem; font-weight: 600; color: inherit; align-items: center; gap: 4px; }
+  .modulex-f10__nlerr.is-on { display: flex; }
+  .modulex-f10__nlerr.is-err::before { content: "error"; font-family: "Material Symbols Outlined"; font-size: 16px; line-height: 1; }
+  .modulex-f10__nlerr.is-ok::before { content: "check_circle"; font-family: "Material Symbols Outlined"; font-size: 16px; line-height: 1; }
+  .modulex-f10__nlkvkk { margin: 0; font-size: 0.8rem; line-height: 1.5; opacity: 0.85; color: inherit; }
+
+  /* === sütunlar === */
+  .modulex-f10__main { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px 32px; max-width: 1200px; margin-inline: auto; padding-block: 48px 8px; }
+  .modulex-f10__main--c4 { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+  .modulex-f10__main--c3 { grid-template-columns: 1.6fr 1fr 1fr; }
+  .modulex-f10__main--c2 { grid-template-columns: 1.6fr 1fr; }
+  .modulex-f10__col { min-width: 0; }
+  .modulex-f10__title { font-size: 15px; font-weight: 700; margin: 0 0 14px; color: inherit; letter-spacing: 0.04em; text-transform: uppercase; }
+  .modulex-f10__logo { display: inline-flex; align-items: center; max-width: 100%; margin-bottom: 14px; text-decoration: none; }
+  .modulex-f10__logo img { display: block; height: auto; width: auto; max-height: --logo_maxh--; max-width: 220px; object-fit: contain; flex-shrink: 0; }
+  .modulex-f10__logo--plate { background: #fff; border-radius: 8px; padding: 6px 12px; } /* kontrast-istisna: koyu logo koyu zeminde okunur; plaka bilerek sabit beyaz (footer-9 ile aynı) */
+  .modulex-f10__about { margin: 0 0 18px; font-size: 14px; line-height: 1.7; color: var(--f10-muted); max-width: 36ch; }
+  .modulex-f10__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .modulex-f10__list li { display: flex; align-items: flex-start; gap: 8px; min-width: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--f10-muted); }
+  .modulex-f10__list .material-symbols-outlined { font-size: 18px; line-height: 1.5; color: --accent--; flex-shrink: 0; }
+  .modulex-f10--koyu .modulex-f10__list .material-symbols-outlined { color: inherit; opacity: 0.85; }
+  .modulex-f10 a.modulex-f10__link:link, .modulex-f10 a.modulex-f10__link:visited { color: var(--f10-muted); text-decoration: none; transition: color 0.2s ease, padding-inline-start 0.2s ease; }
+  .modulex-f10 a.modulex-f10__link:hover, .modulex-f10 a.modulex-f10__link:focus-visible { color: inherit; text-decoration: underline; padding-inline-start: 4px; outline-color: currentColor; }
+  .modulex-f10__dl { margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .modulex-f10__hour { display: flex; justify-content: space-between; gap: 12px; padding-block-end: 8px; border-block-end: 1px dashed var(--f10-border); }
+  .modulex-f10__hour dt { color: var(--f10-muted); }
+  .modulex-f10__hour dd { margin: 0; font-weight: 600; color: inherit; font-variant-numeric: tabular-nums; }
+  .modulex-f10__stitle { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--f10-muted); }
+  .modulex-f10__social { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-f10 a.modulex-f10__chip:link, .modulex-f10 a.modulex-f10__chip:visited {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding-inline: 14px; border-radius: 999px; font-size: 13px;
+    color: inherit; text-decoration: none; border: 1px solid var(--f10-border); background: color-mix(in srgb, currentColor 6%, transparent);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  .modulex-f10 a.modulex-f10__chip:hover, .modulex-f10 a.modulex-f10__chip:focus-visible { background: color-mix(in srgb, --accent-- 20%, transparent); color: inherit; transform: translateY(-2px); outline-color: currentColor; }
+  .modulex-f10__chip .material-symbols-outlined { font-size: 18px; }
+
+  /* === alt şerit === */
+  .modulex-f10__bottom { max-width: 1200px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid var(--f10-border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; font-size: 13px; }
+  .modulex-f10__rights { margin: 0; color: var(--f10-muted); }
+  .modulex-f10__legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .modulex-f10__bottomend { display: flex; align-items: center; gap: 14px; }
+  .modulex-f10__bottom .wm-langbar ul { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .modulex-f10__top {
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px;
+    border: 1px solid var(--f10-border); background: color-mix(in srgb, currentColor 6%, transparent); color: inherit; cursor: pointer; font: inherit;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .modulex-f10__top:hover, .modulex-f10__top:focus-visible { background: --accent--; color: --accentText--; border-color: --accent--; transform: translateY(-3px); }
+  .modulex-f10__top:focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+
+  /* === VARYANT acik: beyaz/yüzey zemin, bant dolu vurgu (yukarıdaki varsayılan), üst kenar vurgu çizgisi === */
+  .modulex-f10--acik { border-top: 4px solid --accent--; }
+  .modulex-f10--acik .modulex-f10__band { padding-block-start: 40px; }
+
+  /* === VARYANT gradient-ust: bant gradient + sayfanın üstüne taşan kart === */
+  .modulex-f10--gradient-ust { padding-block-start: 48px; margin-block-start: 40px; overflow: visible; }
+  .modulex-f10--gradient-ust .modulex-f10__band { padding-block: 0; margin-block-start: -88px; }
+  .modulex-f10--gradient-ust .modulex-f10__bandin {
+    background: linear-gradient(120deg, --accent-- 0%, color-mix(in srgb, --accent-- 70%, --koyubg--) 100%);
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.55);
+    border: 1px solid color-mix(in srgb, --accentText-- 20%, transparent);
+  }
+  .modulex-f10--gradient-ust .modulex-f10__main { padding-block-start: 40px; }
+
+  /* === VARYANT koyu: bant koyu zemin üstünde kart; bant kenarı vurgu === */
+  .modulex-f10--koyu .modulex-f10__bandin { background: color-mix(in srgb, --koyutext-- 8%, transparent); color: inherit; border: 1px solid color-mix(in srgb, --accent-- 60%, transparent); }
+  .modulex-f10--koyu .modulex-f10__nlinput { background: color-mix(in srgb, --koyutext-- 10%, transparent); color: inherit; border-color: color-mix(in srgb, --koyutext-- 30%, transparent); }
+  .modulex-f10--koyu .modulex-f10__nlinput::placeholder { color: var(--f10-muted); }
+  .modulex-f10--koyu .modulex-f10__nlinput:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 50%, transparent); }
+  /* koyu zeminde vurgu rengi 3:1'i garanti etmez → düğme açık (koyutext) zemin + koyu yazı; hover'da vurgu */
+  .modulex-f10--koyu .modulex-f10__nlbtn { background: --koyutext--; color: --koyubg--; border-color: --koyutext--; }
+  .modulex-f10--koyu .modulex-f10__nlbtn:hover { background: --accent--; color: --accentText--; border-color: --accent--; }
+  .modulex-f10--koyu .modulex-f10__nlbtn:focus-visible { outline-color: --koyutext--; }
+
+  @media (max-width: 1024px) {
+    .modulex-f10__main, .modulex-f10__main--c4, .modulex-f10__main--c3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .modulex-f10__brand { grid-column: 1 / -1; }
+    .modulex-f10__bandin { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-f10__main { gap: 28px 20px; padding-block-start: 36px; }
+    .modulex-f10__bottom { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+    .modulex-f10__nlrow { flex-direction: column; }
+    .modulex-f10--gradient-ust .modulex-f10__band { margin-block-start: -72px; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+  @media (max-width: 480px) {
+    .modulex-f10__main, .modulex-f10__main--c4, .modulex-f10__main--c3, .modulex-f10__main--c2 { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-f10 *, .modulex-f10 *::before, .modulex-f10 *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<script>
+  (function () {
+    var kok = document.getElementById("f10-{{id}}");
+    if (!kok || kok.getAttribute("data-f10-hazir") === "1") { return; }
+    kok.setAttribute("data-f10-hazir", "1");
+    var veri = {};
+    try { veri = JSON.parse(document.getElementById("f10-{{id}}-veri").textContent); } catch (e) { veri = {}; }
+
+    /* yukarı: reduced-motion'da anında */
+    var ust = kok.querySelector(".modulex-f10__top");
+    if (ust) {
+      ust.addEventListener("click", function () {
+        var yumusak = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        try { window.scrollTo({ top: 0, behavior: yumusak ? "smooth" : "auto" }); } catch (e) { window.scrollTo(0, 0); }
+        var hedef = document.querySelector("#header, header, main, body");
+        if (hedef && hedef.focus) { hedef.setAttribute("tabindex", "-1"); hedef.focus({ preventScroll: true }); }
+      });
+    }
+
+    /* bülten: mailto taslağı (sunucu yok) */
+    var form = kok.querySelector(".modulex-f10__nlform");
+    if (!form) { return; }
+    var girdi = form.querySelector("input[type=email]");
+    var durum = form.querySelector(".modulex-f10__nlerr");
+    function yaz(metin, hata) {
+      if (!durum) { return; }
+      durum.textContent = metin || "";
+      durum.className = "modulex-f10__nlerr" + (metin ? " is-on" : "") + (hata ? " is-err" : " is-ok");
+      if (girdi) { if (hata) { girdi.setAttribute("aria-invalid", "true"); } else { girdi.removeAttribute("aria-invalid"); } }
+    }
+    if (girdi) { girdi.addEventListener("input", function () { yaz("", false); }); }
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var v = girdi ? String(girdi.value || "").trim() : "";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { yaz(veri.err || "", true); if (girdi) { girdi.focus(); } return; }
+      if (veri.gonderim !== "mailto" || !veri.mailto) { return; }
+      yaz(veri.ok || "", false);
+      window.location.href = "mailto:" + veri.mailto + "?subject=" + encodeURIComponent(veri.subject || "") + "&body=" + encodeURIComponent((veri.body || "") + "\r\n" + v);
+    });
+  })();
+</script>

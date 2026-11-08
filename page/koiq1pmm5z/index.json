@@ -1,0 +1,43 @@
+{
+  "id": "koiq1pmm5z",
+  "name": {
+    "tr": "Şeffaflık",
+    "en": "Transparency",
+    "ar": "الشفافية"
+  },
+  "description": {
+    "tr": "Dernek kütük no, faaliyet özeti ve kişisel veri ilkesi.",
+    "en": "Registry number, activity summary and personal-data principle.",
+    "ar": "رقم السجل وملخص الأنشطة ومبدأ البيانات الشخصية."
+  },
+  "keyword": {
+    "tr": "şeffaflık, kütük no",
+    "en": "transparency, registry number",
+    "ar": "شفافية، رقم السجل"
+  },
+  "path": "seffaflik",
+  "icon": "visibility",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "27cdkj"
+    ],
+    "footer": []
+  },
+  "index": 2,
+  "url": "",
+  "text": {
+    "tr": "<h2>Şeffaflık</h2><p>Toprak Kökleri Derneği, bu demo sitede kurgusal bir derneğidir. Dernekler kütük no: DEMO-27-0002 (kurgusal). Üye listesi ve üye iletişim bilgileri kişisel veridir; açık rıza olmadan yayımlanmaz.</p><h3>Faaliyet özeti (örnek)</h3><ul><li>Yıllık fidan dikim etkinlikleri</li><li>Okullarda çevre eğitimi atölyeleri</li><li>Gönüllü temizlik günleri</li></ul><h3>Mali bilgi</h3><p>Bağış ve gelir-gider özeti her yıl genel kurulda sunulur; örnek bir özet Faaliyet Raporu sayfasında yer alır.</p><p><em>Demo sitedir; bilgiler kurgusaldır.</em></p>",
+    "en": "<h2>Transparency</h2><p>On this demo site Toprak Kokleri Association is a fictional association. Association registry no.: DEMO-27-0002 (fictional). The member list and members’ contact details are personal data and are not published without explicit consent.</p><h3>Activity summary (sample)</h3><ul><li>Annual tree-planting events</li><li>Environmental education workshops in schools</li><li>Volunteer clean-up days</li></ul><h3>Financial information</h3><p>A summary of donations, income and expenses is presented to the general assembly each year; a sample appears on the Activity Report page.</p><p><em>This is a demo site; the information is fictional.</em></p>",
+    "ar": "<h2>الشفافية</h2><p>تُعدّ جمعية جذور التربة في هذا الموقع التجريبي جمعية افتراضية. رقم سجل الجمعيات: DEMO-27-0002 (افتراضي). قائمة الأعضاء وبيانات تواصلهم بيانات شخصية ولا تُنشر دون موافقة صريحة.</p><h3>ملخص الأنشطة (نموذج)</h3><ul><li>فعاليات سنوية لزراعة الأشجار</li><li>ورش تعليم بيئي في المدارس</li><li>أيام تنظيف تطوعية</li></ul><h3>المعلومات المالية</h3><p>يُعرض ملخص التبرعات والإيرادات والمصروفات على الجمعية العمومية كل عام؛ ويظهر نموذج منه في صفحة تقرير النشاط.</p><p><em>هذا موقع تجريبي والمعلومات افتراضية.</em></p>"
+  },
+  "title": {
+    "tr": "Şeffaflık",
+    "en": "Transparency",
+    "ar": "الشفافية"
+  },
+  "date": "2026-10-31T15:04:13.088Z",
+  "update": "2026-11-05T19:39:13.711Z"
+}

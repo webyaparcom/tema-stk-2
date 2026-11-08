@@ -1,0 +1,78 @@
+# tema-stk-2 · t6ca01 — CTA Şerit 1
+
+## Nedir
+
+tema-stk-2 sitesinin matrix modülü. `CTA Şerit 1` şablonu (section kökü,
+sınıf `modulex-cta`) render sırasında sitenin sayfa akışına eklenir. Şablon içeriği
+`index.html`'deki `{{...}}` soketleriyle, veri/tema değerleri `index.json`'la
+beslenir.
+
+## Dosyalar
+
+| Dosya | Rol |
+|-------|-----|
+| `back.js` | Modül davranışı (vanilla JS) (0 KB) |
+| `index.html` | Modül şablonu (render hedefi) (10 KB) |
+| `index.jpeg` | Önizleme görseli (18 KB) |
+| `index.json` | Veri + tema token'ları (1 KB) |
+
+## Girdiler
+| Değişken | Örnek değer |
+|--------|-------------|
+| `stil` | `` |
+| `max` | `1200px` |
+| `gradient` | `linear-gradient(135deg, #1e3046 0%, #2a4560 100%)` |
+| `btnbg` | `#ffffff` |
+| `btncolor` | `#0B3A6E` |
+| `title` | `{'tr': 'Projenizi Birlikte Hayata Geçirelim', 'en': "Let's Bring Your Project to Life", 'ar': 'لنحقق مشروعكم معاً'}` |
+| `description` | `{'tr': 'Ücretsiz keşif görüşmesi için hemen iletişime geçin.', 'en': 'Contact us now for a free discovery call.', 'ar': 'تواصلوا معنا الآن لجلسة استكشاف مجانية.'}` |
+| `btn1Text` | `{'tr': 'İletişime Geç', 'en': 'Contact Us', 'ar': 'تواصل معنا'}` |
+
+- `name`: `CTA Şerit 1`
+- Diğer anahtarlar: `category`, `description`, `version`, `icon`
+
+## Temaya bağımlılık
+Tema token'ları `index.json -> desing` üzerinden gelir (önceki tablo): **stil**, **max**, **gradient**, **btnbg**, **btncolor**.
+
+## Test
+
+Webmaker render hattında site sayfası üretilir; çıktı HTML'de bu modülün kök bloğu
+(`modulex-cta`) yerleşik görünmelidir. Render ucu: mcp/webmaker
+render aracı / proje site dizini çıktısı.
+
+## Kullanım örneği
+
+Modül tema-stk-2 sitesinde `web/matrix/modules/t6ca01/` yolunda tanımlıdır; sayfa
+yapılandırması bu yolu referans alır. Veri örneği (`index.json`):
+```
+{
+  "name": "CTA Şerit 1",
+  "desing": {
+    "stil": "",
+    "max": "1200px",
+    "gradient": "linear-gradient(135deg, #1e3046 0%, #2a4560 100%)",
+    "btnbg": "#ffffff",
+    "btncolor": "#0B3A6E",
+    "title": {
+      "tr": "Projenizi Birlikte Hayata Geçirelim",
+      "en": "Let's Bring Your Project to Life",
+      "ar": "لنحقق مشروعكم معاً"
+    },
+    "description": {
+      "tr": "Ücretsiz keşif görüşmesi için hemen iletişime geçin.",
+      "en": "Contact us now for a free discovery call.",
+      "ar": "تواصلوا معنا الآن لجلسة استكشاف مجانية."
+    },
+    "btn1Text": {
+      "tr": "İletişime Geç",
+      "en": "Contact Us",
+      "ar": "تواصل معنا"
+    },
+    "btn1Url": "iletisim",
+    "btn2
+```
+
+## Notlar
+
+- Oluşturuldu: 2026-11-01 — modül envanterinde otomatik tamamlanan README (kaynak dosyalar: index.json, index.html).
+- İçerik bu klasördeki gerçek dosyalardan okunarak yazıldı; modül değişikliğinde elden güncellenmelidir.

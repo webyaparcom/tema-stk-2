@@ -1,0 +1,69 @@
+{
+  "name": "Sayaç Şeridi (Stats 2)",
+  "description": "Tam genişlik renkli şerit (bgcolor/textcolor ÇİFT token), 3–5 sayaç: sayılar görünürken yukarı sayar (IntersectionObserver; reduced-motion ya da JS yoksa son değer doğrudan), önek/sonek (+, %, ₺), kısa açıklama, isteğe bağlı CSS desen (noktalar | cizgiler | yok). Sayı biçimi dile göre (Arapçada Latin hane). desing.stil: serit | kartli | ayrik-cizgili. Veri: data[] = [{deger, onek, sonek, ondalik?, etiket{tr,en,ar}, aciklama{}, ikon?}]. Koyu mod paletten; RTL mantıksal CSS.",
+  "version": "1.0.0",
+  "icon": "insights",
+  "category": "stats",
+  "tags": ["istatistik", "sayaç", "stats", "counter", "şerit", "ar"],
+  "desing": {
+    "stil": "serit",
+    "desen": "noktalar",
+    "max": "1200px",
+    "bgcolor": "var(--mx-site-primary, #2563eb)",
+    "textcolor": "var(--mx-site-primary-contrast, #ffffff)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 90%, var(--mx-site-primary, #2563eb))",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-primary-contrast, #ffffff) 26%, transparent)",
+    "radius": "16px",
+    "sure": 1000,
+    "title": {
+      "tr": "Rakamlarla biz",
+      "en": "By the numbers",
+      "ar": "نحن بالأرقام"
+    },
+    "description": {
+      "tr": "",
+      "en": "",
+      "ar": ""
+    }
+  },
+  "data": [
+    {
+      "deger": 1250,
+      "onek": "",
+      "sonek": "+",
+      "ikon": "task_alt",
+      "etiket": { "tr": "Tamamlanan proje", "en": "Completed projects", "ar": "مشروع منجز" },
+      "aciklama": { "tr": "2012'den bu yana", "en": "Since 2012", "ar": "منذ عام 2012" }
+    },
+    {
+      "deger": 98,
+      "onek": "%",
+      "sonek": "",
+      "ikon": "sentiment_satisfied",
+      "etiket": { "tr": "Müşteri memnuniyeti", "en": "Customer satisfaction", "ar": "رضا العملاء" },
+      "aciklama": { "tr": "Teslim sonrası anket", "en": "Post-delivery survey", "ar": "استبيان ما بعد التسليم" }
+    },
+    {
+      "deger": 14,
+      "onek": "",
+      "sonek": "",
+      "ikon": "workspace_premium",
+      "etiket": { "tr": "Yıllık deneyim", "en": "Years of experience", "ar": "سنة من الخبرة" },
+      "aciklama": { "tr": "Aynı çekirdek ekip", "en": "Same core team", "ar": "الفريق الأساسي نفسه" }
+    },
+    {
+      "deger": 4.9,
+      "ondalik": 1,
+      "onek": "",
+      "sonek": "/5",
+      "ikon": "star",
+      "etiket": { "tr": "Ortalama puan", "en": "Average rating", "ar": "متوسط التقييم" },
+      "aciklama": { "tr": "Google yorumları", "en": "Google reviews", "ar": "مراجعات Google" }
+    }
+  ],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

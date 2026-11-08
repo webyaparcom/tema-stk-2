@@ -1,0 +1,139 @@
+<section class="modulex-s2{{s2class}}" id="s2-{{id}}" data-s2-dil="{{s2dil}}" data-s2-sure="{{s2sure}}" style="{{s2vars}}">
+  <span class="modulex-s2-desen" aria-hidden="true"></span>
+  <div class="modulex-s2-wrap">
+    {{s2head}}
+    <ul class="modulex-s2-list">{{s2items}}</ul>
+  </div>
+</section>
+
+<style>
+  /* Sayaç Şeridi (31 Eki 2026, G8-B). Zemin + yazı ÇİFT token: bgcolor = site birincil, textcolor = birincil kontrast; koyu mod paletten. */
+  .modulex-s2 {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: clamp(40px, 6vw, 72px);
+    padding-inline: clamp(16px, 4vw, 32px);
+    background: --bgcolor--;
+    color: --textcolor--;
+    overflow: hidden;
+  }
+  .modulex-s2 *, .modulex-s2 *::before, .modulex-s2 *::after { box-sizing: border-box; }
+  /* ham css.css `* { font-size:14px; font-weight:400 }` kalıtımı kırar → sayı/bdi/önek ebeveynden alır */
+  .modulex-s2 :where(span:not(.material-symbols-outlined), bdi, b, strong, em) { font: inherit; }
+  .modulex-s2-wrap { position: relative; z-index: 1; max-width: --max--; margin-inline: auto; }
+
+  /* Dekoratif desen: ayrı öğe (metnin atası değil) → kontrast ölçümü zemin rengine göre yapılır */
+  .modulex-s2-desen { position: absolute; inset: 0; pointer-events: none; opacity: 0.9; }
+  .modulex-s2-desen-noktalar .modulex-s2-desen {
+    background-image: radial-gradient(color-mix(in srgb, --textcolor-- 16%, transparent) 1.5px, transparent 1.6px);
+    background-size: 22px 22px;
+  }
+  .modulex-s2-desen-cizgiler .modulex-s2-desen {
+    background-image: repeating-linear-gradient(135deg, color-mix(in srgb, --textcolor-- 10%, transparent) 0 2px, transparent 2px 18px);
+  }
+  .modulex-s2-desen-yok .modulex-s2-desen { display: none; }
+
+  .modulex-s2-head { margin-block-end: 32px; text-align: start; max-width: 60ch; }
+  .modulex-s2-title { margin: 0 0 8px; font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); line-height: 1.2; color: --textcolor--; text-wrap: balance; }
+  .modulex-s2-desc { margin: 0; font-size: 1rem; line-height: 1.6; color: --mutedcolor--; }
+
+  .modulex-s2-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+  .modulex-s2-item { min-width: 0; }
+  /* İkon dairesi ve kart zemini OPAK karışım (transparent değil): üst üste yarı saydam katman kontrast ölçümünü bozar */
+  .modulex-s2-ikon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: color-mix(in srgb, --textcolor-- 14%, --bgcolor--); color: --textcolor--; margin-block-end: 12px; }
+  .modulex-s2-ikon .material-symbols-outlined { font-size: 26px; }
+  .modulex-s2-deger { display: flex; align-items: baseline; gap: 2px; font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.4rem); font-weight: 800; line-height: 1; color: --textcolor--; font-variant-numeric: tabular-nums; }
+  .modulex-s2-onek, .modulex-s2-sonek { font-size: 0.55em; font-weight: 700; }
+  .modulex-s2-etiket { margin: 10px 0 4px; font-size: 1.02rem; font-weight: 600; line-height: 1.3; color: --textcolor--; }
+  .modulex-s2-aciklama { margin: 0; font-size: 0.9rem; line-height: 1.5; color: --mutedcolor--; }
+
+  /* ── Varyant: serit (varsayılan) — ortalı, dikey ayraçlı sıra */
+  .modulex-s2-serit .modulex-s2-list { grid-template-columns: repeat(var(--s2-n), minmax(0, 1fr)); gap: 0; }
+  .modulex-s2-serit .modulex-s2-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 8px 20px; border-inline-start: 1px solid --bordercolor--; }
+  .modulex-s2-serit .modulex-s2-item:first-child { border-inline-start: 0; }
+  .modulex-s2-serit .modulex-s2-deger { justify-content: center; }
+  .modulex-s2-serit .modulex-s2-head { text-align: center; margin-inline: auto; }
+
+  /* ── Varyant: kartli — yarı saydam kartlar, ikon üstte, sola yaslı */
+  .modulex-s2-kartli .modulex-s2-list { grid-template-columns: repeat(var(--s2-n), minmax(0, 1fr)); gap: 16px; }
+  .modulex-s2-kartli .modulex-s2-item { padding: 24px; border-radius: --radius--; background: color-mix(in srgb, --textcolor-- 10%, --bgcolor--); border: 1px solid --bordercolor--; transition: transform 0.25s ease, background-color 0.25s ease; }
+  .modulex-s2-kartli .modulex-s2-item:hover { transform: translateY(-4px); background: color-mix(in srgb, --textcolor-- 16%, --bgcolor--); }
+  .modulex-s2-kartli .modulex-s2-ikon { background: color-mix(in srgb, --textcolor-- 22%, --bgcolor--); }
+  .modulex-s2-kartli .modulex-s2-aciklama { color: --textcolor--; } /* açık kart zemininde soluk ton 4,5'in altına iner */
+
+  /* ── Varyant: ayrik-cizgili — büyük ince rakam, kalın başlangıç çizgisi, üstte ince kural */
+  .modulex-s2-ayrik-cizgili .modulex-s2-list { grid-template-columns: repeat(var(--s2-n), minmax(0, 1fr)); gap: 32px; padding-block-start: 28px; border-top: 1px solid --bordercolor--; }
+  .modulex-s2-ayrik-cizgili .modulex-s2-item { padding-inline-start: 18px; border-inline-start: 4px solid --textcolor--; }
+  .modulex-s2-ayrik-cizgili .modulex-s2-ikon { display: none; }
+  .modulex-s2-ayrik-cizgili .modulex-s2-deger { font-weight: 300; font-size: clamp(2.6rem, 1.8rem + 3vw, 4.2rem); letter-spacing: -0.02em; }
+  .modulex-s2-ayrik-cizgili .modulex-s2-onek, .modulex-s2-ayrik-cizgili .modulex-s2-sonek { font-weight: 500; }
+
+  @media (max-width: 1024px) {
+    .modulex-s2-serit .modulex-s2-list, .modulex-s2-kartli .modulex-s2-list, .modulex-s2-ayrik-cizgili .modulex-s2-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .modulex-s2-serit .modulex-s2-list { gap: 24px 0; }
+    .modulex-s2-serit .modulex-s2-item:nth-child(odd) { border-inline-start: 0; }
+  }
+  @media (max-width: 768px) {
+    .modulex-s2 { padding-block: 36px; }
+    .modulex-s2-head { margin-block-end: 20px; }
+    .modulex-s2-serit .modulex-s2-item { padding: 8px 10px; }
+    .modulex-s2-ayrik-cizgili .modulex-s2-list { gap: 24px 16px; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+  @media (max-width: 400px) {
+    .modulex-s2-kartli .modulex-s2-list { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-s2 *, .modulex-s2 *::before, .modulex-s2 *::after { animation: none !important; transition: none !important; }
+    .modulex-s2-kartli .modulex-s2-item:hover { transform: none; }
+  }
+</style>
+
+<script>
+  /* Sayaç: sunucu son değeri basar (JS yoksa görünür). JS + IO + hareket izni varsa 0'dan hedefe sayar (sayısal ara değer, uzamsal hareket değil).
+     Biçim: Intl.NumberFormat(dil + "-u-nu-latn") — Arapçada Latin hane (TASARIM § 10.4). */
+  (function () {
+    var kok = document.getElementById("s2-{{id}}");
+    if (!kok || kok.getAttribute("data-s2-hazir") === "1") { return; }
+    kok.setAttribute("data-s2-hazir", "1");
+    var azalt = false;
+    try { azalt = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { azalt = false; }
+    if (azalt || !("IntersectionObserver" in window) || !window.requestAnimationFrame) { return; }
+    var dil = (kok.getAttribute("data-s2-dil") || document.documentElement.getAttribute("lang") || "tr").split("-")[0];
+    var sure = parseInt(kok.getAttribute("data-s2-sure"), 10);
+    if (!isFinite(sure) || sure < 200) { sure = 1000; }
+    var bicim = null;
+    function yaz(n, ondalik) {
+      try {
+        if (!bicim) { bicim = {}; }
+        if (!bicim[ondalik]) { bicim[ondalik] = new Intl.NumberFormat(dil + "-u-nu-latn", { minimumFractionDigits: ondalik, maximumFractionDigits: ondalik }); }
+        return bicim[ondalik].format(n);
+      } catch (e) { return n.toFixed(ondalik); }
+    }
+    function say(el) {
+      var hedef = parseFloat(el.getAttribute("data-s2-hedef"));
+      var ondalik = parseInt(el.getAttribute("data-s2-ondalik"), 10) || 0;
+      if (!isFinite(hedef)) { return; }
+      var bas = null;
+      function adim(ts) {
+        if (bas === null) { bas = ts; }
+        var p = Math.min(1, (ts - bas) / sure);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = yaz(hedef * e, ondalik);
+        if (p < 1) { window.requestAnimationFrame(adim); } else { el.textContent = yaz(hedef, ondalik); }
+      }
+      el.textContent = yaz(0, ondalik);
+      window.requestAnimationFrame(adim);
+    }
+    var sayilar = kok.querySelectorAll(".modulex-s2-sayi[data-s2-hedef]");
+    var io = new IntersectionObserver(function (girdiler) {
+      var j;
+      for (j = 0; j < girdiler.length; j++) {
+        if (girdiler[j].isIntersecting) { say(girdiler[j].target); io.unobserve(girdiler[j].target); }
+      }
+    }, { threshold: 0.4 });
+    var i;
+    for (i = 0; i < sayilar.length; i++) { io.observe(sayilar[i]); }
+  })();
+</script>

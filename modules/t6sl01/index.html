@@ -1,0 +1,459 @@
+<div class="modulex-textslider-wrap" style="margin: --margin--;">
+  <div class="swiper-container modulex-textslider">
+    <div class="swiper-wrapper">{{slides}}</div>
+    <div class="modulex-textslider-pagination swiper-pagination"></div>
+    <div class="modulex-textslider-prev swiper-button-prev" title="{{prevLabel}}" aria-label="{{prevLabel}}"></div>
+    <div class="modulex-textslider-next swiper-button-next" title="{{nextLabel}}" aria-label="{{nextLabel}}"></div>
+  </div>
+</div>
+
+<style>
+  /* slider-text — duz hero slider: gorsel + ust metin katmani */
+
+  .modulex-textslider-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  .modulex-textslider {
+    width: 100%;
+    height: --height--;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .modulex-textslide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .modulex-textslide-media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--slide-bg--, --bgcolor--);
+  }
+
+  .modulex-textslide-plain .modulex-textslide-media {
+    background-color: var(--slide-bg--, --bgcolor--);
+  }
+
+  .modulex-textslide-bg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ken Burns (7 sn) kaldirildi — AN3; aktif slayttaki kadraj korunur */
+    transform: scale(1.06);
+  }
+
+  .swiper-slide-active .modulex-textslide-bg {
+    transform: scale(1.06);
+  }
+
+  .modulex-textslide-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, --bgcolor-- 82%, transparent) 0%,
+        color-mix(in srgb, --bgcolor-- 48%, transparent) 52%,
+        rgba(0, 0, 0, 0.1) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(0, 0, 0, --overlay--) 100%
+      );
+    pointer-events: none;
+  }
+
+  .modulex-textslide-inner {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: 40px 8%;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: --max--;
+    margin: 0 auto;
+    pointer-events: none;
+  }
+
+  /* Metin + on plan img — layout: left | right (JSON veya sirali varsayilan) */
+  .modulex-textslide-inner.modulex-textslide-hasfront {
+    display: grid;
+    gap: 28px;
+    align-items: center;
+    align-content: center;
+  }
+
+  .modulex-textslide-layout-left {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .modulex-textslide-layout-right {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  /* img yoksa yalnizca metin — tam ortada */
+  .modulex-textslide-inner.modulex-textslide-textonly {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modulex-textslide-textonly .modulex-textslide-content {
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .modulex-textslide-textonly .modulex-textslide-title,
+  .modulex-textslide-textonly .modulex-textslide-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .modulex-textslide-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .modulex-textslide-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    width: 100%;
+    max-width: 420px;
+    min-height: min(340px, 55vh);
+    pointer-events: none;
+  }
+
+  .modulex-textslide-visual-empty {
+    visibility: hidden;
+  }
+
+  .modulex-textslide-frontimg {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    max-height: min(340px, 55vh);
+    height: auto;
+    object-fit: contain;
+    border-radius: --border_radius--;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.28));
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .swiper-slide-active .modulex-textslide-frontimg {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.1s;
+  }
+
+  .modulex-textslide-align-center.modulex-textslide-hasfront .modulex-textslide-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .modulex-textslide-align-left.modulex-textslide-hasfront .modulex-textslide-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .modulex-textslide-align-right.modulex-textslide-hasfront .modulex-textslide-content {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .modulex-textslide-align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .modulex-textslide-align-center {
+    align-items: center;
+    text-align: center;
+  }
+
+  .modulex-textslide-align-right {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .modulex-textslide-title,
+  .modulex-textslide-desc,
+  .modulex-textslide-btn {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .swiper-slide-active .modulex-textslide-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;
+  }
+
+  .swiper-slide-active .modulex-textslide-desc {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .swiper-slide-active .modulex-textslide-btn {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+
+  .modulex-textslide-title,
+  .modulex-textslide-inner h2 {
+    margin: 0;
+    font-size: clamp(28px, 4.5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: --titlecolor--;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.45);
+  }
+
+  .modulex-textslide-desc,
+  .modulex-textslide-inner p {
+    margin: 0;
+    font-size: clamp(15px, 2vw, 19px);
+    line-height: 1.65;
+    color: --desccolor--;
+    max-width: 680px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  .modulex-textslide-desc:empty {
+    display: none;
+  }
+
+  /* Paket 28/29: ham a:link{color:#000} ezer — koyu zemin CTA’da beyaz zorunlu */
+  a.modulex-textslide-btn,
+  .modulex-textslide-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 14px 28px;
+    border-radius: --border_radius--;
+    background-color: --btnbg--;
+    color: --btncolor-- !important;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  a.modulex-textslide-btn .modulex-textslide-btn-label,
+  .modulex-textslide-btn .modulex-textslide-btn-label,
+  a.modulex-textslide-btn span,
+  .modulex-textslide-btn span {
+    color: --btncolor-- !important;
+  }
+
+  .modulex-textslide-btn:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+    transform: translateY(-2px);
+  }
+
+  .modulex-textslide-btn-static {
+    cursor: default;
+  }
+
+  .modulex-textslide-btn-label {
+    display: inline-block;
+  }
+
+  .modulex-textslider-pagination {
+    bottom: 18px !important;
+    z-index: 5;
+  }
+
+  .modulex-textslider-prev,
+  .modulex-textslider-next {
+    z-index: 5;
+    cursor: pointer;
+    color: #ffffff;
+    opacity: 0.85;
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .modulex-textslider-prev::after,
+  .modulex-textslider-next::after {
+    background: transparent;
+  }
+
+  .modulex-textslider-prev:hover,
+  .modulex-textslider-next:hover {
+    opacity: 1;
+  }
+
+  /* Safari gorsel duzeltme */
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .modulex-textslide-bg {
+        height: auto;
+        min-height: 100%;
+        -webkit-transform: scale(1.06) translateZ(0);
+        transform: scale(1.06) translateZ(0);
+      }
+
+      .swiper-slide-active .modulex-textslide-bg {
+        -webkit-transform: scale(1.06) translateZ(0);
+        transform: scale(1.06) translateZ(0);
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .modulex-textslider {
+      height: 440px;
+    }
+
+    .modulex-textslide-inner {
+      padding: 32px 6%;
+      gap: 12px;
+    }
+
+    .modulex-textslide-inner.modulex-textslide-hasfront {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .modulex-textslide-visual-empty {
+      min-height: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .modulex-textslide-frontimg {
+      max-width: 320px;
+      max-height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modulex-textslider {
+      height: 380px;
+    }
+
+    .modulex-textslide-inner {
+      padding: 28px 20px;
+      gap: 10px;
+    }
+
+    .modulex-textslide-btn {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .modulex-textslider-prev,
+    .modulex-textslider-next {
+      display: none;
+    }
+  }
+
+  /* W2: erisilebilirlik — animasyon kapatma */
+  @media (prefers-reduced-motion: reduce) {
+    [class*="modulex"],
+    [class*="modulex"] * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+(function modulexTextsliderInit() {
+  var attempts = 0;
+  var maxAttempts = 20;
+
+  // Slayt tiklamasi: buton disinda alana tiklanirsa link ac
+  function modulexTextsliderBindClicks() {
+    var slideNodes = document.querySelectorAll(".modulex-textslide");
+    var s = 0;
+    for (s = 0; s < slideNodes.length; s++) {
+      slideNodes[s].addEventListener("click", function (ev) {
+        var href = this.getAttribute("data-href");
+        var isBtn = ev.target && ev.target.closest && ev.target.closest(".modulex-textslide-btn");
+        if (href && !isBtn) {
+          window.location.href = href;
+        }
+      });
+    }
+  }
+
+  var timer = setInterval(function () {
+    attempts++;
+    if (typeof Swiper === "function") {
+      clearInterval(timer);
+
+      new Swiper(".modulex-textslider", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        speed: 500,
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true
+        },
+        autoplay: {
+          delay: "--delay--",
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        pagination: {
+          el: ".modulex-textslider-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".modulex-textslider-next",
+          prevEl: ".modulex-textslider-prev"
+        },
+        keyboard: {
+          enabled: true
+        }
+      });
+
+      modulexTextsliderBindClicks();
+    } else if (attempts >= maxAttempts) {
+      clearInterval(timer);
+      console.warn("header/slider-text: Swiper bulunamadi, slider baslatilamadi.");
+    }
+  }, 250);
+})();
+</script>

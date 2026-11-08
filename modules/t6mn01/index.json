@@ -1,0 +1,43 @@
+{
+  "name": "Menu 2",
+  "desing": {
+    "bgcolor": "#1e3046",
+    "color": "#ffffff",
+    "activebgcolor": "#ffffff",
+    "activecolor": "#000000",
+    "height": "100px",
+    "ariaToggle": {
+      "tr": "Menüyü aç/kapat",
+      "en": "Toggle menu", "ar": "تبديل القائمة"
+    },
+    "ariaClose": {
+      "tr": "Menüyü kapat",
+      "en": "Close menu"
+    },
+    "logobg": "transparent",
+    "logoborder": "none",
+    "logoradius": "0",
+    "logopad": "0",
+    "logopadmobil": "0",
+    "logomaxh": "100px",
+    "logoimg": "",
+    "tekSatir": "",
+    "langcolor": "currentColor",
+    "langbg": "transparent",
+    "logoDark": "",
+    "duzen": "",
+    "ctaText": "",
+    "ctaHref": "",
+    "temaDugmesi": "",
+    "temaAnahtar": ""
+  },
+  "category": "menu",
+  "description": "Sticky header navigasyon menüsü. Logo, sayfa linkleri ve mobil hamburger menü içerir. 16 farklı projede kullanılır: üretim, e-ticaret, kurumsal, eğitim, ajans ve hizmet sektörü firmalarında. Scroll animasyonu, aktif sayfa vurgulama ve responsive menü geçişi özellikleri vardır.",
+  "version": "1.0.4",
+  "icon": "menu",
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

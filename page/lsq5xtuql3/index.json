@@ -1,0 +1,39 @@
+{
+  "id": "lsq5xtuql3",
+  "name": {
+    "tr": "Galeri",
+    "en": "Gallery",
+    "ar": "المعرض"
+  },
+  "description": {
+    "tr": "Fidan, doğa ve etkinlik görüntüleri; kişi/çocuk yoktur.",
+    "en": "Saplings, nature and event images; no people or children.",
+    "ar": "صور الشتلات والطبيعة والفعاليات؛ دون أشخاص أو أطفال."
+  },
+  "keyword": {
+    "tr": "galeri, fotoğraf",
+    "en": "gallery, photos",
+    "ar": "معرض، صور"
+  },
+  "path": "galeri",
+  "icon": "photo_library",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "bgir4c"
+    ],
+    "footer": []
+  },
+  "index": 4,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Galeri",
+    "en": "Gallery",
+    "ar": "المعرض"
+  },
+  "date": "2026-10-31T15:04:13.097Z",
+  "update": "2026-11-05T19:39:13.719Z"
+}

@@ -1,0 +1,77 @@
+{
+  "name": {
+    "tr": "Footer 10 — Mega footer (CTA bantlı)",
+    "en": "Footer 10 — Mega footer (CTA band)",
+    "ar": "تذييل 10 — تذييل ضخم (شريط دعوة)"
+  },
+  "description": {
+    "tr": "Mega alt bilgi: üstte bülten/CTA bandı (e-posta kutusu + düğme — gönderim mailto ya da kapalı; KVKK notu), altında 5 sütun (marka + açıklama + sosyal · sayfalar (maxpages) · hizmetler · iletişim · çalışma saatleri; boş sütun basılmaz, sütun sınıfı otomatik), en altta telif + yasal bağlantılar + dil seçici + «yukarı» düğmesi. Üç varyant (desing.stil): koyu · acik · gradient-ust. Üç dil, RTL, koyu mod token'larla.",
+    "en": "Mega footer: newsletter/CTA band on top (e-mail box + button — mailto submission or disabled; privacy note), 5 columns below (brand + about + social · pages (maxpages) · services · contact · opening hours; empty columns are omitted, column class is automatic), bottom bar with copyright + legal links + language switcher + «back to top». Three variants (desing.stil): koyu · acik · gradient-ust. Three languages, RTL, dark mode via tokens.",
+    "ar": "تذييل ضخم: شريط نشرة بريدية/دعوة في الأعلى (حقل بريد + زر؛ إرسال mailto أو معطّل؛ ملاحظة خصوصية)، 5 أعمدة (العلامة + نبذة + تواصل · الصفحات · الخدمات · الاتصال · ساعات العمل)، شريط سفلي بحقوق النشر والروابط القانونية ومبدّل اللغة وزر «إلى الأعلى». ثلاثة أنماط، ثلاث لغات، RTL، وضع داكن."
+  },
+  "version": "1.0.0",
+  "icon": "footer",
+  "category": "footer",
+  "tags": ["footer", "bulten", "newsletter", "mega", "ar"],
+  "desing": {
+    "stil": "koyu",
+    "showlang": true,
+    "maxpages": 8,
+    "koyubg": "color-mix(in srgb, #0f172a 86%, var(--mx-site-primary, #2563eb))",
+    "koyutext": "#f1f5f9",
+    "acikbg": "var(--mx-site-surface, #f6f6f4)",
+    "aciktext": "var(--mx-site-text, #1b1b1b)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "errcolor": "var(--mx-color-danger, #b42318)",
+    "radius": "16px",
+    "logo_maxh": "52px",
+    "logo_plate": false,
+    "about": {
+      "tr": "Kurumsal çözümler, güvenilir hizmet ve ölçülebilir sonuçlar. 2005'ten beri yanınızdayız.",
+      "en": "Corporate solutions, reliable service and measurable results. With you since 2005.",
+      "ar": "حلول مؤسسية وخدمة موثوقة ونتائج قابلة للقياس. معكم منذ 2005."
+    },
+    "nlShow": true,
+    "nlGonderim": "mailto",
+    "nlEmail": "",
+    "nlTitle": { "tr": "Gelişmelerden haberdar olun", "en": "Stay in the loop", "ar": "ابقَ على اطلاع" },
+    "nlText": { "tr": "Ayda bir bülten; kampanya ve yeniliklerden ilk siz haberdar olun.", "en": "One newsletter a month; be the first to hear about offers and news.", "ar": "نشرة واحدة شهريًا؛ كن أول من يعرف بالعروض والمستجدات." },
+    "nlLabel": { "tr": "E-posta adresiniz", "en": "Your e-mail address", "ar": "بريدك الإلكتروني" },
+    "nlBtn": { "tr": "Abone ol", "en": "Subscribe", "ar": "اشترك" },
+    "nlKvkk": { "tr": "Abone olarak e-posta adresinizin bülten amacıyla işlenmesini kabul edersiniz. İstediğiniz an ayrılabilirsiniz.", "en": "By subscribing you agree to the processing of your e-mail address for the newsletter. You can unsubscribe at any time.", "ar": "بالاشتراك توافق على معالجة بريدك الإلكتروني لأغراض النشرة. يمكنك إلغاء الاشتراك في أي وقت." },
+    "nlSubject": { "tr": "Bülten aboneliği", "en": "Newsletter subscription", "ar": "الاشتراك في النشرة" },
+    "nlBody": { "tr": "Merhaba, bültene abone olmak istiyorum.", "en": "Hello, I would like to subscribe to the newsletter.", "ar": "مرحبًا، أرغب في الاشتراك في النشرة البريدية." },
+    "nlErr": { "tr": "Geçerli bir e-posta adresi girin.", "en": "Enter a valid e-mail address.", "ar": "أدخل بريدًا إلكترونيًا صالحًا." },
+    "nlOk": { "tr": "E-posta uygulamanız açılıyor; aboneliği oradan onaylayın.", "en": "Your e-mail app is opening; confirm the subscription there.", "ar": "يتم فتح تطبيق البريد؛ أكّد الاشتراك من هناك." },
+    "title_pages": { "tr": "Sayfalar", "en": "Pages", "ar": "الصفحات" },
+    "title_services": { "tr": "Hizmetler", "en": "Services", "ar": "الخدمات" },
+    "title_contact": { "tr": "İletişim", "en": "Contact", "ar": "اتصل بنا" },
+    "title_hours": { "tr": "Çalışma Saatleri", "en": "Opening Hours", "ar": "ساعات العمل" },
+    "title_social": { "tr": "Bizi takip edin", "en": "Follow us", "ar": "تابعنا" },
+    "services": [
+      { "name": { "tr": "Danışmanlık", "en": "Consulting", "ar": "الاستشارات" }, "href": "" },
+      { "name": { "tr": "Proje Yönetimi", "en": "Project Management", "ar": "إدارة المشاريع" }, "href": "" },
+      { "name": { "tr": "Bakım & Destek", "en": "Maintenance & Support", "ar": "الصيانة والدعم" }, "href": "" },
+      { "name": { "tr": "Eğitim", "en": "Training", "ar": "التدريب" }, "href": "" }
+    ],
+    "hours": [
+      { "days": { "tr": "Pazartesi – Cuma", "en": "Monday – Friday", "ar": "الإثنين – الجمعة" }, "time": "09:00 – 18:00" },
+      { "days": { "tr": "Cumartesi", "en": "Saturday", "ar": "السبت" }, "time": "10:00 – 14:00" },
+      { "days": { "tr": "Pazar", "en": "Sunday", "ar": "الأحد" }, "time": { "tr": "Kapalı", "en": "Closed", "ar": "مغلق" } }
+    ],
+    "address": "",
+    "phone": "",
+    "email": "",
+    "social": [],
+    "legal": [],
+    "rightsText": { "tr": "Tüm hakları saklıdır.", "en": "All rights reserved.", "ar": "جميع الحقوق محفوظة." },
+    "topLabel": { "tr": "Yukarı çık", "en": "Back to top", "ar": "العودة إلى الأعلى" }
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

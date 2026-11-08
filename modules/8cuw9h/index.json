@@ -1,0 +1,89 @@
+{
+  "name": "Süreç Adımları",
+  "description": "3–6 adımlık süreç anlatımı: çizgi/ok ile bağlı daire numaralar, altında başlık + metin. Aktif adım vurgusu kaydırmayla ilerler (IntersectionObserver; JS yoksa tüm adımlar düz görünür). desing.stil: yatay (çizgiyle bağlı sıra; mobilde dikey zaman çizgisi) | dikey (iki yanlı zaman çizgisi) | kartli (kart + ok ayraç). Veri: data[] = [{no?, baslik{tr,en,ar}, metin{}, ikon?}]. Renkler yalnız token; koyu mod otomatik; RTL'de ok/çizgi yönü aynalanır.",
+  "version": "1.0.0",
+  "icon": "timeline",
+  "category": "surec",
+  "tags": ["süreç", "adım", "zaman çizgisi", "process", "steps", "ar"],
+  "desing": {
+    "stil": "yatay",
+    "max": "1200px",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "textcolor": "var(--mx-site-text, #1b1b1b)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 72%, var(--mx-site-bg, #ffffff))",
+    "surface": "var(--mx-site-surface, #f6f6f4)",
+    "surface2": "var(--mx-site-surface-2, #ececea)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 16%, transparent)",
+    "radius": "16px",
+    "eyebrow": {
+      "tr": "Nasıl çalışıyoruz?",
+      "en": "How we work",
+      "ar": "كيف نعمل؟"
+    },
+    "title": {
+      "tr": "Dört adımda sonuç",
+      "en": "Results in four steps",
+      "ar": "النتيجة في أربع خطوات"
+    },
+    "description": {
+      "tr": "İlk görüşmeden teslime kadar her aşamada ne olacağını önceden bilirsiniz.",
+      "en": "From the first call to handover, you know in advance what happens at every stage.",
+      "ar": "من أول اتصال حتى التسليم، تعرف مسبقًا ما سيحدث في كل مرحلة."
+    },
+    "stepLabel": {
+      "tr": "Adım {n}",
+      "en": "Step {n}",
+      "ar": "الخطوة {n}"
+    },
+    "listLabel": {
+      "tr": "Süreç adımları",
+      "en": "Process steps",
+      "ar": "خطوات العملية"
+    }
+  },
+  "data": [
+    {
+      "ikon": "forum",
+      "baslik": { "tr": "Tanışma", "en": "Discovery", "ar": "التعارف" },
+      "metin": {
+        "tr": "Kısa bir görüşmeyle hedefinizi, bütçenizi ve takviminizi netleştiririz.",
+        "en": "In a short call we clarify your goal, budget and timeline.",
+        "ar": "في مكالمة قصيرة نوضّح هدفك وميزانيتك وجدولك الزمني."
+      }
+    },
+    {
+      "ikon": "draw",
+      "baslik": { "tr": "Planlama", "en": "Planning", "ar": "التخطيط" },
+      "metin": {
+        "tr": "Kapsamı yazılı teklife döker, onayınızla iş planını kilitleriz.",
+        "en": "We turn the scope into a written proposal and lock the plan with your approval.",
+        "ar": "نحوّل النطاق إلى عرض مكتوب ونثبّت خطة العمل بموافقتك."
+      }
+    },
+    {
+      "ikon": "construction",
+      "baslik": { "tr": "Uygulama", "en": "Delivery", "ar": "التنفيذ" },
+      "metin": {
+        "tr": "Ekibimiz işi takvime göre yürütür; her hafta kısa bir ilerleme özeti alırsınız.",
+        "en": "Our team delivers to schedule; you get a short progress summary every week.",
+        "ar": "ينفّذ فريقنا العمل وفق الجدول، وتتلقى كل أسبوع ملخصًا موجزًا عن التقدّم."
+      }
+    },
+    {
+      "ikon": "verified",
+      "baslik": { "tr": "Teslim ve destek", "en": "Handover & support", "ar": "التسليم والدعم" },
+      "metin": {
+        "tr": "Kontrol listesiyle teslim eder, sonrasında da destek hattımızla yanınızda oluruz.",
+        "en": "We hand over against a checklist and stay with you through our support line.",
+        "ar": "نسلّم العمل وفق قائمة تحقق، ونبقى إلى جانبك عبر خط الدعم."
+      }
+    }
+  ],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

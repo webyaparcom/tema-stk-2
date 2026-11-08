@@ -1,0 +1,145 @@
+<section class="modulex-sa{{saclass}}" id="sa-{{id}}" style="{{savars}}">
+  <div class="modulex-sa-wrap">
+    {{sahead}}
+    <ol class="modulex-sa-list" aria-label="{{listLabel}}">{{sasteps}}</ol>
+  </div>
+</section>
+
+<style>
+  /* Süreç Adımları (31 Eki 2026, G8-B). Renkler yalnız desing anahtarı → var(--mx-site-*); koyu mod paletten. */
+  .modulex-sa {
+    box-sizing: border-box;
+    width: 100%;
+    padding-block: clamp(40px, 7vw, 88px);
+    padding-inline: clamp(16px, 4vw, 32px);
+    background: --bgcolor--;
+    color: --textcolor--;
+  }
+  .modulex-sa *, .modulex-sa *::before, .modulex-sa *::after { box-sizing: border-box; }
+  /* ham css.css `* { font-size:14px; font-weight:400 }` kalıtımı kırar → satır içi öğeler ebeveynden alır */
+  .modulex-sa :where(span:not(.material-symbols-outlined), bdi, b, strong, em) { font: inherit; }
+  .modulex-sa-wrap { max-width: --max--; margin-inline: auto; }
+
+  .modulex-sa-head { max-width: 68ch; margin-block-end: 48px; text-align: start; }
+  .modulex-sa-eyebrow {
+    display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: --accentText--; background: --accent--; /* dolgulu çip: vurgu/vurgu-kontrast çifti ≥ 4,5 palet güvencesi */
+  }
+  .modulex-sa-title { margin: 0 0 10px; font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem); line-height: 1.15; color: --textcolor--; text-wrap: balance; }
+  .modulex-sa-desc { margin: 0; font-size: 1.05rem; line-height: 1.7; color: --mutedcolor--; }
+
+  .modulex-sa-list { list-style: none; margin: 0; padding: 0; position: relative; }
+  .modulex-sa-step { position: relative; min-width: 0; }
+  .modulex-sa-no {
+    position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: --surface--; color: --textcolor--; border: 2px solid --bordercolor--;
+    font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .modulex-sa-no .material-symbols-outlined { font-size: 26px; }
+  .modulex-sa-gecti .modulex-sa-no, .modulex-sa-aktif .modulex-sa-no { background: --accent--; color: --accentText--; border-color: --accent--; }
+  .modulex-sa-aktif .modulex-sa-no { transform: scale(1.08); box-shadow: 0 0 0 8px color-mix(in srgb, --accent-- 18%, transparent); }
+  .modulex-sa-etiket { display: block; margin-block-end: 6px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: --accent--; }
+  .modulex-sa-h { margin: 0 0 8px; font-size: 1.2rem; line-height: 1.25; color: --textcolor--; }
+  .modulex-sa-p { margin: 0; font-size: 0.98rem; line-height: 1.7; color: --mutedcolor--; }
+
+  /* ── Varyant: yatay (varsayılan) — daireler bir çizgi üzerinde, metin altta ortalı */
+  .modulex-sa-yatay .modulex-sa-list { display: grid; grid-template-columns: repeat(var(--sa-n), minmax(0, 1fr)); gap: 24px; }
+  .modulex-sa-yatay .modulex-sa-list::before {
+    content: ""; position: absolute; inset-block-start: 28px; inset-inline: calc(100% / var(--sa-n) / 2) calc(100% / var(--sa-n) / 2);
+    height: 2px; background: --bordercolor--;
+  }
+  .modulex-sa-yatay .modulex-sa-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding-inline: 8px; }
+  .modulex-sa-yatay .modulex-sa-no { margin-block-end: 20px; }
+  .modulex-sa-yatay .modulex-sa-step:not(:last-child)::after {
+    content: ""; position: absolute; inset-block-start: 27px; inset-inline-start: calc(50% + 28px); width: calc(100% - 56px); height: 4px;
+    background: --accent--; border-radius: 2px; transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.3s ease;
+  }
+  [dir="rtl"] .modulex-sa-yatay .modulex-sa-step:not(:last-child)::after { transform-origin: 100% 50%; }
+  .modulex-sa-yatay .modulex-sa-gecti:not(:last-child)::after { transform: scaleX(1); }
+
+  /* ── Varyant: dikey — ortada çizgi, adımlar iki yana dönüşümlü (mobilde tek taraf) */
+  .modulex-sa-dikey .modulex-sa-list { display: grid; gap: 28px; padding-block: 8px; }
+  .modulex-sa-dikey .modulex-sa-list::before { content: ""; position: absolute; inset-block: 0; inset-inline-start: calc(50% - 1px); width: 2px; background: --bordercolor--; }
+  .modulex-sa-dikey .modulex-sa-step { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .modulex-sa-dikey .modulex-sa-no { grid-column: 2; }
+  .modulex-sa-dikey .modulex-sa-govde { grid-column: 1; grid-row: 1; text-align: end; padding: 20px 24px; border-radius: --radius--; background: --surface--; border: 1px solid --bordercolor--; }
+  .modulex-sa-dikey .modulex-sa-step:nth-child(even) .modulex-sa-govde { grid-column: 3; text-align: start; }
+  .modulex-sa-dikey .modulex-sa-aktif .modulex-sa-govde { border-color: --accent--; }
+
+  /* ── Varyant: kartli — her adım kart, aralarda ok ayraç (RTL'de aynalı) */
+  .modulex-sa-kartli .modulex-sa-list { display: grid; grid-template-columns: repeat(var(--sa-n), minmax(0, 1fr)); gap: 40px 48px; }
+  .modulex-sa-kartli .modulex-sa-step { display: flex; flex-direction: column; gap: 14px; padding: 28px 24px; border-radius: --radius--; background: --surface--; border: 1px solid --bordercolor--; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-sa-kartli .modulex-sa-aktif { border-color: --accent--; box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12); transform: translateY(-4px); }
+  .modulex-sa-kartli .modulex-sa-no { border-radius: 14px; }
+  .modulex-sa-kartli .modulex-sa-ok { position: absolute; inset-block-start: calc(50% - 14px); inset-inline-end: -38px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: --accent--; }
+  .modulex-sa-kartli .modulex-sa-step:last-child .modulex-sa-ok { display: none; }
+  [dir="rtl"] .modulex-sa-kartli .modulex-sa-ok .material-symbols-outlined { transform: scaleX(-1); }
+  .modulex-sa-ok { display: none; }
+
+  @media (max-width: 1024px) {
+    .modulex-sa-yatay .modulex-sa-list, .modulex-sa-kartli .modulex-sa-list { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .modulex-sa-yatay .modulex-sa-list::before { display: none; }
+    .modulex-sa-yatay .modulex-sa-step:not(:last-child)::after { display: none; }
+    .modulex-sa-kartli .modulex-sa-ok { display: none; }
+  }
+
+  /* Mobil: hepsi dikey zaman çizgisi (çizgi başta, daire üzerinde) */
+  @media (max-width: 768px) {
+    .modulex-sa { padding-block: 36px; }
+    .modulex-sa-head { margin-block-end: 28px; }
+    .modulex-sa-yatay .modulex-sa-list, .modulex-sa-dikey .modulex-sa-list, .modulex-sa-kartli .modulex-sa-list { display: grid; grid-template-columns: 1fr; gap: 24px; padding-inline-start: 0; }
+    .modulex-sa-yatay .modulex-sa-list::before, .modulex-sa-dikey .modulex-sa-list::before { content: ""; display: block; position: absolute; inset-block: 0; inset-inline-start: 27px; width: 2px; height: auto; background: --bordercolor--; }
+    .modulex-sa-yatay .modulex-sa-step, .modulex-sa-dikey .modulex-sa-step { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: start; text-align: start; padding: 0; }
+    .modulex-sa-yatay .modulex-sa-no { margin: 0; }
+    .modulex-sa-dikey .modulex-sa-no { grid-column: 1; }
+    .modulex-sa-dikey .modulex-sa-govde, .modulex-sa-dikey .modulex-sa-step:nth-child(even) .modulex-sa-govde { grid-column: 2; grid-row: 1; text-align: start; padding: 14px 16px; }
+    .modulex-sa-kartli .modulex-sa-step { padding: 20px 18px; }
+    .modulex-sa-kartli .modulex-sa-ok { display: flex; position: static; width: auto; height: auto; justify-content: center; margin-block-start: -4px; }
+    .modulex-sa-kartli .modulex-sa-ok .material-symbols-outlined { transform: rotate(90deg); }
+    [dir="rtl"] .modulex-sa-kartli .modulex-sa-ok .material-symbols-outlined { transform: rotate(90deg); }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-sa *, .modulex-sa *::before, .modulex-sa *::after { animation: none !important; transition: none !important; }
+    .modulex-sa-aktif .modulex-sa-no, .modulex-sa-kartli .modulex-sa-aktif { transform: none; }
+  }
+</style>
+
+<script>
+  /* Aktif adım: görünür alandaki en son adım aktif, öncekiler «geçti». IO yoksa sınıf eklenmez (düz görünüm). */
+  (function () {
+    var kok = document.getElementById("sa-{{id}}");
+    if (!kok || kok.getAttribute("data-sa-hazir") === "1") { return; }
+    kok.setAttribute("data-sa-hazir", "1");
+    if (!("IntersectionObserver" in window)) { return; }
+    var adimlar = kok.querySelectorAll(".modulex-sa-step");
+    var n = adimlar.length;
+    if (!n) { return; }
+    var gorunen = [];
+    var i;
+    for (i = 0; i < n; i++) { gorunen.push(false); }
+    function uygula() {
+      var son = -1;
+      var j;
+      for (j = 0; j < n; j++) { if (gorunen[j]) { son = j; } }
+      for (j = 0; j < n; j++) {
+        var c = adimlar[j].className.replace(/\s*modulex-sa-(aktif|gecti)\b/g, "");
+        if (son >= 0 && j < son) { c += " modulex-sa-gecti"; }
+        else if (j === son) { c += " modulex-sa-aktif"; }
+        adimlar[j].className = c;
+      }
+    }
+    var io = new IntersectionObserver(function (girdiler) {
+      var j;
+      for (j = 0; j < girdiler.length; j++) {
+        gorunen[parseInt(girdiler[j].target.getAttribute("data-sa-i"), 10)] = girdiler[j].isIntersecting;
+      }
+      uygula();
+    }, { threshold: 0.5 });
+    for (i = 0; i < n; i++) { adimlar[i].setAttribute("data-sa-i", String(i)); io.observe(adimlar[i]); }
+  })();
+</script>

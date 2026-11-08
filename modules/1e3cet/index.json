@@ -1,0 +1,82 @@
+{
+  "name": "Zigzag Özellik",
+  "description": "Görsel-metin sırası satır satır değişen (sol/sağ) özellik anlatımı: numara rozeti, h3, paragraf, mini CTA; görsel kenarında dekoratif çerçeve/gölge. Kaydırmada satırlar sırayla belirir (IntersectionObserver; reduced-motion ya da JS yoksa hep görünür). desing.stil: cerceve | yuzen | sade. RTL'de sıra kendiliğinden aynalanır. Veri: data[] = [{baslik{tr,en,ar}, metin{}, img, alt{}, url, ctaLabel{}?}]. Renkler yalnız token; koyu mod otomatik.",
+  "version": "1.0.0",
+  "icon": "view_agenda",
+  "category": "ozellik",
+  "tags": ["özellik", "zigzag", "features", "görsel-metin", "ar"],
+  "desing": {
+    "stil": "cerceve",
+    "max": "1200px",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "textcolor": "var(--mx-site-text, #1b1b1b)",
+    "mutedcolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 72%, var(--mx-site-bg, #ffffff))",
+    "surface": "var(--mx-site-surface, #f6f6f4)",
+    "surface2": "var(--mx-site-surface-2, #ececea)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bordercolor": "color-mix(in srgb, var(--mx-site-text, #1b1b1b) 16%, transparent)",
+    "radius": "20px",
+    "numara": true,
+    "eyebrow": {
+      "tr": "Neden biz?",
+      "en": "Why us?",
+      "ar": "لماذا نحن؟"
+    },
+    "title": {
+      "tr": "Farkımızı adım adım görün",
+      "en": "See what sets us apart, step by step",
+      "ar": "اكتشف ما يميّزنا خطوة بخطوة"
+    },
+    "description": {
+      "tr": "Her satırda bir özellik: ne yaptığımız, nasıl yaptığımız ve size ne kazandırdığı.",
+      "en": "One feature per row: what we do, how we do it and what it brings you.",
+      "ar": "ميزة في كل سطر: ما نقوم به، وكيف نقوم به، وما يعود به عليك."
+    },
+    "ctaLabel": {
+      "tr": "Daha fazla",
+      "en": "Read more",
+      "ar": "اقرأ المزيد"
+    }
+  },
+  "data": [
+    {
+      "baslik": { "tr": "Ölçülebilir sonuç", "en": "Measurable results", "ar": "نتائج قابلة للقياس" },
+      "metin": {
+        "tr": "Hedefleri baştan sayıya dökeriz; her ay neyin ne kadar ilerlediğini tek sayfalık raporla görürsünüz.",
+        "en": "We turn goals into numbers from day one; a one-page report shows you how far each item has moved every month.",
+        "ar": "نحوّل الأهداف إلى أرقام منذ البداية؛ وترى كل شهر مدى تقدّم كل بند في تقرير من صفحة واحدة."
+      },
+      "img": "",
+      "alt": { "tr": "Aylık ilerleme raporu", "en": "Monthly progress report", "ar": "تقرير التقدّم الشهري" },
+      "url": ""
+    },
+    {
+      "baslik": { "tr": "Size özel ekip", "en": "A team dedicated to you", "ar": "فريق مخصص لك" },
+      "metin": {
+        "tr": "Projenizi tanıyan sabit bir ekip çalışır; her görüşmede baştan anlatmak zorunda kalmazsınız.",
+        "en": "A fixed team that knows your project does the work; you never have to start from scratch in a meeting.",
+        "ar": "يعمل على مشروعك فريق ثابت يعرفه جيدًا؛ فلا تضطر إلى الشرح من البداية في كل اجتماع."
+      },
+      "img": "",
+      "alt": { "tr": "Proje ekibi", "en": "Project team", "ar": "فريق المشروع" },
+      "url": ""
+    },
+    {
+      "baslik": { "tr": "Şeffaf fiyat", "en": "Transparent pricing", "ar": "تسعير شفاف" },
+      "metin": {
+        "tr": "Teklifte yazmayan hiçbir kalem faturaya girmez; kapsam değişirse önce onayınızı alırız.",
+        "en": "Nothing that isn't in the quote ever lands on the invoice; if the scope changes, we get your approval first.",
+        "ar": "لا يُدرج في الفاتورة أي بند غير مذكور في العرض؛ وإذا تغيّر النطاق نحصل على موافقتك أولًا."
+      },
+      "img": "",
+      "alt": { "tr": "Şeffaf teklif", "en": "Transparent quote", "ar": "عرض سعر شفاف" },
+      "url": ""
+    }
+  ],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

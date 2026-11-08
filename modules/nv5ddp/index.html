@@ -1,0 +1,129 @@
+<section class="modulex-c3{{c3class}}" id="c3-{{id}}">
+  <div class="modulex-c3-wrap">
+    <div class="modulex-c3-kutu">
+      <span class="modulex-c3-daire modulex-c3-daire-1" aria-hidden="true"></span>
+      <span class="modulex-c3-daire modulex-c3-daire-2" aria-hidden="true"></span>
+      <span class="modulex-c3-daire modulex-c3-daire-3" aria-hidden="true"></span>
+      <div class="modulex-c3-icerik">
+        {{c3title}}
+        {{c3text}}
+        <div class="modulex-c3-btns">{{c3btns}}</div>
+      </div>
+      {{c3yan}}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Bant CTA (31 Eki 2026, G8-B). Zemin + yazı ÇİFT token (bgcolor/textcolor); gradient katmanı ve daireler ayrı öğe → metin
+     kontrastı düz zemine göre ölçülür. WhatsApp kartı opak yüzey (cardbg/cardtext). Koyu mod paletten. */
+  .modulex-c3 {
+    box-sizing: border-box;
+    width: 100%;
+    color: --textcolor--;
+  }
+  .modulex-c3 *, .modulex-c3 *::before, .modulex-c3 *::after { box-sizing: border-box; }
+  /* ham css.css `* { font-size:14px; font-weight:400 }` kalıtımı kırar → buton etiketi, numara (bdi) ebeveynden alır */
+  .modulex-c3 :where(span:not(.material-symbols-outlined), bdi, b, strong, em) { font: inherit; }
+  .modulex-c3-wrap { max-width: --max--; margin-inline: auto; }
+  .modulex-c3-kutu {
+    position: relative; overflow: hidden; isolation: isolate;
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 56px); align-items: center;
+    background: --bgcolor--;
+  }
+  /* Hafif gradient katmanı (metnin atası değil) */
+  .modulex-c3-kutu::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(135deg, transparent 0%, color-mix(in srgb, --textcolor-- 14%, transparent) 100%);
+  }
+  .modulex-c3-daire { position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; background: color-mix(in srgb, --textcolor-- 10%, transparent); }
+  .modulex-c3-daire-1 { width: 320px; height: 320px; inset-inline-end: -120px; inset-block-start: -140px; }
+  .modulex-c3-daire-2 { width: 200px; height: 200px; inset-inline-start: 38%; inset-block-end: -120px; background: color-mix(in srgb, --textcolor-- 7%, transparent); }
+  .modulex-c3-daire-3 { width: 90px; height: 90px; inset-inline-start: -30px; inset-block-start: 30%; border: 2px solid color-mix(in srgb, --textcolor-- 30%, transparent); background: transparent; }
+
+  .modulex-c3-icerik { position: relative; min-width: 0; text-align: start; }
+  .modulex-c3-title { margin: 0 0 14px; font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.8rem); line-height: 1.12; color: --textcolor--; text-wrap: balance; }
+  .modulex-c3-text { margin: 0 0 26px; max-width: 54ch; font-size: 1.08rem; line-height: 1.7; color: --mutedcolor--; }
+  .modulex-c3-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .modulex-c3 a.modulex-c3-btn, .modulex-c3 a.modulex-c3-btn:link, .modulex-c3 a.modulex-c3-btn:visited {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 13px 26px;
+    border-radius: 999px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  .modulex-c3 a.modulex-c3-btn-1, .modulex-c3 a.modulex-c3-btn-1:link, .modulex-c3 a.modulex-c3-btn-1:visited { background: --textcolor--; color: --bgcolor--; border-color: --textcolor--; }
+  .modulex-c3 a.modulex-c3-btn-2, .modulex-c3 a.modulex-c3-btn-2:link, .modulex-c3 a.modulex-c3-btn-2:visited { background: transparent; color: --textcolor--; border-color: --textcolor--; }
+  .modulex-c3 a.modulex-c3-btn:hover, .modulex-c3 a.modulex-c3-btn:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
+  .modulex-c3 a.modulex-c3-btn-1:hover { color: --bgcolor--; }
+  .modulex-c3 a.modulex-c3-btn-2:hover, .modulex-c3 a.modulex-c3-btn-2:focus-visible { background: color-mix(in srgb, --textcolor-- 14%, transparent); color: --textcolor--; }
+  .modulex-c3 a.modulex-c3-btn:focus-visible { outline: 3px solid --textcolor--; outline-offset: 3px; }
+  [dir="rtl"] .modulex-c3-btn .material-symbols-outlined { transform: scaleX(-1); }
+
+  /* Sağ sütun */
+  .modulex-c3-yan { position: relative; min-width: 0; }
+  .modulex-c3-kart {
+    position: relative; display: grid; gap: 14px; padding: 28px; border-radius: calc(--radius-- - 4px);
+    background: --cardbg--; color: --cardtext--; border: 1px solid --bordercolor--; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  }
+  .modulex-c3-kart-bas { display: flex; align-items: center; gap: 12px; }
+  .modulex-c3-wa-ikon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --bgcolor-- 14%, transparent); color: --bgcolor--; flex: 0 0 auto; }
+  .modulex-c3-wa-ikon svg { width: 26px; height: 26px; display: block; }
+  .modulex-c3-wa .modulex-c3-wa-ikon-kucuk { width: 24px; height: 24px; border-radius: 0; background: transparent; color: inherit; }
+  .modulex-c3-wa .modulex-c3-wa-ikon-kucuk svg { width: 22px; height: 22px; }
+  .modulex-c3-tek .modulex-c3-kutu { grid-template-columns: 1fr; }
+  .modulex-c3-kart-title { margin: 0; font-size: 1.05rem; font-weight: 700; color: --cardtext--; }
+  .modulex-c3 a.modulex-c3-num, .modulex-c3 a.modulex-c3-num:link, .modulex-c3 a.modulex-c3-num:visited { display: inline-block; font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); font-weight: 800; letter-spacing: 0.01em; color: --cardtext--; text-decoration: none; font-variant-numeric: tabular-nums; min-height: 44px; line-height: 44px; }
+  .modulex-c3 a.modulex-c3-num:hover, .modulex-c3 a.modulex-c3-num:focus-visible { color: --bgcolor--; text-decoration: underline; }
+  .modulex-c3-saat { display: flex; align-items: flex-start; gap: 8px; margin: 0; font-size: 0.92rem; line-height: 1.5; color: --cardmuted--; }
+  .modulex-c3-saat .material-symbols-outlined { font-size: 20px; flex: 0 0 auto; color: --bgcolor--; }
+  .modulex-c3-saat-etiket { font-weight: 600; color: --cardtext--; }
+  .modulex-c3 a.modulex-c3-wa, .modulex-c3 a.modulex-c3-wa:link, .modulex-c3 a.modulex-c3-wa:visited {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 20px; border-radius: 999px;
+    background: --bgcolor--; color: --textcolor--; font-weight: 700; text-decoration: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .modulex-c3 a.modulex-c3-wa:hover, .modulex-c3 a.modulex-c3-wa:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16); color: --textcolor--; }
+  .modulex-c3 a.modulex-c3-wa:focus-visible { outline: 3px solid --bgcolor--; outline-offset: 3px; }
+  .modulex-c3-gorsel { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: calc(--radius-- - 4px); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2); }
+  .modulex-c3-ill { position: relative; aspect-ratio: 4 / 3; border-radius: calc(--radius-- - 4px); border: 2px dashed color-mix(in srgb, --textcolor-- 40%, transparent); display: flex; align-items: center; justify-content: center; color: --textcolor--; }
+  .modulex-c3-ill .material-symbols-outlined { font-size: 96px; opacity: 0.55; }
+
+  /* ── Varyant: gradient (varsayılan) — tam genişlik bant, köşesiz */
+  .modulex-c3-gradient .modulex-c3-wrap { max-width: none; }
+  .modulex-c3-gradient .modulex-c3-kutu { padding-block: clamp(48px, 7vw, 96px); padding-inline: max(clamp(16px, 4vw, 32px), calc((100% - --max--) / 2)); }
+
+  /* ── Varyant: gorselli — gradient yok, sağ sütun tam yükseklik görsel/kart; sol metin */
+  .modulex-c3-gorselli .modulex-c3-wrap { max-width: none; }
+  .modulex-c3-gorselli .modulex-c3-kutu { gap: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
+  .modulex-c3-gorselli .modulex-c3-kutu::before { display: none; }
+  .modulex-c3-gorselli .modulex-c3-daire { display: none; }
+  .modulex-c3-gorselli .modulex-c3-icerik { padding-block: clamp(48px, 7vw, 96px); padding-inline-start: max(clamp(16px, 4vw, 32px), calc(50vw - --max-- / 2)); padding-inline-end: clamp(24px, 4vw, 56px); }
+  .modulex-c3-gorselli .modulex-c3-yan { display: flex; align-items: center; justify-content: center; }
+  .modulex-c3-gorselli .modulex-c3-gorsel { height: 100%; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+  .modulex-c3-gorselli .modulex-c3-kart, .modulex-c3-gorselli .modulex-c3-ill { margin: clamp(24px, 4vw, 56px); width: min(100% - 2 * clamp(24px, 4vw, 56px), 440px); }
+
+  /* ── Varyant: cerceveli-kart — sayfa zemini üstünde yüzen kart */
+  .modulex-c3-cerceveli-kart { padding-block: clamp(32px, 6vw, 80px); padding-inline: clamp(16px, 4vw, 32px); background: --pagebg--; }
+  .modulex-c3-cerceveli-kart .modulex-c3-kutu { padding: clamp(32px, 5vw, 64px); border-radius: --radius--; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22); }
+
+  @media (max-width: 1024px) {
+    .modulex-c3-kutu { grid-template-columns: 1fr; }
+    .modulex-c3-gorselli .modulex-c3-kutu { grid-template-columns: 1fr; }
+    .modulex-c3-gorselli .modulex-c3-icerik { padding-inline: clamp(16px, 4vw, 32px); order: 2; }
+    .modulex-c3-gorselli .modulex-c3-yan { order: 1; }
+    .modulex-c3-gorselli .modulex-c3-gorsel { aspect-ratio: 16 / 9; height: auto; }
+    .modulex-c3-gorselli .modulex-c3-kart, .modulex-c3-gorselli .modulex-c3-ill { margin: clamp(16px, 4vw, 32px) clamp(16px, 4vw, 32px) 0; width: auto; }
+  }
+  @media (max-width: 768px) {
+    .modulex-c3-gradient .modulex-c3-kutu { padding-block: 40px; }
+    .modulex-c3-cerceveli-kart { padding-block: 24px; padding-inline: 12px; }
+    .modulex-c3-cerceveli-kart .modulex-c3-kutu { padding: 28px 20px; }
+    .modulex-c3-btns { flex-direction: column; }
+    .modulex-c3 a.modulex-c3-btn { width: 100%; }
+    .modulex-c3-kart { padding: 20px; }
+    .modulex-c3-daire-1 { width: 200px; height: 200px; inset-inline-end: -90px; inset-block-start: -100px; }
+    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-c3 *, .modulex-c3 *::before, .modulex-c3 *::after { animation: none !important; transition: none !important; }
+    .modulex-c3 a:hover { transform: none; }
+  }
+</style>

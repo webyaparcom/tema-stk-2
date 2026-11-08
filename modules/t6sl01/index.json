@@ -1,0 +1,92 @@
+{
+  "name": "Slider Text",
+  "data": [
+    {
+      "bg": "1.webp",
+      "img": "",
+      "layout": "left",
+      "title": {
+        "tr": "Doğal Lezzetler",
+        "en": "Natural Flavors"
+      },
+      "description": {
+        "tr": "Kaliteli kuruyemiş ve doğal ürünlerle sofralarınıza lezzet katın.",
+        "en": "Add flavor to your table with premium nuts and natural products."
+      },
+      "button": {
+        "tr": "Ürünleri Keşfet",
+        "en": "Explore Products"
+      },
+      "link": "urunler"
+    },
+    {
+      "bg": "2.webp",
+      "img": "",
+      "layout": "right",
+      "title": {
+        "tr": "Geleneksel Üretim",
+        "en": "Traditional Production"
+      },
+      "description": {
+        "tr": "Yılların deneyimi ile seçilmiş taze ürünler.",
+        "en": "Fresh products selected with years of experience."
+      },
+      "button": {
+        "tr": "Hakkımızda",
+        "en": "About Us"
+      },
+      "link": "hakkimizda"
+    },
+    {
+      "bg": "3.webp",
+      "img": "",
+      "title": {
+        "tr": "Toptan Satış",
+        "en": "Wholesale"
+      },
+      "description": {
+        "tr": "İşletmeniz için uygun fiyatlı toptan çözümler.",
+        "en": "Affordable wholesale solutions for your business."
+      },
+      "button": {
+        "tr": "İletişime Geç",
+        "en": "Contact Us"
+      },
+      "link": "iletisim"
+    }
+  ],
+  "desing": {
+    "delay": 5000,
+    "height": "520px",
+    "max": "1200px",
+    "overlay": "0.45",
+    "align": "left",
+    "layout": "",
+    "titlecolor": "#ffffff",
+    "desccolor": "rgba(255, 255, 255, 0.88)",
+    "btncolor": "#ffffff",
+    "btnbg": "#0a58ca",
+    "border_radius": "8px",
+    "margin": "0",
+    "bgcolor": "#111111",
+    "prevLabel": {
+      "tr": "Önceki slayt",
+      "en": "Previous slide",
+      "ar": "الشريحة السابقة"
+    },
+    "nextLabel": {
+      "tr": "Sonraki slayt",
+      "en": "Next slide",
+      "ar": "الشريحة التالية"
+    }
+  },
+  "category": "slider",
+  "description": "Hero slider: bg arka plan, img on plan. layout: left (gorsel sol) veya right (gorsel sag); yoksa sirali alternatif. img yoksa metin ortada.",
+  "version": "2.3.2",
+  "icon": "view_carousel",
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

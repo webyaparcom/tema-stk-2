@@ -1,0 +1,43 @@
+{
+  "name": {
+    "tr": "Kalite Politikamız",
+    "en": "Quality Policy",
+    "ar": "سياسة الجودة"
+  },
+  "status": "play",
+  "id": "kalitepolitikamiz",
+  "path": "kalitepolitikamiz",
+  "category": "",
+  "text": {
+    "tr": "<h2>Kalite Politikamız</h2>\n<p>Şeffaf faaliyet raporu, kişisel verinin korunması, açık rıza ve gönüllü emeğine saygı çalışma ilkelerimizdir.</p>",
+    "en": "<h2>Our quality policy</h2>\n<p>A transparent activity report, protection of personal data, explicit consent and respect for volunteer effort are our working principles.</p>",
+    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>تقرير نشاط شفاف وحماية البيانات الشخصية والموافقة الصريحة واحترام جهد المتطوعين هي مبادئ عملنا.</p>"
+  },
+  "desing": {
+    "header": [],
+    "body": [
+      "27cdkj"
+    ],
+    "footer": []
+  },
+  "desc": {},
+  "index": 3,
+  "icon": "policy",
+  "title": {
+    "tr": "Kalite Politikamız",
+    "en": "Quality Policy",
+    "ar": "سياسة الجودة"
+  },
+  "description": {
+    "tr": "Kalite politikamız",
+    "en": "Our quality policy",
+    "ar": "سياسة الجودة لدينا"
+  },
+  "keyword": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "update": "2026-11-05T19:39:13.759Z",
+  "date": "2026-05-19"
+}

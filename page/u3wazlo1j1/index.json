@@ -1,0 +1,43 @@
+{
+  "id": "u3wazlo1j1",
+  "name": {
+    "tr": "Bağış Bilgisi",
+    "en": "Donation Information",
+    "ar": "معلومات التبرع"
+  },
+  "description": {
+    "tr": "Bağışçı hakları ve açık rıza metni; gerçek bağış alınmaz.",
+    "en": "Donor rights and explicit consent text; no real donations are taken.",
+    "ar": "حقوق المتبرعين ونص الموافقة الصريحة؛ ولا تُقبل تبرعات حقيقية."
+  },
+  "keyword": {
+    "tr": "bağış, bağışçı hakları",
+    "en": "donation, donor rights",
+    "ar": "تبرع، حقوق المتبرعين"
+  },
+  "path": "bagis-bilgisi",
+  "icon": "favorite",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "27cdkj"
+    ],
+    "footer": []
+  },
+  "index": 3,
+  "url": "",
+  "text": {
+    "tr": "<h2>Bağışçı hakları ve açık rıza</h2><p>Bağışçı bilgileri yalnızca bağış kaydı ve makbuz için kullanılır. Adınız, fotoğrafınız ve bağış tutarınız açık rızanız olmadan yayımlanmaz.</p><p>Bu demo sitede gerçek bir bağış alınmaz; forma yazdığınız bilgiler kaydedilmez.</p><p><em>Demo sitedir.</em></p>",
+    "en": "<h2>Donor rights and explicit consent</h2><p>Donor details are used only for donation records and receipts. Your name, photo and donation amount are not published without your explicit consent.</p><p>No real donation is taken on this demo site; what you type into forms is not stored.</p><p><em>This is a demo site.</em></p>",
+    "ar": "<h2>حقوق المتبرعين والموافقة الصريحة</h2><p>تُستخدم بيانات المتبرعين لسجل التبرعات والإيصالات فقط. لا يُنشر اسمك وصورتك ومبلغ تبرعك دون موافقتك الصريحة.</p><p>لا يُقبل أي تبرع حقيقي في هذا الموقع التجريبي، ولا تُحفظ المعلومات التي تكتبها في النماذج.</p><p><em>هذا موقع تجريبي.</em></p>"
+  },
+  "title": {
+    "tr": "Bağış Bilgisi",
+    "en": "Donation Information",
+    "ar": "معلومات التبرع"
+  },
+  "date": "2026-10-31T15:04:13.091Z",
+  "update": "2026-11-05T19:39:13.713Z"
+}
