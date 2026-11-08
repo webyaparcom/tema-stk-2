@@ -1,0 +1,59 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Toprak Kökleri Derneği: çevre ve fidan dikimi çalışmaları, gönüllülük ve şeffaf bağış bilgisi. (Demo site — gerçek bağış alınmaz)",
+    "en": "Toprak Kokleri Association: environment and tree-planting work, volunteering and transparent donation information. (Demo site — no real donations)",
+    "ar": "جمعية جذور التربة: أعمال البيئة وزراعة الأشجار والتطوع ومعلومات تبرع شفافة. (موقع تجريبي — لا تُقبل تبرعات حقيقية)"
+  },
+  "keyword": {
+    "tr": "dernek, bağış, gönüllü, çevre",
+    "en": "association, donation, volunteer, environment",
+    "ar": "جمعية، تبرع، متطوع، بيئة"
+  },
+  "category": "Kurumsal",
+  "name": "Toprak Kökleri Derneği",
+  "domain": "stk-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "icon": "icon.png",
+  "theme_color": "#B3561F",
+  "publishMode": "static",
+  "phone": "+90 342 000 00 00",
+  "email": "iletisim@toprakkokleri.example",
+  "address": "Cumhuriyet Mah. Dayanışma Sk. No: 6, Şahinbey, Gaziantep (kurgusal adres)",
+  "font": {
+    "body": "nunito-sans",
+    "heading": "nunito",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-kufi-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "14px",
+    "--mx-radius-md": "24px",
+    "--mx-radius-lg": "34px",
+    "--mx-radius-xl": "46px",
+    "--mx-shadow-md": "0 12px 32px rgba(0,0,0,.10)",
+    "--mx-dur": "200ms"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": {
+    "tr": "Misyon",
+    "en": "Mission",
+    "ar": "المهمة"
+  },
+  "status": "play",
+  "id": "misyon",
+  "path": "misyon",
+  "category": "",
+  "text": {
+    "tr": "<h2>Misyonumuz</h2>\n<p>Misyonumuz, gönüllülerle birlikte doğayı korumak ve çevre bilincini yaygınlaştırmaktır.</p>",
+    "en": "<h2>Our mission</h2>\n<p>Our mission is to protect nature together with volunteers and spread environmental awareness.</p>",
+    "ar": "<h2>مهمتنا</h2>\n<p>مهمتنا حماية الطبيعة مع المتطوعين ونشر الوعي البيئي.</p>"
+  },
+  "desing": {
+    "header": [],
+    "body": [
+      "27cdkj"
+    ],
+    "footer": []
+  },
+  "desc": {},
+  "index": 1,
+  "icon": "policy",
+  "title": {
+    "tr": "Misyon",
+    "en": "Mission",
+    "ar": "المهمة"
+  },
+  "description": {
+    "tr": "Misyonumuz",
+    "en": "Our mission",
+    "ar": "مهمتنا"
+  },
+  "keyword": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "update": "2026-11-05T19:39:13.757Z",
+  "date": "2026-05-19"
+}

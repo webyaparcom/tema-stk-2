@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "id": "wq3h62daul",
+      "name": {
+        "tr": "Faaliyetler",
+        "en": "Activities",
+        "ar": "الأنشطة"
+      },
+      "description": {
+        "tr": "Gönüllülerle yürüttüğümüz başlıca çalışmalar.",
+        "en": "The main work we carry out with volunteers.",
+        "ar": "أبرز الأعمال التي ننفذها مع المتطوعين."
+      },
+      "path": "faaliyetler",
+      "icon": "volunteer_activism",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "9kfwju",
+          "8475p5",
+          "q9axyj"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "id": "boi7jnne9j",
+      "name": {
+        "tr": "Gönüllü Ol",
+        "en": "Volunteer",
+        "ar": "تطوّع"
+      },
+      "description": {
+        "tr": "İlgi alanınızı ve uygun günü seçin; talebiniz bu demo sitede yalnızca tarayıcınızda oluşturulur. Kişisel veri kaydedilmez.",
+        "en": "Choose an interest and a convenient day; on this demo site your request is created only in your browser. No personal data is stored.",
+        "ar": "اختر اهتمامك واليوم المناسب؛ يُنشأ طلبك في متصفحك فقط. لا تُحفظ بيانات شخصية."
+      },
+      "path": "gonullu-ol",
+      "icon": "volunteer_activism",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "176996"
+        ],
+        "footer": []
+      },
+      "index": 1
+    },
+    {
+      "id": "koiq1pmm5z",
+      "name": {
+        "tr": "Şeffaflık",
+        "en": "Transparency",
+        "ar": "الشفافية"
+      },
+      "description": {
+        "tr": "Dernek kütük no, faaliyet özeti ve kişisel veri ilkesi.",
+        "en": "Registry number, activity summary and personal-data principle.",
+        "ar": "رقم السجل وملخص الأنشطة ومبدأ البيانات الشخصية."
+      },
+      "path": "seffaflik",
+      "icon": "visibility",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "27cdkj"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "id": "u3wazlo1j1",
+      "name": {
+        "tr": "Bağış Bilgisi",
+        "en": "Donation Information",
+        "ar": "معلومات التبرع"
+      },
+      "description": {
+        "tr": "Bağışçı hakları ve açık rıza metni; gerçek bağış alınmaz.",
+        "en": "Donor rights and explicit consent text; no real donations are taken.",
+        "ar": "حقوق المتبرعين ونص الموافقة الصريحة؛ ولا تُقبل تبرعات حقيقية."
+      },
+      "path": "bagis-bilgisi",
+      "icon": "favorite",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "27cdkj"
+        ],
+        "footer": []
+      },
+      "index": 3
+    },
+    {
+      "id": "lsq5xtuql3",
+      "name": {
+        "tr": "Galeri",
+        "en": "Gallery",
+        "ar": "المعرض"
+      },
+      "description": {
+        "tr": "Fidan, doğa ve etkinlik görüntüleri; kişi/çocuk yoktur.",
+        "en": "Saplings, nature and event images; no people or children.",
+        "ar": "صور الشتلات والطبيعة والفعاليات؛ دون أشخاص أو أطفال."
+      },
+      "path": "galeri",
+      "icon": "photo_library",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "bgir4c"
+        ],
+        "footer": []
+      },
+      "index": 4
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "اتصل بنا"
+      },
+      "status": "play",
+      "category": "",
+      "id": "xnzu5au0ag",
+      "url": "",
+      "path": "iletisim",
+      "index": 5,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "7getvl",
+          "8xk01d",
+          "f15mn4"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, telefon, e-posta ve çalışma saatleri.",
+        "en": "Address, phone, e-mail and opening hours.",
+        "ar": "العنوان والهاتف والبريد الإلكتروني وساعات العمل."
+      }
+    }
+  ],
+  "desc": [],
+  "desing": {
+    "header": [],
+    "body": [],
+    "footer": []
+  },
+  "modulestatus": {
+    "page": true,
+    "bgimg": true,
+    "detail": true,
+    "body": true
+  }
+}
