@@ -844,3 +844,4 @@
   @media (max-width: 480px) { .f0001-dk { font-size: 13px; } }
   @media (prefers-reduced-motion: reduce) { .f0001-dk-cta { transition: none; } .f0001-dk-cta:hover { gap: 4px; } }
 
+#header>header[class*="-m10"]:not([class*="-akista"]){top:var(--mx-demo-bandi-h,0px)}

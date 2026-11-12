@@ -31,7 +31,13 @@
         "logoimg": "",
         "langcolor": "currentColor",
         "langbg": "transparent",
-        "tekSatir": ""
+        "tekSatir": "",
+        "logoDark": "",
+        "duzen": "",
+        "ctaText": "",
+        "ctaHref": "",
+        "temaDugmesi": "",
+        "temaAnahtar": ""
       },
       "version": "1.0.0",
       "icon": "menu"
@@ -535,6 +541,12 @@
           "tr": "(yeni sekmede açılır)",
           "en": "(opens in a new tab)",
           "ar": "(يفتح في علامة تبويب جديدة)"
+        },
+        "girisHref": "",
+        "girisText": {
+          "tr": "Üye Girişi",
+          "en": "Login",
+          "ar": "تسجيل الدخول"
         }
       },
       "id": "xsg27y",
@@ -929,14 +941,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -966,14 +978,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -1003,14 +1015,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -1040,14 +1052,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -1077,14 +1089,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -1114,14 +1126,14 @@
           },
           "maddeler": [
             {
-              "tr": "Gönüllü görevleri her yaşa uygun",
-              "en": "Volunteer roles for all ages",
-              "ar": "مهام تطوعية لكل الأعمار"
+              "tr": "Katılım için üyelik gerekmez",
+              "en": "No membership needed to join",
+              "ar": "لا يلزم أن تكون عضوًا للمشاركة"
             },
             {
-              "tr": "Çocuk fotoğrafı paylaşılmaz",
-              "en": "No photos of children are shared",
-              "ar": "لا تُشارَك صور الأطفال"
+              "tr": "Eldiven, torba ve fidan dernekten",
+              "en": "Gloves, bags and saplings provided",
+              "ar": "القفازات والأكياس والشتلات متوفرة"
             },
             {
               "tr": "Etkinlik takvimi ayda bir duyurulur",
@@ -1509,24 +1521,24 @@
           "icon": "how_to_vote"
         },
         {
-          "number": 3,
+          "number": 4,
           "suffix": "",
           "label": {
-            "tr": "Site dili",
-            "en": "Site languages",
-            "ar": "لغات الموقع"
+            "tr": "Yıllık fidan dikim etkinliği (demo değeri)",
+            "en": "Tree-planting events a year (demo figure)",
+            "ar": "فعاليات زراعة الأشجار سنويًا (قيمة تجريبية)"
           },
-          "icon": "translate"
+          "icon": "park"
         },
         {
-          "number": 1,
+          "number": 12,
           "suffix": "",
           "label": {
-            "tr": "Şeffaflık sayfası",
-            "en": "Transparency page",
-            "ar": "صفحة شفافية"
+            "tr": "Yıllık temizlik günü (demo değeri)",
+            "en": "Clean-up days a year (demo figure)",
+            "ar": "أيام التنظيف سنويًا (قيمة تجريبية)"
           },
-          "icon": "visibility"
+          "icon": "cleaning_services"
         }
       ],
       "category": "stats",
@@ -1607,36 +1619,36 @@
           "ikon": "how_to_vote"
         },
         {
-          "deger": 3,
+          "deger": 4,
           "onek": "",
           "sonek": "",
           "etiket": {
-            "tr": "Site dili",
-            "en": "Site languages",
-            "ar": "لغات الموقع"
+            "tr": "Yıllık fidan dikim etkinliği (demo değeri)",
+            "en": "Tree-planting events a year (demo figure)",
+            "ar": "فعاليات زراعة الأشجار سنويًا (قيمة تجريبية)"
           },
           "aciklama": {
             "tr": "",
             "en": "",
             "ar": ""
           },
-          "ikon": "translate"
+          "ikon": "park"
         },
         {
-          "deger": 1,
+          "deger": 12,
           "onek": "",
           "sonek": "",
           "etiket": {
-            "tr": "Şeffaflık sayfası",
-            "en": "Transparency page",
-            "ar": "صفحة شفافية"
+            "tr": "Yıllık temizlik günü (demo değeri)",
+            "en": "Clean-up days a year (demo figure)",
+            "ar": "أيام التنظيف سنويًا (قيمة تجريبية)"
           },
           "aciklama": {
             "tr": "",
             "en": "",
             "ar": ""
           },
-          "ikon": "visibility"
+          "ikon": "cleaning_services"
         }
       ],
       "id": "fj1ccb",
