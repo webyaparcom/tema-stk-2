@@ -395,6 +395,25 @@
       transition: none !important;
     }
   }
+
+  /* Mobil uygulama kuralı (12 Kas 2026): CTA hedefi >= 48px; sayfalama noktaları ::after ile 48px dokunma alanı (görünüm aynı). Yalnız <=768px. */
+  @media (max-width: 768px) {
+    a.modulex-textslide-btn,
+    .modulex-textslide-btn {
+      min-height: 48px;
+      box-sizing: border-box;
+    }
+
+    .swiper-pagination-bullet {
+      position: relative;
+    }
+
+    .swiper-pagination-bullet::after {
+      content: "";
+      position: absolute;
+      inset: -18px;
+    }
+  }
 </style>
 
 <script>

@@ -25,7 +25,7 @@
     "l81w0n"
   ],
   "headtop": "",
-  "headbottom": "",
+  "headbottom": "<style id=\"wy-demo-bandi-menu\">#header>header[class*=\"-m10\"]:not([class*=\"-akista\"]){top:var(--mx-demo-bandi-h,0px)}</style>",
   "colors": {
     "lite": [
       {
