@@ -225,6 +225,7 @@ try {
       open: { tr: "Menüyü aç", en: "Open menu", ar: "فتح القائمة", de: "Menü öffnen", es: "Abrir menú" },
       close: { tr: "Menüyü kapat", en: "Close menu", ar: "إغلاق القائمة", de: "Menü schließen", es: "Cerrar menú" }
     };
+    /* Yedek (eski çalıştırıcı): yerel adlar artık dil kataloğundan — wmLangInfo (services/webmaker/langKatalog.js, G1) */
     var M2K_DIL = { tr: "Türkçe", en: "English", ar: "العربية", de: "Deutsch", ru: "Русский", es: "Español", fr: "Français", it: "Italiano", ja: "日本語", zh: "中文", ko: "한국어", pt: "Português" };
     var m2kChev = '<svg class="m2k-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>';
     var m2kCur = function (slug) { return slug === currentPagePath ? ' aria-current="page"' : ""; };
@@ -268,7 +269,7 @@ try {
       var m2kAktif = (m2kDiller.filter(function (l) { return l.active; })[0] || { code: json.lang || "tr" }).code;
       var m2kLi = m2kDiller.map(function (l) {
         return "<li><a" + (l.active ? ' aria-current="true"' : "") + ' href="' + l.href + '" hreflang="' + l.code + '" lang="' + l.code + '"><span class="m2k-lcode">' +
-          l.code.toUpperCase() + "</span><span>" + m2kEsc(M2K_DIL[l.code] || l.code) + "</span></a></li>";
+          l.code.toUpperCase() + "</span><span>" + m2kEsc(typeof wmLangInfo === "function" ? wmLangInfo(l.code).yerel : (M2K_DIL[l.code] || l.code)) + "</span></a></li>";
       }).join("");
       m2kLangDrop = '<div class="m2k-lang"><button type="button" class="m2k-lang-btn" aria-expanded="false" aria-haspopup="true" aria-label="' + m2kEsc(m2kTx(M2KT.lang)) + '">' +
         '<span class="m2k-lang-code">' + m2kEsc(m2kAktif.toUpperCase()) + "</span>" + m2kChev + '</button><ul class="m2k-lang-list">' + m2kLi + "</ul></div>";

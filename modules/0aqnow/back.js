@@ -1,96 +1,102 @@
-/* testimonial-3 — Yorum karuseli (31 Eki 2026, G8-C).
-   Yer tutucular: t3stil t3head t3slides t3dots t3veri t3ctrlclass. data[] = {name, role{}, company, text{}, rating, img, logo}.
-   Yıldız puanı hem görsel (ikon) hem metin (aria-label) olarak verilir; renk tek başına bilgi taşımaz. */
-var t3D = json.desing || {};
-var t3L = json.lang || "tr";
-function t3T(v) { return wmPickLang(v, t3L); }
-function t3Esc(s) {
-  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-function t3Url(v) {
-  var s = String(v == null ? "" : v).trim();
-  if (!s || /^\s*(javascript|vbscript|file):/i.test(s)) { return ""; }
-  if (/^data:/i.test(s)) { return /^data:image\//i.test(s) ? s : ""; }
-  if (s.charAt(0) === "/" || /^https?:\/\//i.test(s)) { return s; }
-  return "/img/" + json.id + "/" + s;
-}
-function t3Bool(v, d) {
-  if (v === undefined || v === null || v === "") { return d; }
-  return !(v === false || v === "false" || v === 0 || v === "0");
-}
-function t3Bas(ad) {
-  var p = String(ad || "").trim().split(/\s+/);
-  var b = "";
-  for (var i = 0; i < p.length && b.length < 2; i++) { if (p[i]) { b += p[i].charAt(0).toUpperCase(); } }
-  return b;
-}
-
-var t3Stil = String(t3D.stil || "kart-karusel").trim();
-if (t3Stil !== "kart-karusel" && t3Stil !== "buyuk-alinti" && t3Stil !== "masonry") { t3Stil = "kart-karusel"; }
-var t3Items = Array.isArray(json.data) ? json.data : [];
-var t3N = 0;
-var t3Slides = "";
-var t3SlideTpl = t3T(t3D.slideLabel);
-var t3RateTpl = t3T(t3D.ratingLabel);
-for (var t3i = 0; t3i < t3Items.length; t3i++) {
-  var it = t3Items[t3i] || {};
-  var ad = t3T(it.name).trim();
-  var metin = t3T(it.text).trim();
-  if (!metin) { continue; }
-  t3N++;
-  var rol = t3T(it.role).trim();
-  var firma = t3T(it.company).trim();
-  var puan = parseInt(it.rating, 10);
-  if (!isFinite(puan)) { puan = 0; }
-  puan = Math.max(0, Math.min(5, puan));
-  var img = t3Url(it.img);
-  var logo = t3Url(it.logo);
-
-  var yildiz = "";
-  if (puan > 0) {
-    yildiz = '<span class="modulex-t3__stars" role="img" aria-label="' + t3Esc(t3RateTpl.replace(/\{n\}/g, String(puan))) + '">';
-    for (var s = 1; s <= 5; s++) {
-      yildiz += '<span class="material-symbols-outlined modulex-t3__star' + (s <= puan ? " modulex-t3__star--on" : "") + '" aria-hidden="true">star</span>';
-    }
-    yildiz += "</span>";
+/* yorum-yapiskan-yigin — Yorum Yapışkan Yığın — kaydırdıkça üst üste binen kartlar (15 Kas 2026 · mcp:webmaker/20261115-224259-bpa9 · D17).
+   Geniş yatay kartlar kaydırırken ekranın üstüne yapışıp birbirinin üstüne kademeli biner; kartın bir yanında kişi + puan, diğer yanında alıntı; renkler dönüşümlü.
+   Üretici: scripts/modul-fabrika (aile testimonial) — elle düzenleme yerine tanımı değiştirip yeniden üret.
+   Veri: data: [{ metin (yorum), ad, unvan?, firma?, puan? (1–5), img? (avatar), logo?, baslik?, tarih?, kaynak? }] — metinler dil sözlüğü; yorumsuz satır atlanır. */
+const P = "modulex-yorum-yapiskan-yigin";
+const IMG_KOK = `/img/${json.id}/`;
+/* --- ortak ön ek (scripts/modul-fabrika/on-ek.js) — dil · güvenlik · sayı yardımcıları --- */
+const pick = (v) => {
+  if (v == null) return "";
+  if (typeof v !== "object") return String(v);
+  if (typeof wmPickLang === "function") { try { return wmPickLang(v, json.lang) || ""; } catch (e) { /* alt satır */ } }
+  return String(v[json.lang] ?? Object.values(v)[0] ?? "");
+};
+const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const medyaUrl = (v) => {
+  const s = String(v ?? "").trim();
+  if (!s || /^\s*(javascript|vbscript|file):/i.test(s)) return "";
+  if (/^data:/i.test(s)) return /^data:(image|video|audio)\//i.test(s) ? s : "";
+  if (s.startsWith("/") || /^https?:\/\//i.test(s)) return s;
+  return `${IMG_KOK}${s}`;
+};
+const href = (v) => {
+  const s = String(v ?? "").trim();
+  if (!s || /^\s*(javascript|vbscript|data):/i.test(s)) return "";
+  if (/^(https?:)?\/\//i.test(s) || /^(mailto:|tel:|#)/i.test(s)) return s;
+  return wxLangInternalHref(s);
+};
+const dogru = (v, d) => (v === undefined || v === null || v === "") ? d : !(v === false || v === "false" || v === 0 || v === "0");
+const ikonAd = (v) => String(v ?? "").trim().replace(/[^a-z0-9_]/gi, "");
+const satirlar = (s) => esc(s).replace(/\r?\n/g, "<br />");
+/* ilk dolu alan: yeni ad önce, eski kuşak şablonun adı yedek (G6 yalnız path değiştirerek takas eder) */
+const ilk = (o, ks) => {
+  for (const k of ks) {
+    const v = o == null ? undefined : o[k];
+    if (v == null || v === "") continue;
+    if (typeof v === "object" && !Array.isArray(v) && !Object.keys(v).length) continue;
+    return v;
   }
-  var avatar = img
-    ? '<img class="modulex-t3__avatar" src="' + t3Esc(img) + '" alt="" width="56" height="56" loading="lazy" decoding="async" />'
-    : '<span class="modulex-t3__avatar modulex-t3__avatar--bas" aria-hidden="true">' + t3Esc(t3Bas(ad)) + "</span>";
-  var alt = (rol && firma) ? rol + " · " + firma : (rol || firma);
-
-  t3Slides += '<li class="modulex-t3__slide" role="group" aria-roledescription="slide" aria-label="' + t3Esc(t3SlideTpl.replace(/\{i\}/g, String(t3N)).replace(/\{n\}/g, "__T3N__")) + '">' +
-    '<article class="modulex-t3__card">' +
-      /* üst satır: yıldızlar + alıntı ikonu akış içinde (mutlak konum RTL'de yıldızlarla çakışıyordu) */
-      '<div class="modulex-t3__top">' + yildiz + '<span class="modulex-t3__q material-symbols-outlined" aria-hidden="true">format_quote</span></div>' +
-      '<blockquote class="modulex-t3__text"><p>' + t3Esc(metin) + "</p></blockquote>" +
-      '<footer class="modulex-t3__person">' + avatar +
-        '<div class="modulex-t3__who">' + (ad ? '<cite class="modulex-t3__name">' + t3Esc(ad) + "</cite>" : "") + (alt ? '<span class="modulex-t3__role">' + t3Esc(alt) + "</span>" : "") + "</div>" +
-        (logo ? '<img class="modulex-t3__logo" src="' + t3Esc(logo) + '" alt="' + t3Esc(firma) + '" height="28" loading="lazy" decoding="async" />' : "") +
-      "</footer>" +
-    "</article></li>";
-}
-t3Slides = t3Slides.replace(/__T3N__/g, String(t3N));
-
-var t3Title = t3T(t3D.title);
-var t3Desc = t3T(t3D.description);
-var t3Head = (t3Title || t3Desc)
-  ? '<header class="modulex-t3__head">' + (t3Title ? '<h2 class="modulex-t3__title">' + t3Esc(t3Title) + "</h2>" : "") + (t3Desc ? '<p class="modulex-t3__desc">' + t3Esc(t3Desc) + "</p>" : "") + "</header>"
-  : "";
-
-var t3Interval = parseInt(t3D.interval, 10);
-if (!isFinite(t3Interval) || t3Interval < 2000) { t3Interval = 5000; }
-var t3Veri = JSON.stringify({
-  stil: t3Stil,
-  autoplay: t3Bool(t3D.autoplay, true) && t3Stil !== "masonry",
-  interval: t3Interval,
-  dot: t3T(t3D.dotLabel),
-  pause: t3T(t3D.pauseLabel),
-  play: t3T(t3D.playLabel)
-}).replace(/</g, "\\u003c");
-
-html = html.replace(/\{\{t3stil\}\}/g, function () { return t3Stil; });
-html = html.replace(/\{\{t3head\}\}/g, function () { return t3Head; });
-html = html.replace(/\{\{t3slides\}\}/g, function () { return t3Slides; });
-html = html.replace(/\{\{t3ctrlclass\}\}/g, function () { return (t3Stil === "masonry" || t3N < 2) ? " modulex-t3__ctrl--yok" : ""; });
-html = html.replace(/\{\{t3veri\}\}/g, function () { return t3Veri; });
+  return "";
+};
+const metinAl = (o, ks) => pick(ilk(o, ks)).trim();
+const { desing: des = {} } = json;
+const setting = webmakerdata?.setting ?? {};
+const veri = Array.isArray(json.data) ? json.data : [];
+const dil = String(json.lang || "");
+const sayiBicim = (v, ondalik) => {
+  try { return new Intl.NumberFormat(dil || undefined, { minimumFractionDigits: ondalik, maximumFractionDigits: ondalik }).format(v); } catch (e) { return String(v); }
+};
+const ikonH = (ad, sinif) => (ad ? `<span class="${sinif} material-symbols-outlined" aria-hidden="true">${ad}</span>` : "");
+const no = (i) => String(i + 1).padStart(2, "0");
+const ctaHtml = () => {
+  const a1 = metinAl(des, ["cta_ad", "button"]); const u1 = href(ilk(des, ["cta_url", "buttonurl", "url"]));
+  const a2 = metinAl(des, ["cta2_ad"]); const u2 = href(ilk(des, ["cta2_url"]));
+  const d = (a, u, ek) => (a && u ? `<a class="${P}-dugme${ek}" href="${esc(u)}">${esc(a)}<span class="material-symbols-outlined mx-flip" aria-hidden="true">arrow_forward</span></a>` : "");
+  const ic = d(a1, u1, "") + d(a2, u2, ` ${P}-dugme--ikincil`);
+  return ic ? `<div class="${P}-cta">${ic}</div>` : "";
+};
+const basHtml = (B, ek) => {
+  if (!B.ust && !B.baslik && !B.metin && !ek) return "";
+  return `<header class="${P}-bas">`
+    + (B.ust ? `<p class="${P}-ust">${esc(B.ust)}</p>` : "")
+    + (B.baslik ? `<h2 class="${P}-baslik" id="${P}-{{id}}-b">${esc(B.baslik)}</h2>` : "")
+    + (B.metin ? `<p class="${P}-metin">${satirlar(B.metin)}</p>` : "")
+    + (ek || "")
+    + "</header>";
+};
+/* --- aile: testimonial --- */
+const kayitlar = veri.map((o) => {
+  const p = parseFloat(ilk(o, ["puan", "rating", "yildiz", "stars"]));
+  return {
+    metin: metinAl(o, ["metin", "alinti", "text", "yorum", "quote"]), ad: metinAl(o, ["ad", "name"]),
+    unvan: metinAl(o, ["unvan", "role", "rol"]), firma: metinAl(o, ["firma", "company"]), baslik: metinAl(o, ["baslik", "title"]),
+    tarih: metinAl(o, ["tarih", "date"]), kaynak: metinAl(o, ["kaynak", "source"]),
+    puan: Number.isFinite(p) ? Math.max(0, Math.min(5, Math.round(p))) : 0,
+    img: medyaUrl(ilk(o, ["img", "image", "avatar", "foto"])), logo: medyaUrl(ilk(o, ["logo"])),
+  };
+}).filter((k) => k.metin);
+const buyuk = (s) => { try { return s.toLocaleUpperCase(dil || undefined); } catch (e) { return s.toUpperCase(); } };
+const basHarf = (ad) => buyuk(String(ad || "").split(/\s+/).filter(Boolean).slice(0, 2).map((x) => [...x][0] || "").join(""));
+const altYazi = (k) => [k.unvan, k.firma].filter(Boolean).join(" · ");
+/* puan: görsel yıldız (süs) + metin karşılığı aria-label (renk tek başına bilgi taşımaz) */
+const yildizH = (k, s, t) => (k.puan ? `<${t || "p"} class="${P}-${s || "puan"}" role="img" aria-label="${k.puan}/5">${[1, 2, 3, 4, 5].map((i) => `<span class="material-symbols-outlined${i > k.puan ? ` ${P}-yildiz--bos` : ""}" aria-hidden="true">star</span>`).join("")}</${t || "p"}>` : "");
+const avatarH = (k, s) => (k.img ? `<img class="${P}-${s || "avatar"}" src="${esc(k.img)}" alt="" width="96" height="96" loading="lazy" decoding="async" />` : `<span class="${P}-${s || "avatar"} ${P}-harf" aria-hidden="true">${esc(basHarf(k.ad) || "“")}</span>`);
+const kisiH = (k, s) => (k.ad || altYazi(k) ? `<span class="${P}-${s || "kisi"}">${k.ad ? `<strong class="${P}-ad">${esc(k.ad)}</strong>` : ""}${altYazi(k) ? `<span class="${P}-unvan">${esc(altYazi(k))}</span>` : ""}</span>` : "");
+const alintiH = (k, s) => `<blockquote class="${P}-${s || "alinti"}"><p>${satirlar(k.metin)}</p></blockquote>`;
+const yazarH = (k, s, av) => (k.ad || altYazi(k) ? `<figcaption class="${P}-${s || "yazar"}">${av === false ? "" : avatarH(k)}${kisiH(k)}</figcaption>` : "");
+const logoH = (k, s) => (k.logo ? `<img class="${P}-${s || "logo"}" src="${esc(k.logo)}" alt="${esc(k.firma)}" width="160" height="60" loading="lazy" decoding="async" />` : "");
+/* --- modül: yorum-yapiskan-yigin --- */
+const kart = (k, i) => `<li class="${P}-kart" style="--i: ${i}"><figure class="${P}-ic-kart"><figcaption class="${P}-kimlik">${avatarH(k)}${kisiH(k)}${yildizH(k, "", "span")}</figcaption>${alintiH(k)}</figure></li>`;
+const sar = (ic) => `<ol class="${P}-deste">${ic}</ol>`;
+const B = { ust: metinAl(des, ["ust","badge","kicker"]), baslik: metinAl(des, ["baslik","title"]), metin: metinAl(des, ["metin","description"]) };
+/* veri yoksa gövde hiç kurulmaz (sarmalayıcı boş listeye dokunmaz) */
+const BOS = !kayitlar.length;
+const govde = BOS ? "" : sar(kayitlar.map((k, i) => kart(k, i, kayitlar.length, kayitlar)).join(""), kayitlar, B);
+const bas = basHtml(B, "");
+const sinif = (bas || B.ust || B.baslik || B.metin ? "" : ` ${P}--bassiz`);
+html = html
+  .replaceAll("{{fbsinif}}", () => sinif)
+  .replaceAll("{{fbetiket}}", () => (B.baslik ? `aria-labelledby="${P}-{{id}}-b"` : ""))
+  .replaceAll("{{fbbas}}", () => bas)
+  .replaceAll("{{fbgovde}}", () => govde);
+if (BOS) html = "";

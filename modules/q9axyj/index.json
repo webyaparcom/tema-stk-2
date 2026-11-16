@@ -1,41 +1,62 @@
 {
-  "name": "CTA Şerit 1",
-  "desing": {
-    "stil": "",
-    "max": "1200px",
-    "gradient": "linear-gradient(135deg, #1e3046 0%, #2a4560 100%)",
-    "btnbg": "#ffffff",
-    "btncolor": "#0B3A6E",
-    "title": {
-      "tr": "Projenizi Birlikte Hayata Geçirelim",
-      "en": "Let's Bring Your Project to Life",
-      "ar": "لنحقق مشروعكم معاً"
-    },
-    "description": {
-      "tr": "Ücretsiz keşif görüşmesi için hemen iletişime geçin.",
-      "en": "Contact us now for a free discovery call.",
-      "ar": "تواصلوا معنا الآن لجلسة استكشاف مجانية."
-    },
-    "btn1Text": {
-      "tr": "İletişime Geç",
-      "en": "Contact Us",
-      "ar": "تواصل معنا"
-    },
-    "btn1Url": "iletisim",
-    "btn2Text": {
-      "tr": "Ürünler / Hizmetler",
-      "en": "Products / Services",
-      "ar": "المنتجات / الخدمات"
-    },
-    "btn2Url": "urunler"
-  },
+  "name": "Çağrı İki Yol — iki büyük seçenek kartı",
+  "description": "Ortalı başlığın altında her düğme büyük bir seçenek kartıdır (birincil dolu, ikincil çizgili), okla birlikte; tek düğmede tek geniş kart. Ziyaretçiye iki yol sunar (ör. teklif al / hizmetleri incele) — düğme satırı değil karar kartları. Metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Başlık da düğme de yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "alt_route",
   "category": "cta",
-  "description": "Harekete geçirici çağrı (CTA) şerit modülü. Gradient arka plan üzerinde başlık, açıklama ve iki buton gösterir. Buton URL'leri dil öneki olmadan pathnext (iletisim, urunler) — site routing ekler. Çok dilli metin ve animasyonlu giriş içerir. Görsel varyant desing.stil (31 Eki 2026): \"\" klasik (gradient anahtarı tam genişlik bant, bugünkü görünüm) · \"gradient\" (token gradient primary→koyu, yuvarlak köşeli iç bant, ortalı yığın, ışık daireleri, hap düğmeler) · \"kart-yuzen\" (sayfa zemininde yüzen yüzey kartı, dekoratif primary daireler, sol vurgu çizgisi). Varyant renkleri yalnız var(--mx-site-*) token çiftleri.",
-  "version": "1.2.0",
-  "icon": "campaign",
+  "subCategory": "two-paths",
+  "tags": [
+    "cta",
+    "choice",
+    "cards",
+    "paths",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "btn1Text": "",
+    "btn1Url": "",
+    "btn2Text": "",
+    "btn2Url": "",
+    "img": "",
+    "alt": "",
+    "ikon": "",
+    "not": "",
+    "number": "",
+    "numberText": "",
+    "waLabel": "",
+    "waTitle": "",
+    "waMessage": "",
+    "hours": "",
+    "hoursLabel": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "yaziRenk": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
   "veri": {
     "statik": true,
     "dinamik": false,
-    "kaynak": "desing/data"
+    "kaynak": "desing",
+    "alanlar": {
+      "ikon": "Material Symbols adı (madde)",
+      "baslik": "dil sözlüğü (madde yazısı, zorunlu)",
+      "aciklama": "dil sözlüğü (madde alt yazısı)"
+    }
   }
 }

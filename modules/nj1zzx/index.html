@@ -1,204 +1,148 @@
-<footer class="modulex-f10 modulex-f10--{{f10stil}}" role="contentinfo" id="f10-{{id}}">
-  {{f10band}}
-  <div class="modulex-f10__main modulex-f10__main--c{{f10cols}}">
-    <div class="modulex-f10__col modulex-f10__brand">
-      <a href="/{{lang}}/" class="modulex-f10__logo" aria-label="@home@ - {{web-name}}">
-        <img src="/img/{{logo}}" alt="{{web-name}} Logo" loading="lazy" />
-      </a>
-      <p class="modulex-f10__about">{{about}}</p>
-      {{f10social}}
-    </div>
-    <nav class="modulex-f10__col modulex-f10__pages" aria-label="@navigation@">
-      <h3 class="modulex-f10__title">{{title_pages}}</h3>
-      <ul class="modulex-f10__list">{{f10pages}}</ul>
-    </nav>
-    {{f10services}}
-    {{f10contact}}
-    {{f10hours}}
+<footer class="modulex-alt-sertifika{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-alt-sertifika-ic">
+    {{fbbas}}
+    {{fbgovde}}
   </div>
-  <div class="modulex-f10__bottom">
-    <p class="modulex-f10__rights">&copy; {{year}} {{web-name}}. {{rightsText}}</p>
-    {{f10legal}}
-    <div class="modulex-f10__bottomend">
-      {{langbar}}
-      <button type="button" class="modulex-f10__top" aria-label="{{topLabel}}" title="{{topLabel}}"><span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span></button>
-    </div>
-  </div>
-  <script type="application/json" id="f10-{{id}}-veri">{{f10veri}}</script>
 </footer>
 
 <style>
-  /* footer-10 — Mega footer, CTA bantlı (31 Eki 2026, G8-C). Renkler yalnız desing anahtarı. koyu varyant: koyubg/koyutext çifti
-     (zemin marka rengiyle tonlanmış, her zaman koyu); acik + gradient-ust: acikbg/aciktext (site paleti, koyu mod token'dan). */
-  .modulex-f10 { width: 100%; box-sizing: border-box; padding-inline: 20px; padding-block: 0 20px; color: --aciktext--; background: --acikbg--; }
-  .modulex-f10--koyu { color: --koyutext--; background: --koyubg--; }
-  .modulex-f10 *, .modulex-f10 *::before, .modulex-f10 *::after { box-sizing: border-box; }
-  /* soluk/kenar tonu doğrudan metin anahtarından (currentColor iç içe öğede iki kez solup 3,6:1'e düşüyordu) */
-  .modulex-f10 { --f10-muted: color-mix(in srgb, --aciktext-- 74%, transparent); --f10-border: color-mix(in srgb, --aciktext-- 18%, transparent); }
-  .modulex-f10--koyu { --f10-muted: color-mix(in srgb, --koyutext-- 74%, transparent); --f10-border: color-mix(in srgb, --koyutext-- 18%, transparent); }
+  /* alt-sertifika — Footer bir diploma/sertifika gibi çerçevelenir: köklü, resmî, prestijli izlenim; simetrik ve serif başlıklı. */
+  .modulex-alt-sertifika { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-alt-sertifika *, .modulex-alt-sertifika *::before, .modulex-alt-sertifika *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-alt-sertifika :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-alt-sertifika :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-alt-sertifika :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-alt-sertifika :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-alt-sertifika img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-alt-sertifika) img { height: auto; }
+  .modulex-alt-sertifika [hidden] { display: none !important; }
+  .modulex-alt-sertifika :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-alt-sertifika :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-alt-sertifika-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-alt-sertifika-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-alt-sertifika--bassiz .modulex-alt-sertifika-bas { display: none; }
+  .modulex-alt-sertifika-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-alt-sertifika-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-alt-sertifika-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-alt-sertifika-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-alt-sertifika-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-alt-sertifika-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-sertifika-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-alt-sertifika-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-alt-sertifika-dugme .material-symbols-outlined { font-size: 20px; }
 
-  /* === bülten / CTA bandı === */
-  .modulex-f10__band { max-width: 1200px; margin-inline: auto; padding-block: 36px 0; }
-  .modulex-f10__bandin {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px 48px; align-items: center;
-    padding: clamp(24px, 3.5vw, 40px); border-radius: --radius--;
-    background: --accent--; color: --accentText--;
-  }
-  .modulex-f10__bandtitle { margin: 0 0 6px; font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem); line-height: 1.25; color: inherit; }
-  .modulex-f10__bandp { margin: 0; color: inherit; opacity: 0.9; line-height: 1.6; }
-  .modulex-f10__nlform { display: flex; flex-direction: column; gap: 8px; }
-  .modulex-f10__nllabel { font-size: 0.9rem; font-weight: 600; color: inherit; }
-  .modulex-f10__nlrow { display: flex; gap: 8px; }
-  .modulex-f10__nlinput {
-    flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 12px 14px;
-    border: 1px solid color-mix(in srgb, --accentText-- 40%, transparent); border-radius: calc(--radius-- * 0.6);
-    background: --acikbg--; color: --aciktext--; font: inherit; font-size: 1rem;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .modulex-f10__nlinput:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, --accentText-- 55%, transparent); }
-  .modulex-f10__nlinput[aria-invalid="true"] { border-color: --errcolor--; box-shadow: 0 0 0 3px color-mix(in srgb, --errcolor-- 40%, transparent); }
-  .modulex-f10__nlbtn {
-    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding-inline: 20px;
-    border: 2px solid --accentText--; border-radius: calc(--radius-- * 0.6);
-    background: --accentText--; color: --accent--; font: inherit; font-weight: 600; cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-  .modulex-f10__nlbtn:hover { background: transparent; color: --accentText--; }
-  .modulex-f10__nlbtn:focus-visible { outline: 3px solid --accentText--; outline-offset: 3px; }
-  [dir="rtl"] .modulex-f10__nlbtn .material-symbols-outlined { transform: scaleX(-1); }
-  .modulex-f10__nlerr { display: none; margin: 0; font-size: 0.88rem; font-weight: 600; color: inherit; align-items: center; gap: 4px; }
-  .modulex-f10__nlerr.is-on { display: flex; }
-  .modulex-f10__nlerr.is-err::before { content: "error"; font-family: "Material Symbols Outlined"; font-size: 16px; line-height: 1; }
-  .modulex-f10__nlerr.is-ok::before { content: "check_circle"; font-family: "Material Symbols Outlined"; font-size: 16px; line-height: 1; }
-  .modulex-f10__nlkvkk { margin: 0; font-size: 0.8rem; line-height: 1.5; opacity: 0.85; color: inherit; }
+  .modulex-alt-sertifika-bag { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .modulex-alt-sertifika-bag:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-alt-sertifika-bag[aria-current="page"] { color: --accentInk--; font-weight: 700; }
+  .modulex-alt-sertifika-logo { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+  .modulex-alt-sertifika-logo img { width: auto; max-height: --logoH--; }
+  .modulex-alt-sertifika-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-alt-sertifika-bbaslik { margin-block-end: 14px; color: --accentInk--; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-alt-sertifika-sayfalar, .modulex-alt-sertifika-baglantilar, .modulex-alt-sertifika-iletisim, .modulex-alt-sertifika-yasal { display: grid; gap: 9px; }
+  .modulex-alt-sertifika-il { display: flex; align-items: flex-start; gap: 10px; }
+  .modulex-alt-sertifika-il-ic { display: grid; gap: 2px; }
+  .modulex-alt-sertifika-il-etiket { color: --muted--; font-size: 0.8rem; }
+  .modulex-alt-sertifika-il-ikon { flex: none; color: --accentInk--; font-size: 20px; }
+  .modulex-alt-sertifika-saatler { display: grid; gap: 6px; }
+  .modulex-alt-sertifika-saat { display: flex; justify-content: space-between; gap: 16px; }
+  .modulex-alt-sertifika-saat dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .modulex-alt-sertifika-sosyal { display: flex; flex-wrap: wrap; gap: 10px; }
+  .modulex-alt-sertifika-sosyal-a { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid --cizgi--; border-radius: 50%; color: inherit; font-size: 18px; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+  .modulex-alt-sertifika-sosyal-a:hover { border-color: --accent--; background: --accent--; color: --accentText--; transform: translateY(-2px); }
+  .modulex-alt-sertifika-hakkinda { max-width: 46ch; color: --muted--; }
+  .modulex-alt-sertifika-telif { display: flex; flex-wrap: wrap; gap: 4px 14px; color: --muted--; font-size: 0.9rem; }
+  .modulex-alt-sertifika-dil:empty { display: none; }
+  .modulex-alt-sertifika-yukari { display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: --accent--; color: --accentText--; text-decoration: none; transition: transform 0.25s ease; }
+  .modulex-alt-sertifika-yukari:hover { transform: translateY(-3px); }
+  .modulex-alt-sertifika-bulten { display: grid; gap: 8px; }
+  .modulex-alt-sertifika-nl-etiket { font-size: 0.9rem; font-weight: 700; }
+  .modulex-alt-sertifika-nl-satir { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-alt-sertifika-nl-girdi { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 10px 18px; border: 1px solid --cizgi--; border-radius: 999px; background: --bg--; color: --text--; font: inherit; }
+  .modulex-alt-sertifika-nl-dugme { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 10px 22px; border: 0; border-radius: 999px; background: --accent--; color: --accentText--; font: inherit; font-weight: 700; transition: transform 0.2s ease; }
+  .modulex-alt-sertifika-nl-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-sertifika-nl-dugme .material-symbols-outlined { font-size: 18px; }
+  .modulex-alt-sertifika-nl-durum:empty { display: none; }
+  .modulex-alt-sertifika-nl-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .modulex-alt-sertifika-nl-metin { color: --muted--; }
 
-  /* === sütunlar === */
-  .modulex-f10__main { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 40px 32px; max-width: 1200px; margin-inline: auto; padding-block: 48px 8px; }
-  .modulex-f10__main--c4 { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
-  .modulex-f10__main--c3 { grid-template-columns: 1.6fr 1fr 1fr; }
-  .modulex-f10__main--c2 { grid-template-columns: 1.6fr 1fr; }
-  .modulex-f10__col { min-width: 0; }
-  .modulex-f10__title { font-size: 15px; font-weight: 700; margin: 0 0 14px; color: inherit; letter-spacing: 0.04em; text-transform: uppercase; }
-  .modulex-f10__logo { display: inline-flex; align-items: center; max-width: 100%; margin-bottom: 14px; text-decoration: none; }
-  .modulex-f10__logo img { display: block; height: auto; width: auto; max-height: --logo_maxh--; max-width: 220px; object-fit: contain; flex-shrink: 0; }
-  .modulex-f10__logo--plate { background: #fff; border-radius: 8px; padding: 6px 12px; } /* kontrast-istisna: koyu logo koyu zeminde okunur; plaka bilerek sabit beyaz (footer-9 ile aynı) */
-  .modulex-f10__about { margin: 0 0 18px; font-size: 14px; line-height: 1.7; color: var(--f10-muted); max-width: 36ch; }
-  .modulex-f10__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-  .modulex-f10__list li { display: flex; align-items: flex-start; gap: 8px; min-width: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--f10-muted); }
-  .modulex-f10__list .material-symbols-outlined { font-size: 18px; line-height: 1.5; color: --accent--; flex-shrink: 0; }
-  .modulex-f10--koyu .modulex-f10__list .material-symbols-outlined { color: inherit; opacity: 0.85; }
-  .modulex-f10 a.modulex-f10__link:link, .modulex-f10 a.modulex-f10__link:visited { color: var(--f10-muted); text-decoration: none; transition: color 0.2s ease, padding-inline-start 0.2s ease; }
-  .modulex-f10 a.modulex-f10__link:hover, .modulex-f10 a.modulex-f10__link:focus-visible { color: inherit; text-decoration: underline; padding-inline-start: 4px; outline-color: currentColor; }
-  .modulex-f10__dl { margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
-  .modulex-f10__hour { display: flex; justify-content: space-between; gap: 12px; padding-block-end: 8px; border-block-end: 1px dashed var(--f10-border); }
-  .modulex-f10__hour dt { color: var(--f10-muted); }
-  .modulex-f10__hour dd { margin: 0; font-weight: 600; color: inherit; font-variant-numeric: tabular-nums; }
-  .modulex-f10__stitle { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--f10-muted); }
-  .modulex-f10__social { display: flex; flex-wrap: wrap; gap: 8px; }
-  .modulex-f10 a.modulex-f10__chip:link, .modulex-f10 a.modulex-f10__chip:visited {
-    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding-inline: 14px; border-radius: 999px; font-size: 13px;
-    color: inherit; text-decoration: none; border: 1px solid var(--f10-border); background: color-mix(in srgb, currentColor 6%, transparent);
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-  .modulex-f10 a.modulex-f10__chip:hover, .modulex-f10 a.modulex-f10__chip:focus-visible { background: color-mix(in srgb, --accent-- 20%, transparent); color: inherit; transform: translateY(-2px); outline-color: currentColor; }
-  .modulex-f10__chip .material-symbols-outlined { font-size: 18px; }
+  .modulex-alt-sertifika-nl-kvkk { color: --muted--; font-size: 0.8rem; line-height: 1.5; }
 
-  /* === alt şerit === */
-  .modulex-f10__bottom { max-width: 1200px; margin: 28px auto 0; padding-top: 18px; border-top: 1px solid var(--f10-border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; font-size: 13px; }
-  .modulex-f10__rights { margin: 0; color: var(--f10-muted); }
-  .modulex-f10__legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  .modulex-f10__bottomend { display: flex; align-items: center; gap: 14px; }
-  .modulex-f10__bottom .wm-langbar ul { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
-  .modulex-f10__top {
-    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px;
-    border: 1px solid var(--f10-border); background: color-mix(in srgb, currentColor 6%, transparent); color: inherit; cursor: pointer; font: inherit;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-  .modulex-f10__top:hover, .modulex-f10__top:focus-visible { background: --accent--; color: --accentText--; border-color: --accent--; transform: translateY(-3px); }
-  .modulex-f10__top:focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
-
-  /* === VARYANT acik: beyaz/yüzey zemin, bant dolu vurgu (yukarıdaki varsayılan), üst kenar vurgu çizgisi === */
-  .modulex-f10--acik { border-top: 4px solid --accent--; }
-  .modulex-f10--acik .modulex-f10__band { padding-block-start: 40px; }
-
-  /* === VARYANT gradient-ust: bant gradient + sayfanın üstüne taşan kart === */
-  .modulex-f10--gradient-ust { padding-block-start: 48px; margin-block-start: 40px; overflow: visible; }
-  .modulex-f10--gradient-ust .modulex-f10__band { padding-block: 0; margin-block-start: -88px; }
-  .modulex-f10--gradient-ust .modulex-f10__bandin {
-    background: linear-gradient(120deg, --accent-- 0%, color-mix(in srgb, --accent-- 70%, --koyubg--) 100%);
-    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.55);
-    border: 1px solid color-mix(in srgb, --accentText-- 20%, transparent);
-  }
-  .modulex-f10--gradient-ust .modulex-f10__main { padding-block-start: 40px; }
-
-  /* === VARYANT koyu: bant koyu zemin üstünde kart; bant kenarı vurgu === */
-  .modulex-f10--koyu .modulex-f10__bandin { background: color-mix(in srgb, --koyutext-- 8%, transparent); color: inherit; border: 1px solid color-mix(in srgb, --accent-- 60%, transparent); }
-  .modulex-f10--koyu .modulex-f10__nlinput { background: color-mix(in srgb, --koyutext-- 10%, transparent); color: inherit; border-color: color-mix(in srgb, --koyutext-- 30%, transparent); }
-  .modulex-f10--koyu .modulex-f10__nlinput::placeholder { color: var(--f10-muted); }
-  .modulex-f10--koyu .modulex-f10__nlinput:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 50%, transparent); }
-  /* koyu zeminde vurgu rengi 3:1'i garanti etmez → düğme açık (koyutext) zemin + koyu yazı; hover'da vurgu */
-  .modulex-f10--koyu .modulex-f10__nlbtn { background: --koyutext--; color: --koyubg--; border-color: --koyutext--; }
-  .modulex-f10--koyu .modulex-f10__nlbtn:hover { background: --accent--; color: --accentText--; border-color: --accent--; }
-  .modulex-f10--koyu .modulex-f10__nlbtn:focus-visible { outline-color: --koyutext--; }
-
-  @media (max-width: 1024px) {
-    .modulex-f10__main, .modulex-f10__main--c4, .modulex-f10__main--c3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .modulex-f10__brand { grid-column: 1 / -1; }
-    .modulex-f10__bandin { grid-template-columns: minmax(0, 1fr); }
-  }
+  .modulex-alt-sertifika-cerceve { position: relative; display: grid; gap: 32px; padding: clamp(28px, 5vw, 60px); border: 1px solid --accent--; outline: 1px solid --accent--; outline-offset: -10px; border-radius: 4px; }
+  .modulex-alt-sertifika-kose, .modulex-alt-sertifika-cerceve::before, .modulex-alt-sertifika-cerceve::after { position: absolute; width: 22px; height: 22px; border: 3px solid --accent--; }
+  .modulex-alt-sertifika-cerceve::before, .modulex-alt-sertifika-cerceve::after { content: ""; }
+  .modulex-alt-sertifika-cerceve::before { inset-block-start: -6px; inset-inline-start: -6px; border-inline-end: 0; border-block-end: 0; }
+  .modulex-alt-sertifika-cerceve::after { inset-block-end: -6px; inset-inline-end: -6px; border-inline-start: 0; border-block-start: 0; }
+  .modulex-alt-sertifika-kose { inset-block-start: -6px; inset-inline-end: -6px; border-inline-start: 0; border-block-end: 0; }
+  .modulex-alt-sertifika-orta { display: grid; justify-items: center; gap: 14px; text-align: center; }
+  .modulex-alt-sertifika-orta .modulex-alt-sertifika-hakkinda { margin-inline: auto; }
+  .modulex-alt-sertifika-ad { font-family: Georgia, "Times New Roman", serif; letter-spacing: 0.02em; }
+  .modulex-alt-sertifika-bbaslik { font-family: Georgia, "Times New Roman", serif; letter-spacing: 0.08em; }
+  .modulex-alt-sertifika-sutunlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 28px; padding-block: 28px; border-block: 1px solid --cizgi--; text-align: center; }
+  .modulex-alt-sertifika-sutunlar :is(.modulex-alt-sertifika-il, .modulex-alt-sertifika-saat) { justify-content: center; }
+  .modulex-alt-sertifika-nl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px 32px; align-items: center; }
+  .modulex-alt-sertifika-nl .modulex-alt-sertifika-nl-baslik { font-family: Georgia, "Times New Roman", serif; font-size: 1.4rem; }
+  .modulex-alt-sertifika-alt { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 28px; margin-block-start: 28px; text-align: center; }
+  .modulex-alt-sertifika-alt .modulex-alt-sertifika-blok--sosyal { display: flex; align-items: center; gap: 12px; }
+  .modulex-alt-sertifika-alt .modulex-alt-sertifika-blok--sosyal .modulex-alt-sertifika-bbaslik { margin: 0; }
+  .modulex-alt-sertifika-yasal { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; }
   @media (max-width: 768px) {
-    .modulex-f10__main { gap: 28px 20px; padding-block-start: 36px; }
-    .modulex-f10__bottom { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
-    .modulex-f10__nlrow { flex-direction: column; }
-    .modulex-f10--gradient-ust .modulex-f10__band { margin-block-start: -72px; }
-    [class*="modulex"] { max-width: 100%; box-sizing: border-box; }
+    .modulex-alt-sertifika-nl { grid-template-columns: minmax(0, 1fr); }
+    .modulex-alt-sertifika-cerceve { outline-offset: -6px; }
   }
-  @media (max-width: 480px) {
-    .modulex-f10__main, .modulex-f10__main--c4, .modulex-f10__main--c3, .modulex-f10__main--c2 { grid-template-columns: minmax(0, 1fr); }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-sertifika :is(.modulex-alt-sertifika-baslik, .modulex-alt-sertifika-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-sertifika-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-alt-sertifika { padding-inline: 16px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .modulex-f10 *, .modulex-f10 *::before, .modulex-f10 *::after { animation: none !important; transition: none !important; }
+    .modulex-alt-sertifika *, .modulex-alt-sertifika *::before, .modulex-alt-sertifika *::after { animation: none !important; transition: none !important; }
   }
 </style>
-
 <script>
-  (function () {
-    var kok = document.getElementById("f10-{{id}}");
-    if (!kok || kok.getAttribute("data-f10-hazir") === "1") { return; }
-    kok.setAttribute("data-f10-hazir", "1");
-    var veri = {};
-    try { veri = JSON.parse(document.getElementById("f10-{{id}}-veri").textContent); } catch (e) { veri = {}; }
-
-    /* yukarı: reduced-motion'da anında */
-    var ust = kok.querySelector(".modulex-f10__top");
-    if (ust) {
-      ust.addEventListener("click", function () {
-        var yumusak = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        try { window.scrollTo({ top: 0, behavior: yumusak ? "smooth" : "auto" }); } catch (e) { window.scrollTo(0, 0); }
-        var hedef = document.querySelector("#header, header, main, body");
-        if (hedef && hedef.focus) { hedef.setAttribute("tabindex", "-1"); hedef.focus({ preventScroll: true }); }
-      });
-    }
-
-    /* bülten: mailto taslağı (sunucu yok) */
-    var form = kok.querySelector(".modulex-f10__nlform");
-    if (!form) { return; }
-    var girdi = form.querySelector("input[type=email]");
-    var durum = form.querySelector(".modulex-f10__nlerr");
-    function yaz(metin, hata) {
-      if (!durum) { return; }
-      durum.textContent = metin || "";
-      durum.className = "modulex-f10__nlerr" + (metin ? " is-on" : "") + (hata ? " is-err" : " is-ok");
-      if (girdi) { if (hata) { girdi.setAttribute("aria-invalid", "true"); } else { girdi.removeAttribute("aria-invalid"); } }
-    }
-    if (girdi) { girdi.addEventListener("input", function () { yaz("", false); }); }
-    form.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      var v = girdi ? String(girdi.value || "").trim() : "";
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { yaz(veri.err || "", true); if (girdi) { girdi.focus(); } return; }
-      if (veri.gonderim !== "mailto" || !veri.mailto) { return; }
-      yaz(veri.ok || "", false);
-      window.location.href = "mailto:" + veri.mailto + "?subject=" + encodeURIComponent(veri.subject || "") + "&body=" + encodeURIComponent((veri.body || "") + "\r\n" + v);
+  (() => {
+    const P = "modulex-alt-sertifika";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const form = (s, P) => {
+        s.querySelectorAll("form[data-fb-form]").forEach((f) => {
+          const durum = f.querySelector("[role=status]");
+          const yaz = (m, hata) => { if (durum) { durum.textContent = m || ""; durum.classList.toggle(P + "-durum--hata", !!hata); } };
+          let t0 = Date.now();
+          const al = (ad) => { const e = f.elements.namedItem(ad); return e && "value" in e ? String(e.value).trim() : ""; };
+          const etiket = (ad) => { const e = f.elements.namedItem(ad); const l = e && e.id ? f.querySelector(`label[for="${e.id}"]`) : null; return l ? l.textContent.trim() : ad; };
+          const konuMetin = () => { const e = f.elements.namedItem("topic"); return e && e.selectedIndex > 0 ? e.options[e.selectedIndex].text.trim() : ""; };
+          f.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!f.checkValidity()) { f.reportValidity(); return; }
+            if (al("website")) return;
+            const govde = ["name", "email", "phone"].filter(al).map((k) => `${etiket(k)}: ${al(k)}`)
+              .concat(konuMetin() ? [`${etiket("topic")}: ${konuMetin()}`] : [], al("message") ? ["", al("message")] : []).join("\n");
+            const d = f.dataset;
+            if (d.action) {
+              const b = f.querySelector("[type=submit]");
+              if (b) b.disabled = true;
+              const yuk = { name: al("name"), email: al("email"), phone: al("phone"), topic: konuMetin(), message: al("message"), kvkk: true, lang: document.documentElement.lang || "", page: location.pathname, website: al("website"), t: Date.now() - t0 };
+              fetch(d.action, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(yuk) })
+                .then((r) => r.json().catch(() => ({})).then((j) => r.ok && j && j.ok !== false))
+                .then((ok) => { if (b) b.disabled = false; yaz(ok ? d.ok : d.hata, !ok); if (ok) { f.reset(); t0 = Date.now(); } })
+                .catch(() => { if (b) b.disabled = false; yaz(d.hata, true); });
+              return;
+            }
+            if (d.gonderim === "whatsapp" && d.wa) { window.open(`https://wa.me/${d.wa}?text=${encodeURIComponent(govde)}`, "_blank", "noopener"); return; }
+            if (d.eposta) {
+              const konu = [d.konu || "", konuMetin()].filter(Boolean).join(" - ");
+              location.href = `mailto:${d.eposta}?subject=${encodeURIComponent(konu)}&body=${encodeURIComponent(govde.replace(/\n/g, "\r\n"))}`;
+            }
+          });
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      form(s, P, az);
     });
   })();
 </script>

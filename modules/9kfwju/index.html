@@ -1,148 +1,66 @@
-<section class="modulex-values">
-  <div class="modulex-values-container">
-    <div class="modulex-values-header">
-      <div class="modulex-values-badge">{{badge}}</div>
-      <h2 class="modulex-values-title">{{title}}</h2>
-      <p class="modulex-values-desc">{{description}}</p>
-    </div>
-    <div class="modulex-values-grid">
-      {{html}}
-    </div>
+<section class="modulex-deger-merkez-vurgu{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-deger-merkez-vurgu-ic">
+    {{fbbas}}
+    {{fbgovde}}
   </div>
 </section>
 
 <style>
-  .modulex-values {
-    width: 100%;
-    padding: 72px 20px;
-    background: --bgcolor--;
-    box-sizing: border-box;
-  }
+  /* deger-merkez-vurgu — Bir ana değer + destekleyen değerler hiyerarşisi; simetrik üç sütun, merkez odaklı kompozisyon. */
+  .modulex-deger-merkez-vurgu { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-deger-merkez-vurgu *, .modulex-deger-merkez-vurgu *::before, .modulex-deger-merkez-vurgu *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-deger-merkez-vurgu :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-deger-merkez-vurgu :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-deger-merkez-vurgu :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-deger-merkez-vurgu :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-deger-merkez-vurgu img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-deger-merkez-vurgu) img { height: auto; }
+  .modulex-deger-merkez-vurgu [hidden] { display: none !important; }
+  .modulex-deger-merkez-vurgu :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-deger-merkez-vurgu :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-deger-merkez-vurgu-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-deger-merkez-vurgu-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-deger-merkez-vurgu--bassiz .modulex-deger-merkez-vurgu-bas { display: none; }
+  .modulex-deger-merkez-vurgu-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-merkez-vurgu-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-deger-merkez-vurgu-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-deger-merkez-vurgu-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-deger-merkez-vurgu-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-deger-merkez-vurgu-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-deger-merkez-vurgu-dugme:hover { transform: translateY(-2px); }
+  .modulex-deger-merkez-vurgu-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-deger-merkez-vurgu-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-deger-merkez-vurgu-dugme .material-symbols-outlined { font-size: 20px; }
 
-  .modulex-values-container {
-    max-width: --max--;
-    margin: 0 auto;
-  }
-
-  .modulex-values-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .modulex-values-badge {
-    display: inline-block;
-    padding: 6px 18px;
-    background: --badgebg--;
-    color: --badgecolor--;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  /* Rozet bos birakilirsa (metin yok) bos pil cizilmesin */
-  .modulex-values-badge:empty {
-    display: none;
-  }
-
-  .modulex-values-title {
-    font-size: 34px;
-    font-weight: 800;
-    color: --titlecolor--;
-    margin: 0 0 12px;
-  }
-
-  .modulex-values-desc {
-    font-size: 16px;
-    color: --textcolor--;
-    max-width: 640px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  .modulex-values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .modulex-values-card {
-    background: --cardbg--;
-    border-radius: 14px;
-    padding: 28px 22px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(27, 58, 107, 0.08);
-    border: 1px solid rgba(27, 58, 107, 0.06);
-    animation: modulexValuesIn 0.55s ease both;
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
-  }
-
-  .modulex-values-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(46, 107, 255, 0.14);
-  }
-
-  @keyframes modulexValuesIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .modulex-values-icon {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 16px;
-    border-radius: 50%;
-    background: rgba(46, 107, 255, 0.12);
-    color: --accent--;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modulex-values-icon .material-symbols-outlined {
-    font-size: 28px;
-    line-height: 1;
-  }
-
-  .modulex-values-card-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: --titlecolor--;
-    margin: 0 0 10px;
-  }
-
-  .modulex-values-card-text {
-    font-size: 14px;
-    line-height: 1.65;
-    color: --textcolor--;
-    margin: 0;
-  }
-
+  .modulex-deger-merkez-vurgu-duzen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 40px); align-items: center; }
+  .modulex-deger-merkez-vurgu-yan { display: grid; gap: 28px; }
+  .modulex-deger-merkez-vurgu-yan:empty { display: none; }
+  .modulex-deger-merkez-vurgu-oge { position: relative; display: flex; align-items: flex-start; gap: 14px; }
+  .modulex-deger-merkez-vurgu-ikon { flex: none; color: --accentInk--; font-size: 28px; transition: transform 0.3s ease; }
+  .modulex-deger-merkez-vurgu-oge:hover .modulex-deger-merkez-vurgu-ikon { transform: scale(1.15); }
+  .modulex-deger-merkez-vurgu-kbaslik { font-size: 1.08rem; font-weight: 700; }
+  .modulex-deger-merkez-vurgu-kmetin { color: --muted--; font-size: 0.93rem; }
+  .modulex-deger-merkez-vurgu-ana { position: relative; display: grid; justify-items: center; gap: 14px; padding: clamp(32px, 4vw, 52px) clamp(22px, 3vw, 36px); border-radius: calc(--yuvarlak-- * 1.4); background: --vurguBg--; color: --vurguText--; text-align: center; box-shadow: 0 30px 60px -40px color-mix(in srgb, --vurguBg-- 80%, transparent); }
+  .modulex-deger-merkez-vurgu-aikon { display: inline-grid; place-items: center; width: 96px; height: 96px; border-radius: 50%; background: color-mix(in srgb, --vurguText-- 16%, transparent); font-size: 50px; }
+  .modulex-deger-merkez-vurgu-abaslik { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 800; }
+  .modulex-deger-merkez-vurgu-ametin { line-height: 1.7; }
   @media (max-width: 1024px) {
-    .modulex-values-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .modulex-deger-merkez-vurgu-duzen { grid-template-columns: minmax(0, 1fr); }
+    .modulex-deger-merkez-vurgu-ana { order: -1; }
   }
+  .modulex-deger-merkez-vurgu-bag { color: inherit; text-decoration: none; }
+  .modulex-deger-merkez-vurgu-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-deger-merkez-vurgu-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
 
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-merkez-vurgu :is(.modulex-deger-merkez-vurgu-baslik, .modulex-deger-merkez-vurgu-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-merkez-vurgu-baslik { line-height: 1.35; }
   @media (max-width: 768px) {
-    .modulex-values {
-      padding: 48px 14px;
-    }
-
-    .modulex-values-grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .modulex-values-title {
-      font-size: 28px;
-    }
+    .modulex-deger-merkez-vurgu { padding-inline: 16px; }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    .modulex-values-card {
-      animation: none !important;
-      transition: none !important;
-    }
+    .modulex-deger-merkez-vurgu *, .modulex-deger-merkez-vurgu *::before, .modulex-deger-merkez-vurgu *::after { animation: none !important; transition: none !important; }
   }
 </style>
