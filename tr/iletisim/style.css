@@ -164,7 +164,7 @@
   .h0001-ust-zarif [hidden] { display: none !important; }
   .h0001-ust-zarif :where(a, button, summary, [data-cevir]) { cursor: pointer; }
   .h0001-ust-zarif :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--mx-site-primary, #2563eb); outline-offset: 3px; }
-  .h0001-ust-zarif-ic { max-width: 1200px; margin-inline: auto; }
+  .h0001-ust-zarif-ic { max-width: 1360px; margin-inline: auto; }
   .h0001-ust-zarif-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
   .h0001-ust-zarif--bassiz .h0001-ust-zarif-bas { display: none; }
   .h0001-ust-zarif-ust { color: color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318)); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
